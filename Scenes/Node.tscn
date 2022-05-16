@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Node" type="Polygon2D" groups=["Graph", "Nodes"]]
+scale = Vector2( 0.25, 0.25 )
+z_index = 1
+offset = Vector2( -48, -16 )
+polygon = PoolVector2Array( -14.1639, -24.4068, 48, -48, 120, -16, 112, 64, 32, 96, -24, 48 )

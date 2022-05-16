@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Level.gd" type="Script" id=1]
+[ext_resource path="res://Node.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Edge.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float thickness;
+uniform float size;
+uniform vec3 color1;
+uniform vec3 color2;
+
+vec2 rotate(float degree, vec2 input) {
+	float rad_of_deg = radians(degree);
+	mat2 rotationMatrix = mat2(
+								vec2(cos(rad_of_deg), sin(rad_of_deg)), 
+								vec2(-sin(rad_of_deg), cos(rad_of_deg))
+							);
+							
+	return rotationMatrix * input;
+}
+
+vec2 scale(float xSize, float ySize, vec2 input) {
+	mat2 scaleMatrix = mat2(vec2(xSize, 0.0), vec2(0.0, ySize));
+	return scaleMatrix * input;
+}
+
+void fragment() {
+	vec2 scaled_uv = scale(size, size, UV);
+	vec2 mod_uv_0 = rotate(0.0, scaled_uv);
+	vec2 mod_uv_60 = rotate(60.0, scaled_uv);
+	vec2 mod_uv_120 = rotate(120.0, scaled_uv); 
+	vec3 pixelColor = vec3(sin(mod_uv_0.y + thickness*2.0));
+	pixelColor = step(pixelColor, vec3(thickness));
+	pixelColor *= step(vec3(sin(mod_uv_60.y)), vec3(thickness));
+	pixelColor *= step(vec3(sin(mod_uv_120.y)),vec3(thickness));
+	
+	vec3 mixColor = mix(color1, color2, pixelColor);
+	COLOR = vec4(mixColor, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/thickness = 0.718
+shader_param/size = 1.0
+shader_param/color1 = Vector3( 0.3, 0.3, 0.3 )
+shader_param/color2 = Vector3( 0.2, 0.2, 0.2 )
+
+[sub_resource type="NoiseTexture" id=5]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 1 )
+node_scene = ExtResource( 2 )
+edge_scene = ExtResource( 3 )
+grid = 3
+margin = 100.0
+node_number = 5
+edges = 5
+
+[node name="Generate" type="Button" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 442.0
+margin_top = 493.0
+margin_right = 632.0
+margin_bottom = 573.0
+theme = SubResource( 2 )
+text = "Generate"
+
+[node name="Background" type="Sprite" parent="."]
+material = SubResource( 4 )
+position = Vector2( 512, 512 )
+scale = Vector2( 2, 2 )
+z_index = -1
+texture = SubResource( 5 )
+
+[connection signal="pressed" from="Generate" to="." method="_on_Generate_pressed"]
