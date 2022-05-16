@@ -1,16 +1,15 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Level.gd" type="Script" id=1]
-[ext_resource path="res://Node.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Edge.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/Level.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Node.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Edge.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 4 )
 
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
 
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
@@ -75,7 +74,7 @@ margin_left = 442.0
 margin_top = 493.0
 margin_right = 632.0
 margin_bottom = 573.0
-theme = SubResource( 2 )
+theme = SubResource( 7 )
 text = "Generate"
 
 [node name="Background" type="Sprite" parent="."]

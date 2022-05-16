@@ -1,14 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Edge.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/Edge.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 2 )
 
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
 
 [node name="Edge" type="Line2D" groups=["Graph"]]
 points = PoolVector2Array( 0, 0, 192, 0 )
@@ -22,10 +21,9 @@ padding = 10.0
 shape_centered = false
 
 [node name="WeightValue" type="Label" parent="."]
-visible = false
 margin_right = 18.186
 margin_bottom = 41.0
-theme = SubResource( 2 )
+theme = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 
