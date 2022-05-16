@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="Game" type="Node2D"]
+__meta__ = {
+"_editor_description_": "This node is the main node for all content to come in the future and is the building block for everything else."
+}
