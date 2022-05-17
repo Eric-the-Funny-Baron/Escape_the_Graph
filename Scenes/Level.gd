@@ -63,7 +63,6 @@ func generate_graph():
 
 	for _i in range(min(edges, nodes*(nodes-1)/2)):
 		var edge = null # initial empty edge
-		var iteration = 0
 		
 		# while edge is empty or exists already, new tries of building a new edge are executed
 		while edge == null or level_graph.edge_exists_already(edge):
