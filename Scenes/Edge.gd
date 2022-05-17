@@ -5,6 +5,7 @@ export (Color) var selected_color
 export var padding : float = 0
 
 var selected : bool = false
+var nodes = []
 
 
 
@@ -40,6 +41,11 @@ func _on_TouchScreenButton_pressed():
 	var new_color = unselected_color.linear_interpolate(selected_color, float(selected))
 	self.default_color = new_color
 	$ContainerLayer/WeightValue.set("custom_colors/font_color", default_color)
+	for n in nodes:
+		n.update_state(selected_color, unselected_color)
 
 func set_weight(text):
 	$ContainerLayer/WeightValue.text = str(text)
+
+func add_node(node):
+	nodes.append(node)

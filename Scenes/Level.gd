@@ -61,7 +61,7 @@ func generate_graph():
 		node.position = block_size * 0.5 + block_size * block + random_offset
 		level_graph.nodes.append(node)
 
-	for _i in range(min(edges, nodes*(nodes-1)/2)):
+	for _i in range(min(edges, int(nodes*(nodes-1)/2.0))):
 		var edge = null # initial empty edge
 		
 		# while edge is empty or exists already, new tries of building a new edge are executed
@@ -122,15 +122,17 @@ func force_directed_correction():
 		cooling *= cooling_factor
 
 func render_graph():
-	for node in level_graph.nodes:
-		add_child(node)
 	for edge in level_graph.edges:
 		var render_edge = edge_scene.instance()
 		render_edge.clear_points()
 		render_edge.set_weight(edge['weight'])
 		for n in edge['targeting'].keys():
+			render_edge.add_node(n)
+			n.add_edge(render_edge)
 			render_edge.add_point(n.position)
 		add_child(render_edge)
+	for node in level_graph.nodes:
+		add_child(node)
 		
 
 func _on_Generate_pressed():
