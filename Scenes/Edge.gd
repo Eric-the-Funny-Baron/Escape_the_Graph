@@ -11,7 +11,7 @@ var selected : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	default_color = unselected_color
-	$WeightValue.set("custom_colors/font_color", default_color)
+	$ContainerLayer/WeightValue.set("custom_colors/font_color", default_color)
 	
 	# ==========================================================================
 	# Building the TouchBox
@@ -31,16 +31,15 @@ func _ready():
 	touch_box.set_point_cloud([start_up, start_down, end_down, end_up])
 	$TouchBox.set_shape(touch_box)
 	# ==========================================================================
-	$WeightValue.rect_position =  start_point + direction_vector * 0.5
-	$WeightValue.rect_position += $WeightValue.rect_size * 0.5 * normal_vector
-	$WeightValue.rect_position += normal_vector * (self.width + padding * 0.5)
-
-
-
-
+	$ContainerLayer/WeightValue.rect_position =  start_point + direction_vector * 0.5
+	#$ContainerLayer/WeightValue.rect_position += $ContainerLayer/WeightValue.rect_size * 0.5 * normal_vector
+	$ContainerLayer/WeightValue.rect_position += normal_vector * (self.width + padding * 0.5)
 
 func _on_TouchScreenButton_pressed():
 	selected = !selected
 	var new_color = unselected_color.linear_interpolate(selected_color, float(selected))
 	self.default_color = new_color
-	$WeightValue.set("custom_colors/font_color", default_color)
+	$ContainerLayer/WeightValue.set("custom_colors/font_color", default_color)
+
+func set_weight(text):
+	$ContainerLayer/WeightValue.text = str(text)

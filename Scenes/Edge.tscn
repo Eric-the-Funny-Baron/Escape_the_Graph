@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Edge.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,12 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=7]
 default_font = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
 
 [node name="Edge" type="Line2D" groups=["Graph"]]
 points = PoolVector2Array( 0, 0, 192, 0 )
@@ -20,11 +26,15 @@ padding = 10.0
 [node name="TouchBox" type="TouchScreenButton" parent="."]
 shape_centered = false
 
-[node name="WeightValue" type="Label" parent="."]
-margin_right = 18.186
-margin_bottom = 41.0
+[node name="ContainerLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="WeightValue" type="Label" parent="ContainerLayer"]
+margin_right = 24.0
+margin_bottom = 53.0
 theme = SubResource( 7 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 8 )
 text = "0"
 
 [connection signal="pressed" from="TouchBox" to="." method="_on_TouchScreenButton_pressed"]

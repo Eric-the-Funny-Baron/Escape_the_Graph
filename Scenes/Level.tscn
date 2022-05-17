@@ -25,10 +25,8 @@ shader_param/color2 = Vector3( 0.2, 0.2, 0.2 )
 script = ExtResource( 1 )
 node_scene = ExtResource( 2 )
 edge_scene = ExtResource( 3 )
-grid = 3
 margin = 100.0
-node_number = 5
-edges = 5
+nodes = 4
 
 [node name="Generate" type="Button" parent="."]
 anchor_top = 1.0
@@ -40,6 +38,9 @@ margin_right = 632.0
 margin_bottom = 573.0
 theme = SubResource( 7 )
 text = "Generate"
+__meta__ = {
+"_editor_description_": "Protoytype Button to test graph generation"
+}
 
 [node name="Background" type="Sprite" parent="."]
 material = SubResource( 4 )
