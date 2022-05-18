@@ -8,10 +8,9 @@ __meta__ = {
 }
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-margin = 25.0
 randomness = 0.2
-nodes = 6
-edges = 7
+nodes = 12
+edges = 15
 minimal_weight = 1.0
 maximum_weight = 20.0
 start_to_target_distance = 2

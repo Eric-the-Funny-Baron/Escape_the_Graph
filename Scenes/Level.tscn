@@ -14,8 +14,8 @@ default_font = SubResource( 6 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 5 )
-shader_param/thickness = 0.91
-shader_param/size = 1.398
+shader_param/thickness = 0.924
+shader_param/size = 1.0
 shader_param/color1 = Vector3( 0.3, 0.3, 0.3 )
 shader_param/color2 = Vector3( 0.2, 0.2, 0.2 )
 
