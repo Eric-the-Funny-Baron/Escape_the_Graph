@@ -8,6 +8,8 @@ extends Node2D
 ##		the possibility to interact with them and the system to evaluate the interaction.
 ##
 
+class_name Level
+
 # Parameters
 export (PackedScene) var node_scene
 export (PackedScene) var edge_scene
@@ -25,6 +27,9 @@ export var attractive_factor = 1.0
 export var ideal_length = 100.0
 export var cooling_factor = 0.99
 
+# Signals
+signal path_completed
+
 # Attributes
 var screen_size
 const SetMethods = preload("SetMethods.gd")
@@ -34,10 +39,12 @@ var subdivisions = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
+	
 	screen_size = get_viewport_rect().size
 	subdivisions = int(ceil(log(nodes) / log(2)))
-	randomize()
 	build_level()
+	Signals.connect("edge_status_changed", self, "_on_Edge_status_changed")
 
 func build_level():
 	generate_graph()
@@ -82,7 +89,6 @@ func generate_graph():
 	level_graph.define_target(2)
 	level_graph.start.define_as_start_target(1.5, edge_scene.instance().selected_color)
 	level_graph.target.define_as_start_target(1.5, edge_scene.instance().selected_color)
-	
 
 func force_directed_correction():
 	var iterations = 1
@@ -133,12 +139,15 @@ func render_graph():
 		add_child(render_edge)
 	for node in level_graph.nodes:
 		add_child(node)
-		
 
 func _on_Generate_pressed():
 	get_tree().call_group("Graph", "queue_free")
 	level_graph.clear_graph()
 	build_level()
+
+func _on_Edge_status_changed():
+	if level_graph.path_built():
+		emit_signal("path_completed")
 
 class Graph:
 	var nodes = [] # contains all nodes
@@ -159,7 +168,7 @@ class Graph:
 		if (node in self.nodes) == false: nodes.append(node)
 		return nodes
 	
-	func create_edge(node1, node2, weight):
+	func create_edge(node1, node2, weight:float):
 		var edge = {
 			'targeting': {node1: node2, node2: node1},
 			'weight': weight
@@ -205,7 +214,7 @@ class Graph:
 		if self.nodes !=  []:
 			self.start = nodes[randi() % self.nodes.size()]
 	
-	func define_target(steps):
+	func define_target(steps:int):
 		var excluded_nodes = [self.start]
 		for _i in range(steps):
 			for e in excluded_nodes:
@@ -220,3 +229,21 @@ class Graph:
 		self.target = possible_nodes[randi() % possible_nodes.size()]
 		return self.target
 
+	func path_built(node : Level_Node = start, visited = []) -> bool:
+		var built:bool = false
+		var nodes_to_be_checked = []
+		visited.append(node)
+		
+		if node == target:
+			return true
+		
+		for e in node.get_active_edges():
+			nodes_to_be_checked = SetMethods.union(nodes_to_be_checked, e.nodes)
+		nodes_to_be_checked = SetMethods.difference(nodes_to_be_checked, visited)
+		
+		for n in nodes_to_be_checked:
+			built = built or path_built(n, visited)
+			if built:
+				return true
+		
+		return false

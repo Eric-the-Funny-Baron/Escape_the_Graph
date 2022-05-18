@@ -1,5 +1,6 @@
 extends Polygon2D
 
+class_name Level_Node
 
 var edges = []
 
@@ -20,9 +21,13 @@ func add_edge(edge):
 
 func update_state(color1 : Color, color2 : Color):
 	var active = is_start_target
-	for e in edges:
-		active = active or e.selected
-	if active:
+	if get_active_edges() != []:
 		self.color = color1
 	else:
 		self.color = color2
+
+func get_active_edges():
+	var active_edges = []
+	for e in edges:
+		if e.selected: active_edges.append(e)
+	return active_edges

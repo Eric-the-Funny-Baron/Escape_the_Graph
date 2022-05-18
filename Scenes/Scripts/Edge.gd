@@ -1,5 +1,7 @@
 extends Line2D
 
+class_name Edge
+
 export (Color) var unselected_color
 export (Color) var selected_color
 export var padding : float = 0
@@ -43,6 +45,7 @@ func _on_TouchScreenButton_pressed():
 	$ContainerLayer/WeightValue.set("custom_colors/font_color", default_color)
 	for n in nodes:
 		n.update_state(selected_color, unselected_color)
+	Signals.emit_signal("edge_status_changed")
 
 func set_weight(text):
 	$ContainerLayer/WeightValue.text = str(text)

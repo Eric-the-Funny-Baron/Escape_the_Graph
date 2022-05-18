@@ -9,13 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Line2D",
+"class": "Edge",
+"language": "GDScript",
+"path": "res://Scenes/Scripts/Edge.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://Scenes/Scripts/Level.gd"
+}, {
+"base": "Polygon2D",
+"class": "Level_Node",
+"language": "GDScript",
+"path": "res://Scenes/Scripts/Node.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"Edge": "",
+"GitAPI": "",
+"Level": "",
+"Level_Node": ""
 }
 
 [application]
@@ -23,6 +41,15 @@ _global_script_class_icons={
 config/name="Escape The Graph"
 run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Signals="*res://Scenes/Scripts/Signals.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gdnative]
 
