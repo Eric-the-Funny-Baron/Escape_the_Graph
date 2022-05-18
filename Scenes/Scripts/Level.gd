@@ -14,6 +14,7 @@ class_name Level
 export (PackedScene) var node_scene
 export (PackedScene) var edge_scene
 export var margin = 200.0 # border margin in the scene
+export var randomness = 0.1 # randomness of placement
 export var nodes : int = 1 # number of nodes in the graph
 export var edges : int = 1 # number of edges in the graph
 enum ProblemType {SHORTEST_PATH, CAPACITY_PROBLEM, RELIABILITY_PROBLEM}
@@ -52,30 +53,32 @@ func build_level():
 	render_graph()
 
 func generate_graph():
-	var block_size = (screen_size - Vector2(margin, margin)) / subdivisions
-	var filled_blocks = []
+	var block_size:Vector2 = (screen_size - Vector2(margin, margin))
+	var circle_vector = Vector2(0.75, 0) * min(block_size.x, block_size.y) * 0.5
+	var rotation_value = 2 * PI / nodes
 	
-	for _i in range(min(nodes, pow(subdivisions, 2))):
-		var block = null
-		var node = node_scene.instance()
-		var random_offset = Vector2( \
-			rand_range(-block_size.x, block_size.x), \
-			rand_range(-block_size.y, block_size.y)) * 0.25
-		
-		while block == null or block in filled_blocks:
-			block = Vector2(randi() % subdivisions, randi() % subdivisions)
-		filled_blocks.append(block)
-		node.position = block_size * 0.5 + block_size * block + random_offset
+	# === Node Distribution === 
+	for i in range(nodes):
+		var node: Level_Node = node_scene.instance()
+		var epsilon_x = rand_range(-block_size.x/subdivisions, block_size.x/subdivisions) * randomness
+		var epsilon_y = rand_range(-block_size.y/subdivisions, block_size.y/subdivisions) * randomness
+		var epsilon = Vector2(epsilon_x, epsilon_y)
+		node.position = circle_vector + block_size * 0.5 + Vector2(margin, margin) * 0.5 + epsilon
 		level_graph.nodes.append(node)
-
-	for _i in range(min(edges, int(nodes*(nodes-1)/2.0))):
+		circle_vector = circle_vector.rotated(rotation_value)
+	
+	# === Edge Building === 
+	for i in range(min(edges, int(nodes*(nodes-1)/2.0))):
 		var edge = null # initial empty edge
 		
 		# while edge is empty or exists already, new tries of building a new edge are executed
 		while edge == null or level_graph.edge_exists_already(edge):
 			var node1 = randi() % level_graph.nodes.size()
-			var node2 = null
+			var node2
 			
+			if i < nodes - 1: node2 = (node1 + 1) % level_graph.nodes.size()
+			else: node2 = randi() % level_graph.nodes.size()
+				
 			while node2 == null or node2 == node1:
 				node2 = randi() % level_graph.nodes.size()
 			var random_weight = rand_range(minimal_weight, maximum_weight)
@@ -86,7 +89,7 @@ func generate_graph():
 		level_graph.add_edge(edge)
 	
 	level_graph.define_start()
-	level_graph.define_target(2)
+	level_graph.define_target(1)
 	level_graph.start.define_as_start_target(1.5, edge_scene.instance().selected_color)
 	level_graph.target.define_as_start_target(1.5, edge_scene.instance().selected_color)
 
@@ -217,14 +220,18 @@ class Graph:
 	func define_target(steps:int):
 		var excluded_nodes = [self.start]
 		for _i in range(steps):
+			var new_excluded_nodes = []
 			for e in excluded_nodes:
-				excluded_nodes = SetMethods.union(excluded_nodes, self.get_neighbours(e))
+				new_excluded_nodes = SetMethods.union(excluded_nodes, self.get_neighbours(e))
+			excluded_nodes = new_excluded_nodes
 		
 		var possible_nodes = SetMethods.difference(self.nodes, excluded_nodes)
 		if possible_nodes == []:
 			possible_nodes = SetMethods.difference(self.nodes, [self.start])
 		if possible_nodes == []:
-			return
+			var exception = SetMethods.difference(excluded_nodes, [start])
+			self.target = exception[randi() % exception.size()]
+			return self.target
 		
 		self.target = possible_nodes[randi() % possible_nodes.size()]
 		return self.target

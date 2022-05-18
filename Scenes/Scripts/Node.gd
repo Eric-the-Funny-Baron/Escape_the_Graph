@@ -21,7 +21,7 @@ func add_edge(edge):
 
 func update_state(color1 : Color, color2 : Color):
 	var active = is_start_target
-	if get_active_edges() != []:
+	if get_active_edges() != [] or is_start_target:
 		self.color = color1
 	else:
 		self.color = color2
