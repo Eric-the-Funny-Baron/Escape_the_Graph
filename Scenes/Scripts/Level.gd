@@ -148,10 +148,13 @@ func _on_Generate_pressed():
 	get_tree().call_group("Graph", "queue_free")
 	level_graph.clear_graph()
 	build_level()
+	_on_Edge_status_changed()
 
 func _on_Edge_status_changed():
-	if level_graph.path_built():
-		emit_signal("path_completed")
+	var color1 = Color(1,1,1)
+	var color2 = Color(0.5,0.5,0.5)
+	if level_graph.path_built(): $ReadyLabel.set("custom_colors/font_color", color1)
+	else: $ReadyLabel.set("custom_colors/font_color", color2)
 
 class Graph:
 	var nodes = [] # contains all nodes

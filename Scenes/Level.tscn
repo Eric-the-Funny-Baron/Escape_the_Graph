@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Node.tscn" type="PackedScene" id=2]
@@ -20,6 +20,18 @@ shader_param/color1 = Vector3( 0.3, 0.3, 0.3 )
 shader_param/color2 = Vector3( 0.2, 0.2, 0.2 )
 
 [sub_resource type="NoiseTexture" id=5]
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=10]
+default_font = SubResource( 9 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -48,5 +60,15 @@ position = Vector2( 512, 512 )
 scale = Vector2( 2, 2 )
 z_index = -1
 texture = SubResource( 5 )
+
+[node name="ReadyLabel" type="Label" parent="."]
+margin_left = 665.0
+margin_top = 503.0
+margin_right = 809.0
+margin_bottom = 556.0
+theme = SubResource( 10 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Fertig"
 
 [connection signal="pressed" from="Generate" to="." method="_on_Generate_pressed"]

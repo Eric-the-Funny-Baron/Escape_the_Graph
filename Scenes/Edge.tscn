@@ -3,11 +3,11 @@
 [ext_resource path="res://Scenes/Scripts/Edge.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 2 )
 
-[sub_resource type="Theme" id=7]
-default_font = SubResource( 6 )
+[sub_resource type="Theme" id=10]
+default_font = SubResource( 9 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 40
@@ -32,7 +32,7 @@ layer = 10
 [node name="WeightValue" type="Label" parent="ContainerLayer"]
 margin_right = 24.0
 margin_bottom = 53.0
-theme = SubResource( 7 )
+theme = SubResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "0"
