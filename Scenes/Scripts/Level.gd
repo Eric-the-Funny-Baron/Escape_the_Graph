@@ -55,8 +55,11 @@ func build_level():
 
 func generate_graph():
 	var block_size:Vector2 = (screen_size - Vector2(margin, margin))
-	var circle_vector = Vector2(0.75, 0) * min(block_size.x, block_size.y) * 0.5
+	var circle_vector = Vector2(0.75, 0) #* min(block_size.x, block_size.y) * 0.5
 	var rotation_value = 2 * PI / nodes
+	var screen_base = Transform2D(Vector2(block_size.x * 0.5, 0), \
+								  Vector2(0, block_size.y * 0.5), \
+								 (Vector2(block_size) + Vector2(margin, margin)) * 0.5)
 	
 	# === Node Distribution === 
 	for i in range(nodes):
@@ -64,7 +67,7 @@ func generate_graph():
 		var epsilon_x = rand_range(-block_size.x/subdivisions, block_size.x/subdivisions) * randomness
 		var epsilon_y = rand_range(-block_size.y/subdivisions, block_size.y/subdivisions) * randomness
 		var epsilon = Vector2(epsilon_x, epsilon_y)
-		node.position = circle_vector + block_size * 0.5 + Vector2(margin, margin) * 0.5 + epsilon
+		node.position = screen_base.xform(circle_vector) + epsilon#+ block_size * 0.5 + Vector2(margin, margin) * 0.5 + epsilon
 		level_graph.nodes.append(node)
 		circle_vector = circle_vector.rotated(rotation_value)
 	
