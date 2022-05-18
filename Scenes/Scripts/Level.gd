@@ -21,6 +21,7 @@ enum ProblemType {SHORTEST_PATH, CAPACITY_PROBLEM, RELIABILITY_PROBLEM}
 export (ProblemType) var type 
 export var minimal_weight = 0.0 # minimal weight of edges
 export var maximum_weight = 10.0 # maximum weight of edges
+export (int, 1, 100) var start_to_target_distance = 1
 export (int, 1, 10000) var iteration_limit = 10 # maximum iterations in the force_directed algorithm
 export (float, 0, 100) var threshold # minimal threshold the force equilibrium should reach
 export var repulsive_factor = 2.0
@@ -89,7 +90,7 @@ func generate_graph():
 		level_graph.add_edge(edge)
 	
 	level_graph.define_start()
-	level_graph.define_target(1)
+	level_graph.define_target(start_to_target_distance)
 	level_graph.start.define_as_start_target(1.5, edge_scene.instance().selected_color)
 	level_graph.target.define_as_start_target(1.5, edge_scene.instance().selected_color)
 
