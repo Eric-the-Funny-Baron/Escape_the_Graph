@@ -50,7 +50,7 @@ func _ready():
 
 func build_level():
 	generate_graph()
-	force_directed_correction()
+	# force_directed_correction() # could be added optinally, was another approach for layouting the graph
 	render_graph()
 
 func generate_graph():
