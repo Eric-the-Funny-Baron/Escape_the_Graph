@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Scripts/Edge.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/Scripts/ColorTable.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sound/UI_Selection.ogg" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 2 )
@@ -19,8 +21,6 @@ font_data = ExtResource( 2 )
 points = PoolVector2Array( 0, 0, 192, 0 )
 default_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 1 )
-unselected_color = Color( 1, 1, 1, 1 )
-selected_color = Color( 0.662745, 1, 0.407843, 1 )
 padding = 10.0
 
 [node name="TouchBox" type="TouchScreenButton" parent="."]
@@ -36,5 +36,15 @@ theme = SubResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "0"
+align = 1
+valign = 1
+
+[node name="ColorTable" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="SelectionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+bus = "Effects"
 
 [connection signal="pressed" from="TouchBox" to="." method="_on_TouchScreenButton_pressed"]

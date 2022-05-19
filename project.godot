@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "ColorTable",
+"language": "GDScript",
+"path": "res://Scenes/Scripts/ColorTable.gd"
+}, {
 "base": "Line2D",
 "class": "Edge",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/Scripts/Node.gd"
 } ]
 _global_script_class_icons={
+"ColorTable": "",
 "Edge": "",
 "GitAPI": "",
 "Level": "",

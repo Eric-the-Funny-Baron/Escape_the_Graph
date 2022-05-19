@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Scripts/ColorTable.gd" type="Script" id=1]
+
+[node name="ColorTable" type="Node"]
+script = ExtResource( 1 )
+selectable_color = Color( 0.74902, 0.74902, 0.74902, 1 )
+selected_color = Color( 0.627451, 1, 0.419608, 1 )
+hint_color = Color( 0.792157, 0, 0.521569, 1 )

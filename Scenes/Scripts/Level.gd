@@ -42,11 +42,14 @@ var subdivisions = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	
 	screen_size = get_viewport_rect().size
 	subdivisions = int(ceil(log(nodes) / log(2)))
-	build_level()
 	Signals.connect("edge_status_changed", self, "_on_Edge_status_changed")
+	
+	build_level()
+	
+	level_graph.start.set_active()
+	_on_Edge_status_changed()
 
 func build_level():
 	generate_graph()
@@ -86,16 +89,16 @@ func generate_graph():
 			while node2 == null or node2 == node1:
 				node2 = randi() % level_graph.nodes.size()
 			var random_weight = rand_range(minimal_weight, maximum_weight)
-			if type == ProblemType.SHORTEST_PATH or type == ProblemType.CAPACITY_PROBLEM:
-				random_weight = int(random_weight)
+			if type == ProblemType.SHORTEST_PATH or type == ProblemType.CAPACITY_PROBLEM: random_weight = int(random_weight)
+			else: random_weight = stepify(random_weight, 0.01)
 			
 			edge = level_graph.create_edge(level_graph.nodes[node1], level_graph.nodes[node2], random_weight)
 		level_graph.add_edge(edge)
 	
 	level_graph.define_start()
 	level_graph.define_target(start_to_target_distance)
-	level_graph.start.define_as_start_target(1.5, edge_scene.instance().selected_color)
-	level_graph.target.define_as_start_target(1.5, edge_scene.instance().selected_color)
+	level_graph.start.define_as_start_target(2)
+	level_graph.target.define_as_start_target(2)
 
 func force_directed_correction():
 	var iterations = 1
@@ -151,13 +154,33 @@ func _on_Generate_pressed():
 	get_tree().call_group("Graph", "queue_free")
 	level_graph.clear_graph()
 	build_level()
+	level_graph.start.set_active()
 	_on_Edge_status_changed()
 
 func _on_Edge_status_changed():
 	var color1 = Color(1,1,1)
 	var color2 = Color(0.5,0.5,0.5)
+	var render_edges = []
+	
 	if level_graph.path_built(): $ReadyLabel.set("custom_colors/font_color", color1)
 	else: $ReadyLabel.set("custom_colors/font_color", color2)
+	
+	# Termination on Target -> no new selectable
+	
+	# The graph is just holding the abstract edges and not the real ones, which are rendered. 
+	# Therefore the real edges must be collected first via the nodes in the graph, which
+	# are the real ones and have references to the real edges.
+	for n in level_graph.nodes:
+		render_edges = SetMethods.union(render_edges, n.edges)
+	for r_e in render_edges:
+		r_e.change_selectable()
+
+	for n in level_graph.nodes:
+		if n.state == 1: # represents active state
+			if n == level_graph.target:
+				for e in n.edges:
+					if e.state == Edge.Edge_States.SELECTABLE:
+						e.change_state(Edge.Edge_States.UNSELECTED)
 
 class Graph:
 	var nodes = [] # contains all nodes

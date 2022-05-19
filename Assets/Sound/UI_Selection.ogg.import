@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UI_Selection.ogg-1c38b0d72b6546c0f88c299dc16eb7b0.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/UI_Selection.ogg"
+dest_files=[ "res://.import/UI_Selection.ogg-1c38b0d72b6546c0f88c299dc16eb7b0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
