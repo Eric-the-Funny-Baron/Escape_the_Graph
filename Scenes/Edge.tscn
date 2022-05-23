@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Scripts/Edge.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Scenes/Scripts/ColorTable.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/ColorTable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Sound/UI_Selection.ogg" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=9]
@@ -39,12 +39,11 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="ColorTable" type="Node" parent="."]
-script = ExtResource( 3 )
-
 [node name="SelectionSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -5.0
-bus = "Effects"
+
+[node name="ColorTable" parent="." instance=ExtResource( 3 )]
+selectable_color = Color( 0.85, 0.85, 0.85, 1 )
 
 [connection signal="pressed" from="TouchBox" to="." method="_on_TouchScreenButton_pressed"]

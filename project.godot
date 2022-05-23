@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
+"base": "Node",
+"class": "Graph",
+"language": "GDScript",
+"path": "res://Scenes/Scripts/Graph.gd"
+}, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
@@ -33,13 +38,20 @@ _global_script_classes=[ {
 "class": "Level_Node",
 "language": "GDScript",
 "path": "res://Scenes/Scripts/Node.gd"
+}, {
+"base": "Node",
+"class": "SetMethods",
+"language": "GDScript",
+"path": "res://Scenes/Scripts/SetMethods.gd"
 } ]
 _global_script_class_icons={
 "ColorTable": "",
 "Edge": "",
 "GitAPI": "",
+"Graph": "",
 "Level": "",
-"Level_Node": ""
+"Level_Node": "",
+"SetMethods": ""
 }
 
 [application]

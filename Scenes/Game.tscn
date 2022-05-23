@@ -11,17 +11,14 @@ __meta__ = {
 }
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-nodes = 12
-edges = 12
+nodes = 10
+edges = 15
 minimal_weight = 3.0
 maximum_weight = 20.0
-start_to_target_distance = 4
 iteration_limit = 1000
 repulsive_factor = 1000.0
-ideal_length = 200.0
+ideal_length = 600.0
 cooling_factor = 0.9
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -80.0
-bus = "Music"

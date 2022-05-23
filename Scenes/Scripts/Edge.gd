@@ -96,7 +96,7 @@ func change_state(_state):
 
 func get_state_color() -> Color:
 	match state:
-		Edge_States.UNSELECTED: return $ColorTable.default_color.linear_interpolate($ColorTable.hint_color, 0.5 * float(hint_showing))
-		Edge_States.SELECTABLE: return $ColorTable.selectable_color.linear_interpolate($ColorTable.hint_color, 0.5 * float(hint_showing))
-		Edge_States.SELECTED:   return $ColorTable.selected_color.linear_interpolate($ColorTable.hint_color, 0.5 * float(hint_showing))
-		_:                      return $ColorTable.default_color.linear_interpolate($ColorTable.hint_color, 0.5 * float(hint_showing))
+		Edge_States.UNSELECTED: return $ColorTable.default_color.linear_interpolate($ColorTable.hint_color, 0.25 * float(hint_showing))
+		Edge_States.SELECTABLE: return $ColorTable.selectable_color.linear_interpolate($ColorTable.hint_color, 0.25 * float(hint_showing))
+		Edge_States.SELECTED:   return $ColorTable.selected_color.linear_interpolate($ColorTable.hint_color, 0.25 * float(hint_showing))
+		_:                      return $ColorTable.default_color.linear_interpolate($ColorTable.hint_color, 0.25 * float(hint_showing))
