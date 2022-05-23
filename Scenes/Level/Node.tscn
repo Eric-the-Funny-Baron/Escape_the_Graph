@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/Scripts/Node.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/ColorTable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Level/Node.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Helper/ColorTable.tscn" type="PackedScene" id=2]
 
 [node name="Node" type="Polygon2D" groups=["Graph", "Nodes"]]
 scale = Vector2( 0.25, 0.3 )

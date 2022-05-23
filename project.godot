@@ -9,15 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Dijkstra",
+"class": "Capacity_Problem",
+"language": "GDScript",
+"path": "res://Scripts/Level/Dijkstra/Capacity_Problem.gd"
+}, {
 "base": "Node",
 "class": "ColorTable",
 "language": "GDScript",
-"path": "res://Scenes/Scripts/ColorTable.gd"
+"path": "res://Scripts/Helper/ColorTable.gd"
+}, {
+"base": "Node",
+"class": "Dijkstra",
+"language": "GDScript",
+"path": "res://Scripts/Level/Dijkstra/Dijkstra.gd"
 }, {
 "base": "Line2D",
 "class": "Edge",
 "language": "GDScript",
-"path": "res://Scenes/Scripts/Edge.gd"
+"path": "res://Scripts/Level/Edge.gd"
 }, {
 "base": "",
 "class": "GitAPI",
@@ -27,31 +37,45 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Graph",
 "language": "GDScript",
-"path": "res://Scenes/Scripts/Graph.gd"
+"path": "res://Scripts/Level/Graph.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
-"path": "res://Scenes/Scripts/Level.gd"
+"path": "res://Scripts/Level/Level.gd"
 }, {
 "base": "Polygon2D",
 "class": "Level_Node",
 "language": "GDScript",
-"path": "res://Scenes/Scripts/Node.gd"
+"path": "res://Scripts/Level/Node.gd"
+}, {
+"base": "Dijkstra",
+"class": "Reliability_Problem",
+"language": "GDScript",
+"path": "res://Scripts/Level/Dijkstra/Reliability_Problem.gd"
 }, {
 "base": "Node",
 "class": "SetMethods",
 "language": "GDScript",
-"path": "res://Scenes/Scripts/SetMethods.gd"
+"path": "res://Scripts/Helper/SetMethods.gd"
+}, {
+"base": "Dijkstra",
+"class": "Shortest_Path",
+"language": "GDScript",
+"path": "res://Scripts/Level/Dijkstra/Shortest_Path.gd"
 } ]
 _global_script_class_icons={
+"Capacity_Problem": "",
 "ColorTable": "",
+"Dijkstra": "",
 "Edge": "",
 "GitAPI": "",
 "Graph": "",
 "Level": "",
 "Level_Node": "",
-"SetMethods": ""
+"Reliability_Problem": "",
+"SetMethods": "",
+"Shortest_Path": ""
 }
 
 [application]
@@ -66,8 +90,8 @@ default_bus_layout="res://Assets/Sound/Audio Busses/default_bus_layout.tres"
 
 [autoload]
 
-Signals="*res://Scenes/Scripts/Signals.gd"
-AudioHandler="*res://Scenes/Scripts/AudioHandler.gd"
+Signals="*res://Scripts/Helper/Signals.gd"
+AudioHandler="*res://Scripts/Helper/AudioHandler.gd"
 
 [display]
 

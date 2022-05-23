@@ -18,4 +18,4 @@ func set_music_volume(volume_percentage:float):
 
 func set_effects_volume(volume_percentage:float):
 	var volume = -72.0 + 72.0 * volume_percentage
-	AudioServer.set_bus_volume_db(effects_index, volume_percentage)
+	AudioServer.set_bus_volume_db(effects_index, volume)

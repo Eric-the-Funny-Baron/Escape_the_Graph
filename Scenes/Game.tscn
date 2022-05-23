@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Level.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Scripts/Game.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Level/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sound/Background_Music.ogg" type="AudioStream" id=3]
 
 [node name="Game" type="Node2D"]
@@ -11,10 +11,9 @@ __meta__ = {
 }
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-nodes = 10
-edges = 15
-minimal_weight = 3.0
-maximum_weight = 20.0
+nodes = 6
+edges = 6
+minimal_weight = 1.0
 iteration_limit = 1000
 repulsive_factor = 1000.0
 ideal_length = 600.0
@@ -22,3 +21,4 @@ cooling_factor = 0.9
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -80.0

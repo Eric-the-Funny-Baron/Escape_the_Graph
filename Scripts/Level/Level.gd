@@ -29,13 +29,14 @@ export var attractive_factor = 1.0
 export var ideal_length = 100.0
 export var cooling_factor = 0.99
 
-# Signals
-signal path_completed
-
 # Attributes
 var screen_size
-var level_graph = Graph.new()
 var subdivisions = 1
+var level_graph = Graph.new()
+var solution = {}
+var solution_path = []
+var best_weight # best weight
+var worst_weight # worst_weight
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,19 +44,35 @@ func _ready():
 	randomize()
 	screen_size = get_viewport_rect().size
 	subdivisions = int(ceil(log(nodes) / log(2)))
+
 	Signals.connect("edge_status_changed", self, "_on_Edge_status_changed")
 	
 	build_level()
-	
-	level_graph.start.set_active()
-	_on_Edge_status_changed()
 
 func build_level():
 	generate_graph()
-	# force_directed_correction() # could be added optinally, was another approach for layouting the graph
 	render_graph()
-	# level_graph.nodes[0].edges[0].hint_showing = true PROTOTYPING HINT !!!
-
+	
+	# Dijkstra Calculation =========================================================================
+	var dijkstra = null # initial dijkstra table
+	solution_path.clear()
+	solution.clear()
+	match type:
+		ProblemType.SHORTEST_PATH: dijkstra = Shortest_Path.new(level_graph)
+		ProblemType.CAPACITY_PROBLEM: dijkstra = Capacity_Problem.new(level_graph)
+		ProblemType.RELIABILITY_PROBLEM: dijkstra = Reliability_Problem.new(level_graph)
+	worst_weight = dijkstra.get_worst_weight()
+	solution = dijkstra.solve_path_problem()
+	best_weight = solution['totalWeight']
+	for i in range(solution['path'].size()-1):
+		var edge = SetMethods.intersect(solution['path'][i].edges, solution['path'][i + 1].edges)
+		if edge.size() > 0:solution_path.append(edge[0])
+		else: print("edge is empty, the edge sets where: ", solution['path'][i].edges, solution['path'][i + 1].edges)
+	# ==============================================================================================
+	
+	level_graph.start.set_active()
+	_on_Edge_status_changed()
+	
 func generate_graph():
 	var block_size:Vector2 = (screen_size - Vector2(margin, margin))
 	var circle_vector = Vector2(0.75, 0) #* min(block_size.x, block_size.y) * 0.5
@@ -65,7 +82,7 @@ func generate_graph():
 								 (Vector2(block_size) + Vector2(margin, margin)) * 0.5)
 	
 	# === Node Distribution === 
-	for i in range(nodes):
+	for _i in range(nodes):
 		var node: Level_Node = node_scene.instance()
 		var epsilon_x = rand_range(-block_size.x/subdivisions, block_size.x/subdivisions) * randomness
 		var epsilon_y = rand_range(-block_size.y/subdivisions, block_size.y/subdivisions) * randomness
@@ -154,8 +171,6 @@ func _on_Generate_pressed():
 	get_tree().call_group("Graph", "queue_free")
 	level_graph.clear_graph()
 	build_level()
-	level_graph.start.set_active()
-	_on_Edge_status_changed()
 
 func _on_Edge_status_changed():
 	var color1 = Color(1,1,1)
@@ -181,3 +196,10 @@ func _on_Edge_status_changed():
 				for e in n.edges:
 					if e.state == Edge.Edge_States.SELECTABLE:
 						e.change_state(Edge.Edge_States.UNSELECTED)
+
+func _on_Hint_pressed():
+	for e in solution_path:
+		if e.hint_showing == false:
+			e.hint_showing = true
+			break
+	_on_Edge_status_changed()

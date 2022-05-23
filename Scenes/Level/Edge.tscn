@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/Scripts/Edge.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Level/Edge.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Scenes/ColorTable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Helper/ColorTable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Sound/UI_Selection.ogg" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=9]

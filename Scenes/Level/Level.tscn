@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Scenes/Scripts/Level.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Node.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Edge.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Level/Node.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Level/Edge.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Graphics/Shader/TriangleTexture.gdshader" type="Shader" id=5]
 
@@ -11,6 +11,11 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="Theme" id=7]
 default_font = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 5 )
@@ -48,8 +53,26 @@ margin_left = 442.0
 margin_top = 493.0
 margin_right = 632.0
 margin_bottom = 573.0
+rect_pivot_offset = Vector2( 94, 43 )
 theme = SubResource( 7 )
+custom_fonts/font = SubResource( 11 )
 text = "Generate"
+__meta__ = {
+"_editor_description_": "Protoytype Button to test graph generation"
+}
+
+[node name="Hint" type="Button" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 227.0
+margin_top = 493.0
+margin_right = 417.0
+margin_bottom = 573.0
+rect_pivot_offset = Vector2( 94, 43 )
+theme = SubResource( 7 )
+custom_fonts/font = SubResource( 11 )
+text = "Hint"
 __meta__ = {
 "_editor_description_": "Protoytype Button to test graph generation"
 }
@@ -72,3 +95,4 @@ custom_fonts/font = SubResource( 8 )
 text = "Fertig"
 
 [connection signal="pressed" from="Generate" to="." method="_on_Generate_pressed"]
+[connection signal="pressed" from="Hint" to="." method="_on_Hint_pressed"]
