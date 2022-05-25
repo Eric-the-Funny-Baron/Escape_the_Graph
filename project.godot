@@ -85,11 +85,8 @@ run/main_scene="res://Scenes/Life_Percentage.tscn"
 config/icon="res://icon.png"
 
 [audio]
-
 default_bus_layout="res://Assets/Sound/Audio Busses/default_bus_layout.tres"
-
 [autoload]
-
 Signals="*res://Scripts/Helper/Signals.gd"
 AudioHandler="*res://Scripts/Helper/AudioHandler.gd"
 
