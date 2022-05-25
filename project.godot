@@ -9,13 +9,73 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Dijkstra",
+"class": "Capacity_Problem",
+"language": "GDScript",
+"path": "res://Scripts/Level/Dijkstra/Capacity_Problem.gd"
+}, {
+"base": "Node",
+"class": "ColorTable",
+"language": "GDScript",
+"path": "res://Scripts/Helper/ColorTable.gd"
+}, {
+"base": "Node",
+"class": "Dijkstra",
+"language": "GDScript",
+"path": "res://Scripts/Level/Dijkstra/Dijkstra.gd"
+}, {
+"base": "Line2D",
+"class": "Edge",
+"language": "GDScript",
+"path": "res://Scripts/Level/Edge.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
+"base": "Node",
+"class": "Graph",
+"language": "GDScript",
+"path": "res://Scripts/Level/Graph.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://Scripts/Level/Level.gd"
+}, {
+"base": "Polygon2D",
+"class": "Level_Node",
+"language": "GDScript",
+"path": "res://Scripts/Level/Node.gd"
+}, {
+"base": "Dijkstra",
+"class": "Reliability_Problem",
+"language": "GDScript",
+"path": "res://Scripts/Level/Dijkstra/Reliability_Problem.gd"
+}, {
+"base": "Node",
+"class": "SetMethods",
+"language": "GDScript",
+"path": "res://Scripts/Helper/SetMethods.gd"
+}, {
+"base": "Dijkstra",
+"class": "Shortest_Path",
+"language": "GDScript",
+"path": "res://Scripts/Level/Dijkstra/Shortest_Path.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"Capacity_Problem": "",
+"ColorTable": "",
+"Dijkstra": "",
+"Edge": "",
+"GitAPI": "",
+"Graph": "",
+"Level": "",
+"Level_Node": "",
+"Reliability_Problem": "",
+"SetMethods": "",
+"Shortest_Path": ""
 }
 
 [application]
@@ -24,9 +84,20 @@ config/name="Escape The Graph"
 run/main_scene="res://Scenes/Life_Percentage.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout="res://Assets/Sound/Audio Busses/default_bus_layout.tres"
+
+[autoload]
+
+Signals="*res://Scripts/Helper/Signals.gd"
+AudioHandler="*res://Scripts/Helper/AudioHandler.gd"
+
 [display]
 
 window/size/always_on_top=true
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gdnative]
 

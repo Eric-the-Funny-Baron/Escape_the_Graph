@@ -8,16 +8,20 @@ extends Node2D
 ##		the possibility to interact with them and the system to evaluate the interaction.
 ##
 
+class_name Level
+
 # Parameters
 export (PackedScene) var node_scene
 export (PackedScene) var edge_scene
 export var margin = 200.0 # border margin in the scene
+export var randomness = 0.1 # randomness of placement
 export var nodes : int = 1 # number of nodes in the graph
 export var edges : int = 1 # number of edges in the graph
 enum ProblemType {SHORTEST_PATH, CAPACITY_PROBLEM, RELIABILITY_PROBLEM}
 export (ProblemType) var type 
 export var minimal_weight = 0.0 # minimal weight of edges
 export var maximum_weight = 10.0 # maximum weight of edges
+export (int, 1, 100) var start_to_target_distance = 1
 export (int, 1, 10000) var iteration_limit = 10 # maximum iterations in the force_directed algorithm
 export (float, 0, 100) var threshold # minimal threshold the force equilibrium should reach
 export var repulsive_factor = 2.0
@@ -27,62 +31,91 @@ export var cooling_factor = 0.99
 
 # Attributes
 var screen_size
-const SetMethods = preload("SetMethods.gd")
-var level_graph = Graph.new()
 var subdivisions = 1
+var level_graph = Graph.new()
+var solution = {}
+var solution_path = []
+var best_weight # best weight
+var worst_weight # worst_weight
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	screen_size = get_viewport_rect().size
 	subdivisions = int(ceil(log(nodes) / log(2)))
-	randomize()
+
+	Signals.connect("edge_status_changed", self, "_on_Edge_status_changed")
+	
 	build_level()
 
 func build_level():
 	generate_graph()
-	force_directed_correction()
 	render_graph()
-
-func generate_graph():
-	var block_size = (screen_size - Vector2(margin, margin)) / subdivisions
-	var filled_blocks = []
 	
-	for _i in range(min(nodes, pow(subdivisions, 2))):
-		var block = null
-		var node = node_scene.instance()
-		var random_offset = Vector2( \
-			rand_range(-block_size.x, block_size.x), \
-			rand_range(-block_size.y, block_size.y)) * 0.25
-		
-		while block == null or block in filled_blocks:
-			block = Vector2(randi() % subdivisions, randi() % subdivisions)
-		filled_blocks.append(block)
-		node.position = block_size * 0.5 + block_size * block + random_offset
+	# Dijkstra Calculation =========================================================================
+	var dijkstra = null # initial dijkstra table
+	solution_path.clear()
+	solution.clear()
+	match type:
+		ProblemType.SHORTEST_PATH: dijkstra = Shortest_Path.new(level_graph)
+		ProblemType.CAPACITY_PROBLEM: dijkstra = Capacity_Problem.new(level_graph)
+		ProblemType.RELIABILITY_PROBLEM: dijkstra = Reliability_Problem.new(level_graph)
+	worst_weight = dijkstra.get_worst_weight()
+	solution = dijkstra.solve_path_problem()
+	best_weight = solution['totalWeight']
+	for i in range(solution['path'].size()-1):
+		var edge = SetMethods.intersect(solution['path'][i].edges, solution['path'][i + 1].edges)
+		if edge.size() > 0:solution_path.append(edge[0])
+		else: print("edge is empty, the edge sets where: ", solution['path'][i].edges, solution['path'][i + 1].edges)
+	# ==============================================================================================
+	
+	level_graph.start.set_active()
+	_on_Edge_status_changed()
+	
+func generate_graph():
+	var block_size:Vector2 = (screen_size - Vector2(margin, margin))
+	var circle_vector = Vector2(0.75, 0) #* min(block_size.x, block_size.y) * 0.5
+	var rotation_value = 2 * PI / nodes
+	var screen_base = Transform2D(Vector2(block_size.x * 0.5, 0), \
+								  Vector2(0, block_size.y * 0.5), \
+								 (Vector2(block_size) + Vector2(margin, margin)) * 0.5)
+	
+	# === Node Distribution === 
+	for _i in range(nodes):
+		var node: Level_Node = node_scene.instance()
+		var epsilon_x = rand_range(-block_size.x/subdivisions, block_size.x/subdivisions) * randomness
+		var epsilon_y = rand_range(-block_size.y/subdivisions, block_size.y/subdivisions) * randomness
+		var epsilon = Vector2(epsilon_x, epsilon_y)
+		node.position = screen_base.xform(circle_vector) + epsilon#+ block_size * 0.5 + Vector2(margin, margin) * 0.5 + epsilon
 		level_graph.nodes.append(node)
-
-	for _i in range(min(edges, int(nodes*(nodes-1)/2.0))):
+		circle_vector = circle_vector.rotated(rotation_value)
+	
+	# === Edge Building === 
+	for i in range(min(edges, int(nodes*(nodes-1)/2.0))):
 		var edge = null # initial empty edge
 		
 		# while edge is empty or exists already, new tries of building a new edge are executed
 		while edge == null or level_graph.edge_exists_already(edge):
 			var node1 = randi() % level_graph.nodes.size()
-			var node2 = null
+			var node2
 			
+			if i < nodes - 1: node2 = (node1 + 1) % level_graph.nodes.size()
+			else: node2 = randi() % level_graph.nodes.size()
+				
 			while node2 == null or node2 == node1:
 				node2 = randi() % level_graph.nodes.size()
 			var random_weight = rand_range(minimal_weight, maximum_weight)
-			if type == ProblemType.SHORTEST_PATH or type == ProblemType.CAPACITY_PROBLEM:
-				random_weight = int(random_weight)
+			if type == ProblemType.SHORTEST_PATH or type == ProblemType.CAPACITY_PROBLEM: random_weight = int(random_weight)
+			else: random_weight = stepify(random_weight, 0.01)
 			
 			edge = level_graph.create_edge(level_graph.nodes[node1], level_graph.nodes[node2], random_weight)
 		level_graph.add_edge(edge)
 	
 	level_graph.define_start()
-	level_graph.define_target(2)
-	level_graph.start.define_as_start_target(1.5, edge_scene.instance().selected_color)
-	level_graph.target.define_as_start_target(1.5, edge_scene.instance().selected_color)
-	
+	level_graph.define_target(start_to_target_distance)
+	level_graph.start.define_as_start_target(2)
+	level_graph.target.define_as_start_target(2)
 
 func force_directed_correction():
 	var iterations = 1
@@ -133,90 +166,40 @@ func render_graph():
 		add_child(render_edge)
 	for node in level_graph.nodes:
 		add_child(node)
-		
 
 func _on_Generate_pressed():
 	get_tree().call_group("Graph", "queue_free")
 	level_graph.clear_graph()
 	build_level()
 
-class Graph:
-	var nodes = [] # contains all nodes
-	var edges = [] # contains all edges
-	var start = null
-	var target = null
+func _on_Edge_status_changed():
+	var color1 = Color(1,1,1)
+	var color2 = Color(0.5,0.5,0.5)
+	var render_edges = []
 	
-	func _init():
-		pass
+	if level_graph.path_built(): $ReadyLabel.set("custom_colors/font_color", color1)
+	else: $ReadyLabel.set("custom_colors/font_color", color2)
 	
-	func clear_graph():
-		self.nodes = []
-		self.edges = []
-		self.start = null
-		self.target = null
+	# Termination on Target -> no new selectable
 	
-	func add_node(node):
-		if (node in self.nodes) == false: nodes.append(node)
-		return nodes
-	
-	func create_edge(node1, node2, weight):
-		var edge = {
-			'targeting': {node1: node2, node2: node1},
-			'weight': weight
-			}
-		return edge
-	
-	func add_edge(edge):
-		if edge_exists_already(edge):
-			return edge
-		self.edges.append(edge)
-		return edge
-	
-	func edge_exists_already(edge) -> bool:
-		if edge == null or self.edges == []:
-			return false 
-		for i in range(edges.size()):
-			var keys = edge['targeting'].keys()
-			var normal = keys == edges[i]['targeting'].keys()
-			keys.invert()
-			var inverted = keys == edges[i]['targeting'].keys()
-			if normal or inverted:
-				return true
-		return false
-	
-	func get_neighbours(node):
-		var neighbours = []
-		for edge in self.edges:
-			for s in edge['targeting'].keys():
-				if s == node:
-					neighbours.append(edge['targeting'][node])
-		return neighbours
-	
-	func get_edge(node1, node2):
-		for edge in self.edges:
-			for s in edge['targeting'].keys():
-				if s == node1 and edge['targeting'][s] == node2:
-					return edge
-	
-	func get_edge_weight(node1, node2):
-		return self.get_edge(node1, node2)['weight']
-	
-	func define_start():
-		if self.nodes !=  []:
-			self.start = nodes[randi() % self.nodes.size()]
-	
-	func define_target(steps):
-		var excluded_nodes = [self.start]
-		for _i in range(steps):
-			for e in excluded_nodes:
-				excluded_nodes = SetMethods.union(excluded_nodes, self.get_neighbours(e))
-		
-		var possible_nodes = SetMethods.difference(self.nodes, excluded_nodes)
-		if possible_nodes == []:
-			possible_nodes = SetMethods.difference(self.nodes, [self.start])
-		if possible_nodes == []:
-			return
-		
-		self.target = possible_nodes[randi() % possible_nodes.size()]
-		return self.target
+	# The graph is just holding the abstract edges and not the real ones, which are rendered. 
+	# Therefore the real edges must be collected first via the nodes in the graph, which
+	# are the real ones and have references to the real edges.
+	for n in level_graph.nodes:
+		render_edges = SetMethods.union(render_edges, n.edges)
+	for r_e in render_edges:
+		r_e.change_selectable()
 
+	for n in level_graph.nodes:
+		if n.state == 1: # represents active state
+			if n == level_graph.target:
+				for e in n.edges:
+					if e.state == Edge.Edge_States.SELECTABLE:
+						e.change_state(Edge.Edge_States.UNSELECTED)
+
+func _on_Hint_pressed():
+	for e in solution_path:
+		if e.hint_showing == false:
+			e.hint_showing = true
+			break
+	_on_Edge_status_changed()

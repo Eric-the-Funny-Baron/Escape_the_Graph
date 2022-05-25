@@ -1,5 +1,7 @@
 extends Node
 
+class_name SetMethods
+
 static func intersect(array1 = [], array2 = []):
 	var intersection = []
 	for e in range(array1.size()):

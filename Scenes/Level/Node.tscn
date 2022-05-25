@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Level/Node.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Helper/ColorTable.tscn" type="PackedScene" id=2]
+
+[node name="Node" type="Polygon2D" groups=["Graph", "Nodes"]]
+scale = Vector2( 0.25, 0.3 )
+z_index = 1
+offset = Vector2( -48, -48 )
+antialiased = true
+invert_border = 0.5
+polygon = PoolVector2Array( -16, 16, 48, -16, 112, 16, 112, 80, 48, 112, -16, 80 )
+script = ExtResource( 1 )
+
+[node name="ColorTable" parent="." instance=ExtResource( 2 )]
