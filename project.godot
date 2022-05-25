@@ -21,12 +21,20 @@ _global_script_class_icons={
 [application]
 
 config/name="Escape The Graph"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/Life_Percentage.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/always_on_top=true
 
 [gdnative]
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
+
+[global]
+
+window=false
 
 [input_devices]
 
