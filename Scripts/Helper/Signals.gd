@@ -11,3 +11,4 @@ extends Node
 ##
 
 signal edge_status_changed # the status of the edge is changed
+signal hint_given

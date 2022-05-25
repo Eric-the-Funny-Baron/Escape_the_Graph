@@ -9,6 +9,7 @@ onready var current = max_amount setget set_current
 
 func _ready():
 	_initialise()
+	Signals.connect("hint_given", self, "_on_hint_given")
 
 func set_max(new_max):
 	max_amount = max(1, new_max)
@@ -20,6 +21,9 @@ func set_current(new_value):
 	
 	if (current == 0):
 		emit_signal("depleted")
+
+func _on_hint_given():
+	set_current(20)
 
 func _initialise():
 	emit_signal("max_changed", max_amount)

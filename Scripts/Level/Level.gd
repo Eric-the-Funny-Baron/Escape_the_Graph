@@ -107,7 +107,7 @@ func generate_graph():
 				node2 = randi() % level_graph.nodes.size()
 			var random_weight = rand_range(minimal_weight, maximum_weight)
 			if type == ProblemType.SHORTEST_PATH or type == ProblemType.CAPACITY_PROBLEM: random_weight = int(random_weight)
-			else: random_weight = stepify(random_weight, 0.01)
+			else: random_weight = stepify(random_weight, 0.1)
 			
 			edge = level_graph.create_edge(level_graph.nodes[node1], level_graph.nodes[node2], random_weight)
 		level_graph.add_edge(edge)
@@ -203,3 +203,4 @@ func _on_Hint_pressed():
 			e.hint_showing = true
 			break
 	_on_Edge_status_changed()
+	Signals.emit_signal("hint_given")
