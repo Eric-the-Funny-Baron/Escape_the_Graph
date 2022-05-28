@@ -81,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Escape The Graph"
-run/main_scene="res://Scenes/Life_Percentage.tscn"
+run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
 
 [audio]

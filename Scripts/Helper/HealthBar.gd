@@ -2,7 +2,7 @@ extends ProgressBar
 
 func change_color(new_value):
 	var tween = get_node("Tween_BarUpdates")
-	var fraction = (get("value") - new_value)/100.0
+	var fraction = new_value/100.0
 	var green
 	var red
 	
