@@ -15,6 +15,7 @@ margin_top = 24.0
 margin_right = 329.0
 margin_bottom = 88.0
 script = ExtResource( 3 )
+status_gradient = null
 
 [node name="Life_Percentage" parent="HealthBar" instance=ExtResource( 4 )]
 anchor_left = 0.0

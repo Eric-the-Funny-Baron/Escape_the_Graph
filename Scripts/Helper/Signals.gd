@@ -18,3 +18,4 @@ signal level_requested(level_name)
 signal level_hub_requested(level_hub_name)
 signal title_screen_requested
 signal game_over_screen_requested
+signal start_game
