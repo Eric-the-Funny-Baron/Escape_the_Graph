@@ -51,6 +51,7 @@ func _ready():
 	build_level()
 
 func build_level():
+	
 	generate_graph()
 	render_graph()
 	
