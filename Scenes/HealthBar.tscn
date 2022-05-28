@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/HealthBar.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Graphics/Gradients/LifeBar.tres" type="Gradient" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.690196, 0.0666667, 0.0666667, 1 )
@@ -31,6 +34,8 @@ custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 100.0
 percent_visible = false
+script = ExtResource( 1 )
+status_gradient = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -22.0
@@ -40,3 +45,5 @@ margin_bottom = 52.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Tween_BarUpdates" type="Tween" parent="."]
+
+[connection signal="tween_step" from="Tween_BarUpdates" to="." method="_on_Tween_BarUpdates_tween_step"]

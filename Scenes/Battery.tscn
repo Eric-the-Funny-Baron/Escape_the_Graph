@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Life_Percentage.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Health.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Helper/HealthBar.gd" type="Script" id=4]
 
-[node name="Battery" type="Node"]
+[node name="Battery" type="Control"]
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
 
@@ -14,7 +14,6 @@ margin_left = 33.0
 margin_top = 24.0
 margin_right = 329.0
 margin_bottom = 88.0
-script = ExtResource( 4 )
 
 [node name="Life_Percentage" parent="HealthBar" instance=ExtResource( 1 )]
 anchor_left = 0.0
@@ -27,5 +26,5 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [connection signal="max_changed" from="Health" to="HealthBar" method="set_max"]
-[connection signal="value_changed" from="Health" to="HealthBar" method="change_color"]
+[connection signal="value_changed" from="Health" to="HealthBar" method="test_change_color"]
 [connection signal="value_changed" from="Health" to="HealthBar/Life_Percentage" method="change_text"]
