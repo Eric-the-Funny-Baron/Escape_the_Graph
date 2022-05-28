@@ -7,10 +7,10 @@
 script/source = "extends MarginContainer
 
 func _on_StartButton_pressed():
-	get_tree().change_scene(\"res://Scenes/Game.tscn\")
+	Signals.emit_signal(\"level_requested\", \"Level_S_1\")
 "
 
-[node name="StartingMenu" type="MarginContainer"]
+[node name="StartingMenu" type="MarginContainer" groups=["Dynamic_Scene"]]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 60.0
