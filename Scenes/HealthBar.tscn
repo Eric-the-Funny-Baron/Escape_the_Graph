@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/HealthBar.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Helper/HealthBar.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Gradients/LifeBar.tres" type="Gradient" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
