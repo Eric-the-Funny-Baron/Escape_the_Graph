@@ -11,8 +11,6 @@ extends Node2D
 class_name Level
 
 # Parameters
-export (PackedScene) var node_scene
-export (PackedScene) var edge_scene
 export var margin = 200.0 # border margin in the scene
 export var randomness = 0.1 # randomness of placement
 export var nodes : int = 1 # number of nodes in the graph
@@ -30,6 +28,9 @@ export var ideal_length = 100.0
 export var cooling_factor = 0.99
 
 # Attributes
+var node_scene = load("res://Scenes/Level/Node.tscn")
+var edge_scene = load("res://Scenes/Level/Edge.tscn")
+
 var screen_size
 var subdivisions = 1
 var level_graph = Graph.new()
