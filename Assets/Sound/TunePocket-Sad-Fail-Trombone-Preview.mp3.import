@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TunePocket-Sad-Fail-Trombone-Preview.mp3-2ad2d788729202e4da443a768e303cc8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/TunePocket-Sad-Fail-Trombone-Preview.mp3"
+dest_files=[ "res://.import/TunePocket-Sad-Fail-Trombone-Preview.mp3-2ad2d788729202e4da443a768e303cc8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

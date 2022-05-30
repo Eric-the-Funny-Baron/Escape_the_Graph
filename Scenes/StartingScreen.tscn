@@ -2,7 +2,7 @@
 
 [ext_resource path="res://label_new_game.png" type="Texture" id=1]
 [ext_resource path="res://title.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/StartingScreen.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/StartingScreen.gd" type="Script" id=3]
 
 [node name="CanvasLayer" type="CanvasLayer" groups=["Dynamic_Scene"]]
 script = ExtResource( 3 )

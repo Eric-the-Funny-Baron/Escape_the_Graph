@@ -8,7 +8,8 @@ var new_scene = null
 func _ready():
 	Signals.connect("level_requested", self, "_on_level_requested")
 	Signals.connect("title_screen_requested", self, "_on_title_screen_requested")
-	$BackgroundMusic.play()
+	Signals.connect("game_over_screen_requested", self, "_on_game_over_screen_requested")
+	Signals.connect("change_visibility", self, "_on_change_visibility")
 	_on_title_screen_requested()
 
 func _on_level_requested(level_name):
@@ -16,8 +17,23 @@ func _on_level_requested(level_name):
 	switch_scene(scene_path)
 
 func _on_title_screen_requested():
+	$BackgroundMusic.play()
 	var scene_path = "res://Scenes/StartingScreen.tscn"
 	switch_scene(scene_path)
+
+func _on_game_over_screen_requested():
+	$BackgroundMusic.stop()
+	_on_change_visibility("UI")
+	var scene_path = "res://Scenes/YouDied.tscn"
+	switch_scene(scene_path)
+	
+func _on_change_visibility(node_name):
+	var node = get_node(node_name)
+	var visibility = node.is_visible()
+	if (visibility):
+		node.hide()
+	else:
+		node.show()
 
 func switch_scene(scene_path):
 	old_scene = get_tree().get_nodes_in_group("Dynamic_Scene")

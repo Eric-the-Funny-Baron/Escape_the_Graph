@@ -1,15 +1,18 @@
 extends Node
 signal value_changed(new_amount)
-signal depleted
 
 export(int) var max_amount = 100
 onready var current = max_amount 
 
 func _ready():
-	set_current(0)
+	_back_to_max()
 	Signals.connect("hint_given", self, "_on_hint_given")
 	Signals.connect("points_taken", self, "_points_taken")
 	Signals.connect("points_given", self, "_points_given")
+	Signals.connect("title_screen_requested", self, "_back_to_max")
+	
+func _back_to_max():
+	emit_signal("value_changed", 100)
 	
 func set_current(change):
 	var new_value = current - change
@@ -17,7 +20,8 @@ func set_current(change):
 	emit_signal("value_changed", current)
 	
 	if (current == 0):
-		emit_signal("depleted")
+		current = max_amount
+		Signals.emit_signal("game_over_screen_requested")
 
 func _on_hint_given():
 	set_current(20)

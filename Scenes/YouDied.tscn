@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/YouDied.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sound/TunePocket-Sad-Fail-Trombone-Preview.mp3" type="AudioStream" id=3]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.0
+margin_top = -20.5
+margin_right = 144.0
+margin_bottom = 20.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_right = 288.0
+margin_bottom = 92.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 288.0
+margin_bottom = 41.0
+theme = ExtResource( 1 )
+text = "Ups, you died..."
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 288.0
+margin_bottom = 92.0
+theme = ExtResource( 1 )
+text = "Back to Start"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
