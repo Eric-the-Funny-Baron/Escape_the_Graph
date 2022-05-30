@@ -82,6 +82,12 @@ scale = Vector2( 2, 2 )
 z_index = -1
 texture = SubResource( 5 )
 
+[node name="FinishedBtn" type="Button" parent="."]
+margin_left = 649.0
+margin_top = 493.0
+margin_right = 839.0
+margin_bottom = 573.0
+
 [node name="ReadyLabel" type="Label" parent="."]
 margin_left = 665.0
 margin_top = 503.0
@@ -94,3 +100,4 @@ text = "Fertig"
 
 [connection signal="pressed" from="Generate" to="." method="_on_Generate_pressed"]
 [connection signal="pressed" from="Hint" to="." method="_on_Hint_pressed"]
+[connection signal="pressed" from="FinishedBtn" to="." method="_on_FinishedBtn_pressed"]

@@ -74,6 +74,22 @@ func build_level():
 	
 	level_graph.start.set_active()
 	_on_Edge_status_changed()
+
+func interpolation(best_weight, worst_weight, solution):
+	var t = 0.0
+	t = (float(solution)-float(worst_weight))/(float(best_weight)-float(worst_weight))
+	if t == 1: 
+		Signals.emit_signal("points_given",20)
+	elif 0.9 <= t < 1 : 
+		Signals.emit_signal("points_given",0)
+	elif 0.6 <= t < 0.9 : 
+		Signals.emit_signal("points_taken",10)
+	elif 0.6 <= t < 0.3 : 
+		Signals.emit_signal("points_taken",20)
+	elif 0.3 <= t < 0 : 
+		Signals.emit_signal("points_taken",30)
+	elif t == 0 : 
+		Signals.emit_signal("points_taken",50)
 	
 func generate_graph():
 	var block_size:Vector2 = (screen_size - Vector2(margin, margin))
@@ -169,6 +185,9 @@ func render_graph():
 	for node in level_graph.nodes:
 		add_child(node)
 
+
+
+
 func _on_Generate_pressed():
 	get_tree().call_group("Graph", "queue_free")
 	level_graph.clear_graph()
@@ -179,8 +198,13 @@ func _on_Edge_status_changed():
 	var color2 = Color(0.5,0.5,0.5)
 	var render_edges = []
 	
-	if level_graph.path_built(): $ReadyLabel.set("custom_colors/font_color", color1)
-	else: $ReadyLabel.set("custom_colors/font_color", color2)
+	if level_graph.path_built(): 
+		$ReadyLabel.set("custom_colors/font_color", color1)
+		get_node("FinishedBtn").disabled=false
+	else: 
+		$ReadyLabel.set("custom_colors/font_color", color2)
+		get_node("FinishedBtn").disabled=true
+	
 	
 	# Termination on Target -> no new selectable
 	
@@ -206,3 +230,7 @@ func _on_Hint_pressed():
 			break
 	_on_Edge_status_changed()
 	Signals.emit_signal("hint_given")
+
+func _on_FinishedBtn_pressed():
+	interpolation(best_weight,worst_weight,solution)
+	
