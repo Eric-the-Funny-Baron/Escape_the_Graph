@@ -88,3 +88,9 @@ func get_worst_weight():
 	for e in graph.edges:
 		weight = multiply(weight, e['weight'])
 	return weight
+
+func get_path_weight(path):
+	var weight = ONE
+	for e in path:
+		weight = multiply(weight, e['weight'])
+	return weight
