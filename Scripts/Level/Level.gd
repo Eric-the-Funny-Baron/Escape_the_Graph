@@ -75,18 +75,21 @@ func build_level():
 	level_graph.start.set_active()
 	_on_Edge_status_changed()
 
-func interpolation(best_weight, worst_weight, solution):
+
+# takes the selected paths and interpolates with best / worst solution
+func interpolation():
 	var t = 0.0
-	t = (float(solution)-float(worst_weight))/(float(best_weight)-float(worst_weight))
+	
+	t = float(get_own_path_weight()-dijkstra.get_worst_weight())/(dijkstra.solve_path_problem()['totalWeight']-dijkstra.get_worst_weight())
 	if t == 1: 
 		Signals.emit_signal("points_given",20)
-	elif 0.9 <= t < 1 : 
+	elif 0.9 <= t && t< 1 : 
 		Signals.emit_signal("points_given",0)
-	elif 0.6 <= t < 0.9 : 
+	elif 0.6 <= t  && t< 0.9 : 
 		Signals.emit_signal("points_taken",10)
-	elif 0.6 <= t < 0.3 : 
+	elif 0.3 <= t && t< 0.6 : 
 		Signals.emit_signal("points_taken",20)
-	elif 0.3 <= t < 0 : 
+	elif t <= 0 && t< 0.3 : 
 		Signals.emit_signal("points_taken",30)
 	elif t == 0 : 
 		Signals.emit_signal("points_taken",50)
@@ -240,5 +243,5 @@ func _on_Hint_pressed():
 	Signals.emit_signal("hint_given")
 
 func _on_FinishedBtn_pressed():
-	interpolation(best_weight,worst_weight,solution)
+	interpolation()
 	
