@@ -4,7 +4,8 @@
 [ext_resource path="res://Scripts/YouDied.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sound/TunePocket-Sad-Fail-Trombone-Preview.mp3" type="AudioStream" id=3]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" groups=["Dynamic_Scene"]]
+layer = 0
 script = ExtResource( 2 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

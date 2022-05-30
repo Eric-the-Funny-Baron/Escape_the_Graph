@@ -16,6 +16,6 @@ signal points_given
 signal hint_given # signals a hint was given
 signal level_requested(level_name)
 signal level_hub_requested(level_hub_name)
-signal title_screen_requested
+signal title_screen_requested(should_fade_out)
 signal game_over_screen_requested
 signal change_visibility(node_name)

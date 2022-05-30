@@ -5,7 +5,7 @@ export (Gradient) var status_gradient:Gradient # idea I had for the color change
 func _ready():
 	get("custom_styles/fg").bg_color = status_gradient.interpolate(1.0)
 
-func change_color(new_value): # 
+func change_color(new_value):
 	var tween:Tween = $Tween_BarUpdates
 	tween.interpolate_property(self, "value", value, new_value, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.interpolate_property(get("custom_styles/fg"), "bg_color", 

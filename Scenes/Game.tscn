@@ -43,7 +43,6 @@ __meta__ = {
 }
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 
