@@ -60,7 +60,7 @@ func update_state_on_touch():
 	# SELECTABLE x CLICK -> SELECTED
 	if state == Edge_States.SELECTABLE:
 		state = Edge_States.SELECTED
-		$SelectionSound.play()
+		Signals.emit_signal("sound_start_requested", "SelectionSound")
 		for n in nodes:
 			if n.state == 1: # 1 represents Node state ACTIVE
 				n.set_visited()
@@ -70,7 +70,7 @@ func update_state_on_touch():
 	# SELECTED x CLICK -> SELECTABLE
 	elif state == Edge_States.SELECTED and check_sum == 3:
 		state = Edge_States.SELECTABLE
-		$SelectionSound.play()
+		Signals.emit_signal("sound_start_requested", "SelectionSound")
 		for n in nodes:
 			if n.state == 1: # 1 represents Node state ACTIVE
 				n.set_default()

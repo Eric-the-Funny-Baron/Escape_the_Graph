@@ -34,6 +34,7 @@ var edge_scene = load("res://Scenes/Level/Edge.tscn")
 var screen_size
 var subdivisions = 1
 var level_graph = Graph.new()
+var dijkstra:Dijkstra = null # initial dijkstra table
 var solution = {}
 var solution_path = []
 var best_weight # best weight
@@ -56,7 +57,6 @@ func build_level():
 	render_graph()
 	
 	# Dijkstra Calculation =========================================================================
-	var dijkstra = null # initial dijkstra table
 	solution_path.clear()
 	solution.clear()
 	match type:
@@ -185,7 +185,15 @@ func render_graph():
 	for node in level_graph.nodes:
 		add_child(node)
 
-
+func get_own_path_weight():
+	var active_render_edges = []
+	var active_edges = []
+	for n in level_graph.nodes:
+		active_render_edges = SetMethods.union(active_render_edges, n.get_active_edges())
+	for e in active_render_edges:
+		var edge = level_graph.get_edge(e.nodes[0], e.nodes[1])
+		active_edges.append(edge)
+	return dijkstra.get_path_weight(active_edges)
 
 
 func _on_Generate_pressed():
