@@ -18,7 +18,6 @@ func _on_level_requested(level_name):
 	var scene_path = "res://Scenes/Level/Level_Instances/" + level_name + ".tscn"
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
-	$UI.show()
 
 func _on_title_screen_requested(should_fade_out:bool):
 	$BackgroundMusic.play()
@@ -35,6 +34,7 @@ func _on_game_over_screen_requested():
 	_on_change_visibility("UI")
 	
 func _on_change_visibility(node_name):
+	yield(get_node("BlendingLayer/BlendingAnimation"), "animation_finished")
 	var node = get_node(node_name)
 	var visibility = node.is_visible()
 	if (visibility):
