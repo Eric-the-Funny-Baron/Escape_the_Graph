@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/YouDied.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sound/TunePocket-Sad-Fail-Trombone-Preview.mp3" type="AudioStream" id=3]
 
 [node name="CanvasLayer" type="CanvasLayer" groups=["Dynamic_Scene"]]
 layer = 0
@@ -34,8 +33,5 @@ margin_right = 288.0
 margin_bottom = 92.0
 theme = ExtResource( 1 )
 text = "Back to Start"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

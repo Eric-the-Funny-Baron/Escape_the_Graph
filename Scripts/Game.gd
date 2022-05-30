@@ -20,14 +20,14 @@ func _on_level_requested(level_name):
 	fade_in() # fade in calls fade out automatically
 
 func _on_title_screen_requested(should_fade_out:bool):
-	$BackgroundMusic.play()
+	Signals.emit_signal("sound_start_requested", "BackgroundMusic")
 	var scene_path = "res://Scenes/StartingScreen.tscn"
 	switch_scene(scene_path)
 	if should_fade_out: fade_in()
 	fade_out()
 
 func _on_game_over_screen_requested():
-	$BackgroundMusic.stop()
+	Signals.emit_signal("sound_stop_requested", "BackgroundMusic")
 	var scene_path = "res://Scenes/YouDied.tscn"
 	switch_scene(scene_path)
 	fade_in()

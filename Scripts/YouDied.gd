@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func _ready():	
-	$AudioStreamPlayer.play()
+	Signals.emit_signal("sound_start_requested", "GameOverSound")
 	yield(get_tree().create_timer(10), "timeout")
 	Signals.emit_signal("title_screen_requested", true)
 
