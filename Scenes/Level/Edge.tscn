@@ -17,6 +17,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [node name="Edge" type="Line2D" groups=["Graph"]]
+z_index = -1
 points = PoolVector2Array( 0, 0, 192, 0 )
 default_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 1 )
