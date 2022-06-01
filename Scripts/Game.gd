@@ -10,6 +10,7 @@ func _ready():
 	Signals.connect("title_screen_requested", self, "_on_title_screen_requested")
 	Signals.connect("game_over_screen_requested", self, "_on_game_over_screen_requested")
 	Signals.connect("change_visibility", self, "_on_change_visibility")
+	Signals.connect("game_pause_toggled", self, "_on_game_pause_toggled")
 	$BlendingLayer/Overlay.color = Color(0,0,0)
 	_on_title_screen_requested(false)
 	$UI.hide()
@@ -42,6 +43,10 @@ func _on_change_visibility(node_name):
 	else:
 		node.show()
 
+func _on_game_pause_toggled():
+	for n in get_tree().get_nodes_in_group("Dynamic_Scene"):
+		get_tree().paused = !get_tree().paused
+
 func switch_scene(scene_path):
 	old_scene = get_tree().get_nodes_in_group("Dynamic_Scene")
 	new_scene = load(scene_path).instance()
@@ -68,8 +73,4 @@ func _on_BlendingAnimation_animation_finished(anim_name):
 	match anim_name:
 		"BlackScreen_Fading":
 			fade_out()
-	
-
-func _on_LevelLink_pressed():
-	Signals.emit_signal("level_requested", "Level_S_1")
 

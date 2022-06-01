@@ -35,3 +35,11 @@ func _on_EffectSlider_value_changed(value):
 
 func _on_ContrastSlider_value_changed(value):
 	GlobalSettings.update_contrast(value)
+
+
+func _on_Popup_about_to_show():
+	Signals.emit_signal("game_pause_toggled")
+
+
+func _on_Popup_popup_hide():
+	Signals.emit_signal("game_pause_toggled")

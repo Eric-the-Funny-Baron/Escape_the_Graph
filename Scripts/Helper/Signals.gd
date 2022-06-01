@@ -21,3 +21,4 @@ signal game_over_screen_requested
 signal change_visibility(node_name)
 signal sound_start_requested(sound_name)
 signal sound_stop_requested(sound_name)
+signal game_pause_toggled
