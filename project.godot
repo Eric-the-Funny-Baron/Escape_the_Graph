@@ -92,6 +92,8 @@ default_bus_layout="res://Assets/Sound/Audio Busses/default_bus_layout.tres"
 
 Signals="*res://Scripts/Helper/Signals.gd"
 AudioHandler="*res://Scripts/Helper/AudioHandler.gd"
+Save="*res://Scripts/Helper/Save.gd"
+GlobalSettings="*res://Scripts/Helper/GlobalSettings.gd"
 
 [display]
 

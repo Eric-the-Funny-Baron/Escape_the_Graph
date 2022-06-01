@@ -4,7 +4,6 @@
 [ext_resource path="res://Scripts/Settings_Menu.gd" type="Script" id=2]
 
 [node name="Popup" type="Popup"]
-visible = true
 margin_right = 1024.0
 margin_bottom = 600.0
 theme = ExtResource( 1 )
@@ -31,46 +30,87 @@ margin_bottom = 41.0
 size_flags_horizontal = 3
 text = "Brightness"
 
-[node name="HSlider" type="HSlider" parent="GridContainer"]
+[node name="BrightnessSlider" type="HSlider" parent="GridContainer"]
 margin_left = 394.0
 margin_right = 784.0
 margin_bottom = 41.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+min_value = 0.3
+max_value = 1.7
+step = 0.01
+value = 1.0
 
-[node name="Label2" type="Label" parent="GridContainer"]
+[node name="Label5" type="Label" parent="GridContainer"]
 margin_top = 71.0
 margin_right = 390.0
 margin_bottom = 112.0
+text = "Contrast"
+
+[node name="ContrastSlider" type="HSlider" parent="GridContainer"]
+margin_left = 394.0
+margin_top = 71.0
+margin_right = 784.0
+margin_bottom = 112.0
+focus_mode = 1
+size_flags_vertical = 1
+min_value = 0.5
+max_value = 1.5
+step = 0.01
+value = 1.0
+
+[node name="Label2" type="Label" parent="GridContainer"]
+margin_top = 142.0
+margin_right = 390.0
+margin_bottom = 183.0
 size_flags_horizontal = 3
 text = "Master Sound"
 
-[node name="HSlider2" type="HSlider" parent="GridContainer"]
+[node name="MasterSlider" type="HSlider" parent="GridContainer"]
 margin_left = 394.0
-margin_top = 71.0
+margin_top = 142.0
 margin_right = 784.0
-margin_bottom = 112.0
+margin_bottom = 183.0
+focus_mode = 1
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+min_value = -50.0
+max_value = 50.0
+
+[node name="Label4" type="Label" parent="GridContainer"]
+margin_top = 213.0
+margin_right = 390.0
+margin_bottom = 254.0
+text = "Background Music"
+
+[node name="MusicSlider" type="HSlider" parent="GridContainer"]
+margin_left = 394.0
+margin_top = 213.0
+margin_right = 784.0
+margin_bottom = 254.0
+focus_mode = 1
+size_flags_vertical = 1
+min_value = -50.0
+max_value = 50.0
 
 [node name="Label3" type="Label" parent="GridContainer"]
-margin_top = 142.0
+margin_top = 284.0
 margin_right = 390.0
-margin_bottom = 183.0
+margin_bottom = 325.0
 size_flags_horizontal = 3
-text = "Effekt Sound"
+text = "Effect Sound"
 
-[node name="HSlider3" type="HSlider" parent="GridContainer"]
+[node name="EffectSlider" type="HSlider" parent="GridContainer"]
 margin_left = 394.0
-margin_top = 142.0
+margin_top = 284.0
 margin_right = 784.0
-margin_bottom = 183.0
+margin_bottom = 325.0
+focus_mode = 1
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+min_value = -50.0
+max_value = 50.0
 
 [node name="Button" type="Button" parent="."]
 margin_left = 19.0
@@ -79,7 +119,12 @@ margin_right = 49.0
 margin_bottom = 68.0
 text = "X"
 
-[connection signal="mouse_exited" from="GridContainer/HSlider" to="." method="_on_HSlider_mouse_exited"]
-[connection signal="mouse_exited" from="GridContainer/HSlider2" to="." method="_on_HSlider_mouse_exited"]
-[connection signal="mouse_exited" from="GridContainer/HSlider3" to="." method="_on_HSlider_mouse_exited"]
+[connection signal="mouse_exited" from="GridContainer/BrightnessSlider" to="." method="_on_HSlider_mouse_exited"]
+[connection signal="value_changed" from="GridContainer/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
+[connection signal="value_changed" from="GridContainer/ContrastSlider" to="." method="_on_ContrastSlider_value_changed"]
+[connection signal="mouse_exited" from="GridContainer/MasterSlider" to="." method="_on_HSlider_mouse_exited"]
+[connection signal="value_changed" from="GridContainer/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="value_changed" from="GridContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="mouse_exited" from="GridContainer/EffectSlider" to="." method="_on_HSlider_mouse_exited"]
+[connection signal="value_changed" from="GridContainer/EffectSlider" to="." method="_on_EffectSlider_value_changed"]
 [connection signal="pressed" from="Button" to="." method="hide"]
