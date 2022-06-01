@@ -75,7 +75,6 @@ func build_level():
 	level_graph.start.set_active()
 	_on_Edge_status_changed()
 
-
 # takes the selected paths and interpolates with best / worst solution
 func interpolation():
 	var t = 0.0

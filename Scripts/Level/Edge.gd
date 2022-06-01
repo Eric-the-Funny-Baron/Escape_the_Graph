@@ -35,15 +35,15 @@ func _ready():
 	touch_box.set_point_cloud([start_up, start_down, end_down, end_up])
 	$TouchBox.set_shape(touch_box)
 	# ==========================================================================
-	$ContainerLayer/WeightValue.rect_position =  start_point - $ContainerLayer/WeightValue.rect_size * 0.5
-	$ContainerLayer/WeightValue.rect_position +=  direction_vector * 0.5
-	#$ContainerLayer/WeightValue.rect_position += $ContainerLayer/WeightValue.rect_size * 0.5 * normal_vector
-	#$ContainerLayer/WeightValue.rect_position += normal_vector * (self.width + padding * 0.5)
+	$ContainerLayer.position =  start_point + direction_vector * 0.5
+	if $ContainerLayer.position.y < get_viewport_rect().size.y * 0.5:
+		$ContainerLayer.rotation_degrees = 180
 
 func _on_TouchScreenButton_pressed():
 	update_state_on_touch()
 	default_color = get_state_color()
 	$ContainerLayer/WeightValue.set("custom_colors/font_color", default_color)
+	$ContainerLayer/WeightValue/OrientationLine.set("custom_colors/font_color", default_color)
 	Signals.emit_signal("edge_status_changed")
 
 func set_weight(text):
@@ -88,11 +88,13 @@ func change_selectable():
 	#elif check_sum == 4: state = Edge_States.SELECTED
 	default_color = get_state_color()
 	$ContainerLayer/WeightValue.set("custom_colors/font_color", default_color)
+	$ContainerLayer/WeightValue/OrientationLine.set("custom_colors/font_color", default_color)
 
 func change_state(_state):
 	state = _state
 	default_color = get_state_color()
 	$ContainerLayer/WeightValue.set("custom_colors/font_color", default_color)
+	$ContainerLayer/WeightValue/OrientationLine.set("custom_colors/font_color", default_color)
 
 func get_state_color() -> Color:
 	match state:
