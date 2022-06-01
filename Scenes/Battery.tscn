@@ -5,6 +5,7 @@
 [ext_resource path="res://Scenes/Health.tscn" type="PackedScene" id=3]
 
 [node name="Battery" type="Control"]
+rect_pivot_offset = Vector2( 181, 57 )
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
 

@@ -41,7 +41,7 @@ func set_visited():
 
 func get_state_color() -> Color:
 	match state:
-		Node_States.DEFAULT: return $ColorTable.default_color.linear_interpolate($ColorTable.hint_color, 0.25 * float(hint_showing))
-		Node_States.ACTIVE:  return $ColorTable.active_color.linear_interpolate($ColorTable.hint_color, 0.25 * float(hint_showing))
-		Node_States.VISITED: return $ColorTable.selected_color.linear_interpolate($ColorTable.hint_color, 0.25 * float(hint_showing))
-		_:                   return $ColorTable.default_color.linear_interpolate($ColorTable.hint_color, 0.25 * float(hint_showing))
+		Node_States.DEFAULT: return $ColorTable.default_color.linear_interpolate($ColorTable.hint_color, 0.4 * float(hint_showing))
+		Node_States.ACTIVE:  return $ColorTable.active_color.linear_interpolate($ColorTable.hint_color, 0.4 * float(hint_showing))
+		Node_States.VISITED: return $ColorTable.selected_color.linear_interpolate($ColorTable.hint_color, 0.4 * float(hint_showing))
+		_:                   return $ColorTable.default_color.linear_interpolate($ColorTable.hint_color, 0.4 * float(hint_showing))
