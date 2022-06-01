@@ -2,6 +2,7 @@
 
 [ext_resource path="res://Scenes/Battery.tscn" type="PackedScene" id=1]
 [ext_resource path="res://questiin2(1).png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Settings_Button.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Button
@@ -62,6 +63,12 @@ anchor_bottom = 1.0
 [node name="Battery" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.3
 anchor_right = 0.3
+
+[node name="Settings" parent="." instance=ExtResource( 3 )]
+margin_left = 19.0
+margin_top = 115.0
+margin_right = 59.0
+margin_bottom = 155.0
 
 [node name="Button" type="Button" parent="."]
 margin_left = 819.0
