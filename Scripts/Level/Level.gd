@@ -81,6 +81,7 @@ func interpolation():
 	var t = 0.0
 	
 	t = float(get_own_path_weight()-dijkstra.get_worst_weight())/(dijkstra.solve_path_problem()['totalWeight']-dijkstra.get_worst_weight())
+	print(t)
 	if t == 1: 
 		Signals.emit_signal("points_given",20)
 	elif 0.9 <= t && t< 1 : 
