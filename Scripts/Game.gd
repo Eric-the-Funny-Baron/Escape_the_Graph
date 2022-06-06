@@ -4,6 +4,10 @@ extends Node2D
 var old_scene = null
 var new_scene = null
 
+# Attributes for Help_Dialogue
+var current_help
+var help_data
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.connect("level_requested", self, "_on_level_requested")
@@ -11,14 +15,24 @@ func _ready():
 	Signals.connect("game_over_screen_requested", self, "_on_game_over_screen_requested")
 	Signals.connect("change_visibility", self, "_on_change_visibility")
 	Signals.connect("game_pause_toggled", self, "_on_game_pause_toggled")
+	help_data = load_data("HelpDialogue.json")
 	$BlendingLayer/Overlay.color = Color(0,0,0)
 	_on_title_screen_requested(false)
 	$UI.hide()
 
 func _on_level_requested(level_name):
 	var scene_path = "res://Scenes/Level/Level_Instances/" + level_name + ".tscn"
+	current_help = help_data["Level"]
+	$UI/Help/HelpWindow.set_text(current_help)
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
+
+func _on_levelhub_requested(level_hub_name):
+	var scene_path = "res://Scenes//" + level_hub_name + ".tscn"
+	current_help = help_data["Level_Hub"]
+	$UI/Help/HelpWindow.set_text(current_help)
+	switch_scene(scene_path)
+	fade_in()
 
 func _on_title_screen_requested(should_fade_out:bool):
 	Signals.emit_signal("sound_start_requested", "BackgroundMusic")
@@ -74,3 +88,9 @@ func _on_BlendingAnimation_animation_finished(anim_name):
 		"BlackScreen_Fading":
 			fade_out()
 
+func load_data(data):
+	var file = File.new()
+	file.open("res://Data/" + data, File.READ)
+	var file_data = parse_json(file.get_as_text())
+	file.close()
+	return file_data
