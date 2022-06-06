@@ -79,7 +79,11 @@ func build_level():
 func interpolation():
 	var t = 0.0
 	
-	t = float(get_own_path_weight()-dijkstra.get_worst_weight())/(dijkstra.solve_path_problem()['totalWeight']-dijkstra.get_worst_weight())
+	if best_weight - worst_weight == 0:
+		t = 1.0
+	else:
+		t = float(get_own_path_weight()-worst_weight)/(best_weight-worst_weight)
+		
 	print(t)
 	if t == 1: 
 		Signals.emit_signal("points_given",20)
