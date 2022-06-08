@@ -53,6 +53,7 @@ func _on_title_screen_requested(should_fade_out:bool):
 func _on_game_over_screen_requested():
 	Signals.emit_signal("sound_stop_requested", "BackgroundMusic")
 	var scene_path = "res://Scenes/YouDied.tscn"
+	level_log.clear() # all progress is deleted
 	switch_scene(scene_path)
 	fade_in()
 	_on_change_visibility("UI")

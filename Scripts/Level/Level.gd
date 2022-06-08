@@ -258,6 +258,10 @@ func _on_Hint_pressed():
 			e.hint_showing = true
 			break
 	_on_Edge_status_changed()
+	
+	if solution_path[solution_path.size() - 1].hint_showing == true:
+		$Hint.disabled = true # prevents unneccesary hint getting
+	
 	Signals.emit_signal("hint_given")
 
 func _on_FinishedBtn_pressed():
