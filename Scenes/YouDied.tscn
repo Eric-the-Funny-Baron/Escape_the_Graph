@@ -1,37 +1,52 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/YouDied.gd" type="Script" id=2]
+[ext_resource path="res://Assets/background/endingscreen .png" type="Texture" id=3]
+[ext_resource path="res://Assets/background/buttonendingscreen.png" type="Texture" id=4]
 
 [node name="CanvasLayer2" type="CanvasLayer" groups=["Dynamic_Scene"]]
 layer = 0
 script = ExtResource( 2 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 3 )
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -144.0
-margin_top = -20.5
-margin_right = 144.0
-margin_bottom = 20.5
+anchor_left = 0.564
+anchor_top = 0.568
+anchor_right = 0.582
+anchor_bottom = 0.647
+margin_left = -279.956
+margin_top = -37.401
+margin_right = 489.043
+margin_bottom = 112.599
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_right = 288.0
-margin_bottom = 92.0
+margin_left = 77.0
+margin_top = 23.0
+margin_right = 710.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 0, 0.004 )
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
 margin_right = 288.0
 margin_bottom = 41.0
 theme = ExtResource( 1 )
 text = "Ups, you died..."
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 45.0
-margin_right = 288.0
-margin_bottom = 92.0
+margin_top = -0.001
+margin_right = 633.0
+margin_bottom = 150.008
+rect_scale = Vector2( 1.583, 1.503 )
 theme = ExtResource( 1 )
-text = "Back to Start"
+shortcut_in_tooltip = false
+icon = ExtResource( 4 )
+flat = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
