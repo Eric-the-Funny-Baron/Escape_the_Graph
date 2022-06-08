@@ -90,9 +90,6 @@ func interpolation():
 	else:
 		t = float(get_own_path_weight()-worst_weight)/(best_weight-worst_weight)
 	
-	if t == 1.0 and solved_optimal == false:
-		solved_optimal = true
-	
 	if solve_num < 4:
 		a = 1.0 / solve_num;
 	else:
@@ -103,6 +100,8 @@ func interpolation():
 	
 	var points = [0 * a, 10 * a, 20 * a, 30 * a, 50 * a]
 	
+	if t == 1.0 and solved_optimal == false:
+		solved_optimal = true
 	
 	print(t)
 	if t == 1: 
@@ -227,6 +226,9 @@ func _on_Generate_pressed():
 	get_tree().call_group("Graph", "queue_free")
 	level_graph.clear_graph()
 	build_level()
+	solve_num = 1
+	solved = false
+	solved_optimal = false
 
 func _on_Edge_status_changed():
 	var color1 = Color(1,1,1)

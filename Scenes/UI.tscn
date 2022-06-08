@@ -69,7 +69,8 @@ margin_top = 441.0
 margin_right = 308.0
 margin_bottom = 541.0
 rect_min_size = Vector2( 0, 100 )
-rect_pivot_offset = Vector2( -1324, 141 )
+rect_scale = Vector2( -1, -1 )
+rect_pivot_offset = Vector2( 41, 41 )
 
 [node name="Battery2" parent="Control" instance=ExtResource( 1 )]
 margin_left = 994.0
