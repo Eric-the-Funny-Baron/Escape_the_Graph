@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/background/etg.png" type="Texture" id=1]
-[ext_resource path="res://Assets/background/startbutton.png" type="Texture" id=2]
+[ext_resource path="res://Assets/background/escapethegraph.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/StartingScreen.gd" type="Script" id=3]
 [ext_resource path="res://Assets/background/start.png" type="Texture" id=4]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/startbutton.png-08c5f605057c88bc8ff9183ccc7a7c2f.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/startbuttonActive.png-8051a240cf5a4c45473218cafd1c20d2.stex"
 
 [node name="CanvasLayer" type="CanvasLayer" groups=["Dynamic_Scene"]]
 script = ExtResource( 3 )
@@ -31,14 +38,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CenterContainer3"]
-margin_left = 154.0
-margin_top = 57.0
-margin_right = 654.0
-margin_bottom = 557.0
+margin_left = 236.0
+margin_top = 263.0
+margin_right = 571.0
+margin_bottom = 351.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/CenterContainer3/VBoxContainer"]
 visible = false
-margin_right = 500.0
+margin_right = 400.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 400, 100 )
 texture = ExtResource( 1 )
@@ -46,13 +53,15 @@ expand = true
 stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/CenterContainer3/VBoxContainer"]
-margin_right = 500.0
-margin_bottom = 500.0
+margin_right = 335.0
+margin_bottom = 88.0
 custom_constants/separation = 40
 
 [node name="TextureButton2" type="TextureButton" parent="HBoxContainer/CenterContainer3/VBoxContainer/HBoxContainer"]
-margin_right = 500.0
-margin_bottom = 500.0
-texture_normal = ExtResource( 2 )
+margin_right = 335.0
+margin_bottom = 88.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 2 )
+texture_hover = SubResource( 2 )
 
 [connection signal="pressed" from="HBoxContainer/CenterContainer3/VBoxContainer/HBoxContainer/TextureButton2" to="." method="_on_StartButton_pressed"]

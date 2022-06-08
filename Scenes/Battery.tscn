@@ -5,15 +5,13 @@
 [ext_resource path="res://Scenes/Health.tscn" type="PackedScene" id=3]
 
 [node name="Battery" type="Control"]
-rect_pivot_offset = Vector2( 181, 57 )
+rect_rotation = 270.0
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
 
 [node name="HealthBar" parent="." instance=ExtResource( 2 )]
-margin_left = 33.0
-margin_top = 24.0
-margin_right = 329.0
-margin_bottom = 88.0
+margin_right = 300.0
+rect_scale = Vector2( 0.65, 0.65 )
 
 [node name="Life_Percentage" parent="HealthBar" instance=ExtResource( 1 )]
 anchor_left = 0.0

@@ -1,10 +1,5 @@
 extends Popup
 
-
-func _on_HSlider_mouse_exited():
-	self.release_focus()
-
-
 func _on_BrightnessSlider_value_changed(value):
 	GlobalSettings.update_brightness(value)
 

@@ -1,18 +1,46 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/Settings_Menu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/background/Planet.png" type="Texture" id=3]
+[ext_resource path="res://Assets/background/background_without_icons.png" type="Texture" id=4]
+[ext_resource path="res://Assets/background/Design ohne Titel.png" type="Texture" id=5]
+[ext_resource path="res://Assets/background/CloseButtonActive.png" type="Texture" id=6]
+[ext_resource path="res://Assets/background/PlanetActive.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.631373, 0.219608, 0.631373, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="Popup" type="Popup"]
+visible = true
 margin_right = 1024.0
 margin_bottom = 600.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
-color = Color( 0.235294, 0.235294, 0.235294, 1 )
+texture = ExtResource( 4 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchor_right = 1.0
@@ -26,8 +54,9 @@ custom_constants/vseparation = 30
 columns = 2
 
 [node name="Label" type="Label" parent="GridContainer"]
+margin_top = 3.0
 margin_right = 390.0
-margin_bottom = 41.0
+margin_bottom = 44.0
 mouse_filter = 0
 size_flags_horizontal = 3
 text = "Brightness"
@@ -35,99 +64,129 @@ text = "Brightness"
 [node name="BrightnessSlider" type="HSlider" parent="GridContainer"]
 margin_left = 394.0
 margin_right = 784.0
-margin_bottom = 41.0
+margin_bottom = 48.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 3 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 2 )
 min_value = 0.3
 max_value = 1.7
 step = 0.01
 value = 1.0
 
 [node name="Label5" type="Label" parent="GridContainer"]
-margin_top = 71.0
+margin_top = 81.0
 margin_right = 390.0
-margin_bottom = 112.0
+margin_bottom = 122.0
 text = "Contrast"
 
 [node name="ContrastSlider" type="HSlider" parent="GridContainer"]
 margin_left = 394.0
-margin_top = 71.0
+margin_top = 78.0
 margin_right = 784.0
-margin_bottom = 112.0
+margin_bottom = 126.0
 focus_mode = 1
 size_flags_vertical = 1
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 3 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 2 )
 min_value = 0.5
 max_value = 1.5
 step = 0.01
 value = 1.0
 
 [node name="Label2" type="Label" parent="GridContainer"]
-margin_top = 142.0
+margin_top = 159.0
 margin_right = 390.0
-margin_bottom = 183.0
+margin_bottom = 200.0
 size_flags_horizontal = 3
 text = "Master Sound"
 
 [node name="MasterSlider" type="HSlider" parent="GridContainer"]
 margin_left = 394.0
-margin_top = 142.0
+margin_top = 156.0
 margin_right = 784.0
-margin_bottom = 183.0
+margin_bottom = 204.0
 focus_mode = 1
 size_flags_horizontal = 3
 size_flags_vertical = 1
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 3 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 2 )
 min_value = -50.0
 max_value = 50.0
 
 [node name="Label4" type="Label" parent="GridContainer"]
-margin_top = 213.0
+margin_top = 237.0
 margin_right = 390.0
-margin_bottom = 254.0
+margin_bottom = 278.0
 text = "Background Music"
 
 [node name="MusicSlider" type="HSlider" parent="GridContainer"]
 margin_left = 394.0
-margin_top = 213.0
+margin_top = 234.0
 margin_right = 784.0
-margin_bottom = 254.0
+margin_bottom = 282.0
 focus_mode = 1
 size_flags_vertical = 1
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 3 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 2 )
 min_value = -50.0
 max_value = 50.0
 
 [node name="Label3" type="Label" parent="GridContainer"]
-margin_top = 284.0
+margin_top = 315.0
 margin_right = 390.0
-margin_bottom = 325.0
+margin_bottom = 356.0
 size_flags_horizontal = 3
 text = "Effect Sound"
 
 [node name="EffectSlider" type="HSlider" parent="GridContainer"]
 margin_left = 394.0
-margin_top = 284.0
+margin_top = 312.0
 margin_right = 784.0
-margin_bottom = 325.0
+margin_bottom = 360.0
 focus_mode = 1
 size_flags_horizontal = 3
 size_flags_vertical = 1
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 3 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 2 )
 min_value = -50.0
 max_value = 50.0
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 margin_left = 19.0
 margin_top = 21.0
 margin_right = 49.0
 margin_bottom = 68.0
-text = "X"
+rect_scale = Vector2( 0.85, 0.85 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
 
 [connection signal="popup_hide" from="." to="." method="_on_Popup_popup_hide"]
-[connection signal="mouse_exited" from="GridContainer/BrightnessSlider" to="." method="_on_HSlider_mouse_exited"]
+[connection signal="mouse_exited" from="GridContainer/BrightnessSlider" to="." method="release_focus"]
 [connection signal="value_changed" from="GridContainer/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
+[connection signal="mouse_exited" from="GridContainer/ContrastSlider" to="." method="release_focus"]
 [connection signal="value_changed" from="GridContainer/ContrastSlider" to="." method="_on_ContrastSlider_value_changed"]
-[connection signal="mouse_exited" from="GridContainer/MasterSlider" to="." method="_on_HSlider_mouse_exited"]
+[connection signal="mouse_exited" from="GridContainer/MasterSlider" to="." method="release_focus"]
 [connection signal="value_changed" from="GridContainer/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="mouse_exited" from="GridContainer/MusicSlider" to="." method="release_focus"]
 [connection signal="value_changed" from="GridContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
-[connection signal="mouse_exited" from="GridContainer/EffectSlider" to="." method="_on_HSlider_mouse_exited"]
+[connection signal="mouse_exited" from="GridContainer/EffectSlider" to="." method="release_focus"]
 [connection signal="value_changed" from="GridContainer/EffectSlider" to="." method="_on_EffectSlider_value_changed"]
 [connection signal="pressed" from="Button" to="." method="hide"]
