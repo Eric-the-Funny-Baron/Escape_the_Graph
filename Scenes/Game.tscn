@@ -85,9 +85,11 @@ stream = ExtResource( 6 )
 
 [node name="Battery_UP" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )
+volume_db = -10.0
 
 [node name="Battery_DOWN" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 9 )
+volume_db = -10.0
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 7 )]
 pause_mode = 2

@@ -11,6 +11,7 @@ extends Node2D
 class_name Level
 
 # Parameters
+export var room_number : int = 1
 export var margin = 200.0 # border margin in the scene
 export var randomness = 0.1 # randomness of placement
 export var nodes : int = 1 # number of nodes in the graph
@@ -45,7 +46,6 @@ var solved: bool = false
 var solve_num = 1
 var solved_optimal = false
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -53,6 +53,7 @@ func _ready():
 	subdivisions = int(ceil(log(nodes) / log(2)))
 
 	Signals.connect("edge_status_changed", self, "_on_Edge_status_changed")
+	Signals.emit_signal("level_load_requested", get_name())
 	
 	build_level()
 
@@ -272,4 +273,6 @@ func _on_FinishedBtn_pressed():
 	interpolation()
 	solved = true
 	solve_num += 1
+	Signals.emit_signal("level_save_requested", get_name(), solved, solve_num, solved_optimal)
+	Signals.emit_signal("level_hub_requested", "LevelHub_" + String(room_number))
 	

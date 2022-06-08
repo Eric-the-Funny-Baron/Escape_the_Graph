@@ -8,6 +8,9 @@ var new_scene = null
 var current_help
 var help_data
 
+# Attribute to hold global information about all Levels
+var level_log = {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.connect("level_requested", self, "_on_level_requested")
@@ -16,6 +19,9 @@ func _ready():
 	Signals.connect("game_over_screen_requested", self, "_on_game_over_screen_requested")
 	Signals.connect("change_visibility", self, "_on_change_visibility")
 	Signals.connect("game_pause_toggled", self, "_on_game_pause_toggled")
+	Signals.connect("level_save_requested", self, "_on_level_save_requested")
+	Signals.connect("level_load_requested", self, "_on_level_load_requested")
+	Signals.connect("level_status_requested", self, "_on_level_status_requested")
 	help_data = load_data("HelpDialogue.json")
 	$BlendingLayer/Overlay.color = Color(0,0,0)
 	_on_title_screen_requested(false)
@@ -30,7 +36,7 @@ func _on_level_requested(level_name):
 	fade_in() # fade in calls fade out automatically
 
 func _on_level_hub_requested(level_hub_name):
-	var scene_path = "res://Scenes/LevelHub/" + level_hub_name + ".tscn"
+	var scene_path = "res://Scenes/LevelHub/LevelHub_Instances/" + level_hub_name + ".tscn"
 	current_help = help_data["Level_Hub"]
 	$UI/Control/Help/HelpWindow.set_text(current_help)
 	$UI/Control/Help2/HelpWindow.set_text(current_help)
@@ -63,6 +69,25 @@ func _on_change_visibility(node_name):
 func _on_game_pause_toggled():
 	for n in get_tree().get_nodes_in_group("Dynamic_Scene"):
 		get_tree().paused = !get_tree().paused
+
+func _on_level_save_requested(level_name, solved, solve_num, solved_optimal):
+	level_log[level_name] = {
+		"solved" : solved,
+		"solve_num" : solve_num,
+		"solved_optimal" : solved_optimal
+	}
+
+func _on_level_load_requested(level_name):
+	if level_name in level_log.keys():
+		var level:Level = get_node(level_name)
+		level.solved = level_log[level_name]["solved"]
+		level.solve_num = level_log[level_name]["solve_num"]
+		level.solved_optimal = level_log[level_name]["solved_optimal"]
+
+func _on_level_status_requested(level_name, level_hub_name, level_link):
+	if level_name in level_log:
+		var link = get_node(level_hub_name).get_node(level_link)
+		link.solved = level_log[level_name]["solved"]
 
 func switch_scene(scene_path):
 	old_scene = get_tree().get_nodes_in_group("Dynamic_Scene")
