@@ -11,6 +11,7 @@ var help_data
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.connect("level_requested", self, "_on_level_requested")
+	Signals.connect("level_hub_requested", self, "_on_level_hub_requested")
 	Signals.connect("title_screen_requested", self, "_on_title_screen_requested")
 	Signals.connect("game_over_screen_requested", self, "_on_game_over_screen_requested")
 	Signals.connect("change_visibility", self, "_on_change_visibility")
@@ -27,8 +28,8 @@ func _on_level_requested(level_name):
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
 
-func _on_levelhub_requested(level_hub_name):
-	var scene_path = "res://Scenes//" + level_hub_name + ".tscn"
+func _on_level_hub_requested(level_hub_name):
+	var scene_path = "res://Scenes/LevelHub/" + level_hub_name + ".tscn"
 	current_help = help_data["Level_Hub"]
 	$UI/Control/Help/HelpWindow.set_text(current_help)
 	switch_scene(scene_path)

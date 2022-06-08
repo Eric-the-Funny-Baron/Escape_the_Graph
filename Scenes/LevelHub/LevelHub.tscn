@@ -1,26 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Graphics/Shader/Stars.tres" type="Shader" id=1]
+[ext_resource path="res://Assets/Graphics/LevelHub_Room.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/LevelHub/LevelLink.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.10625, 0.51875, 1 )
-colors = PoolColorArray( 0.0442505, 0, 0.0976563, 1, 0.0982416, 0.00961304, 0.273438, 1, 0, 0.296875, 1, 1, 0.792969, 0.990295, 1, 1 )
+colors = PoolColorArray( 0.0442505, 0, 0.0976563, 1, 0.0982416, 0.00961304, 0.273438, 1, 0.359375, 0, 1, 1, 0.792969, 0.990295, 1, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
-shader_param/SIZE = 30.0
+shader_param/SIZE = 50.0
 shader_param/VELOCITY = 0.5
 shader_param/gradient = SubResource( 4 )
 
 [sub_resource type="ProxyTexture" id=2]
 
-[node name="LevelHub" type="Node2D"]
+[node name="LevelHub" type="Node2D" groups=["Dynamic_Scene"]]
 
 [node name="StarBackground" type="Sprite" parent="."]
 material = SubResource( 1 )
 position = Vector2( 512, 511 )
 scale = Vector2( 1024, 1024 )
 texture = SubResource( 2 )
+
+[node name="Room" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+texture = ExtResource( 2 )
+
+[node name="LevelLink" parent="." instance=ExtResource( 3 )]
+position = Vector2( 322, 288 )

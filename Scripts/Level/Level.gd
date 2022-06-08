@@ -40,6 +40,11 @@ var solution_path = []
 var best_weight # best weight
 var worst_weight # worst_weight
 
+# Dynamic Attributes
+var solved: bool = false
+var solve_num = 1
+var solved_optimal = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -78,25 +83,40 @@ func build_level():
 # takes the selected paths and interpolates with best / worst solution
 func interpolation():
 	var t = 0.0
+	var a = 1.0
 	
 	if best_weight - worst_weight == 0:
 		t = 1.0
 	else:
 		t = float(get_own_path_weight()-worst_weight)/(best_weight-worst_weight)
-		
+	
+	if t == 1.0 and solved_optimal == false:
+		solved_optimal = true
+	
+	if solve_num < 4:
+		a = 1.0 / solve_num;
+	else:
+		a = 0.0
+	
+	if solved_optimal:
+		a = 0.0
+	
+	var points = [0 * a, 10 * a, 20 * a, 30 * a, 50 * a]
+	
+	
 	print(t)
 	if t == 1: 
-		Signals.emit_signal("points_given",20)
+		Signals.emit_signal("points_given", points[2])
 	elif 0.9 <= t && t< 1 : 
-		Signals.emit_signal("points_given",0)
+		Signals.emit_signal("points_given", points[0])
 	elif 0.6 <= t  && t< 0.9 : 
-		Signals.emit_signal("points_taken",10)
+		Signals.emit_signal("points_taken", points[1])
 	elif 0.3 <= t && t< 0.6 : 
-		Signals.emit_signal("points_taken",20)
+		Signals.emit_signal("points_taken", points[2])
 	elif t <= 0 && t< 0.3 : 
-		Signals.emit_signal("points_taken",30)
+		Signals.emit_signal("points_taken", points[3])
 	elif t == 0 : 
-		Signals.emit_signal("points_taken",50)
+		Signals.emit_signal("points_taken", points[4])
 	
 func generate_graph():
 	var block_size:Vector2 = (screen_size - Vector2(margin, margin))
@@ -248,4 +268,6 @@ func _on_Hint_pressed():
 
 func _on_FinishedBtn_pressed():
 	interpolation()
+	solved = true
+	solve_num += 1
 	
