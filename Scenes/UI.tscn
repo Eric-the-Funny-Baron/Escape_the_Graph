@@ -36,25 +36,49 @@ tracks/1/keys = {
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 336, 335 )
 
 [node name="Control" type="Node" parent="."]
 
 [node name="Help" parent="Control" instance=ExtResource( 2 )]
-margin_right = 200.0
-margin_bottom = 100.0
+margin_left = 843.0
+margin_top = 54.0
+margin_right = 1043.0
+margin_bottom = 154.0
 rect_min_size = Vector2( 0, 100 )
+rect_pivot_offset = Vector2( -1324, 141 )
 
 [node name="Battery" parent="Control" instance=ExtResource( 1 )]
-margin_left = 29.0
-margin_top = 282.0
-margin_right = 29.0
-margin_bottom = 282.0
+margin_left = 74.0
+margin_top = 36.0
+margin_right = 274.0
+margin_bottom = 236.0
+rect_min_size = Vector2( 200, 200 )
+rect_rotation = 0.0
 
 [node name="Settings" parent="Control" instance=ExtResource( 3 )]
-margin_top = 308.0
-margin_right = 200.0
-margin_bottom = 408.0
+margin_left = 784.0
+margin_top = 52.0
+margin_right = 984.0
+margin_bottom = 152.0
 rect_min_size = Vector2( 0, 100 )
+
+[node name="Help2" parent="Control" instance=ExtResource( 2 )]
+margin_left = 90.0
+margin_top = 441.0
+margin_right = 308.0
+margin_bottom = 541.0
+rect_min_size = Vector2( 0, 100 )
+rect_scale = Vector2( -1, -1 )
+rect_pivot_offset = Vector2( 41, 41 )
+
+[node name="Battery2" parent="Control" instance=ExtResource( 1 )]
+margin_left = 994.0
+margin_top = 551.0
+margin_right = 1194.0
+margin_bottom = 751.0
+rect_min_size = Vector2( 200, 200 )
+rect_rotation = 180.0
 
 [node name="UI_Animations" type="AnimationPlayer" parent="."]
 anims/Battery_Motion = SubResource( 2 )

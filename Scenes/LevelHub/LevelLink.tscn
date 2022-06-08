@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/LevelHub/LevelLink.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.5, 27.5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 39
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
 
 [node name="LevelLink" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,5 +23,14 @@ polygon = PoolVector2Array( 320, 192, 320, 320, 448, 320, 448, 192 )
 position = Vector2( -64, -64 )
 scale = Vector2( 1.97498, 2.31753 )
 shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -64.0
+margin_top = -32.0
+margin_right = 64.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+text = "Level"
+align = 1
 
 [connection signal="pressed" from="TouchBox" to="." method="_on_TouchBox_pressed"]

@@ -11,6 +11,7 @@ rect_pivot_offset = Vector2( 40, 38 )
 script = ExtResource( 2 )
 
 [node name="HelpWindow" type="AcceptDialog" parent="."]
+visible = true
 margin_left = 397.0
 margin_top = 199.0
 margin_right = 736.0
