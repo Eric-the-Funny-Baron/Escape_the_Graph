@@ -222,15 +222,6 @@ func get_own_path_weight():
 		active_edges.append(edge)
 	return dijkstra.get_path_weight(active_edges)
 
-
-func _on_Generate_pressed():
-	get_tree().call_group("Graph", "queue_free")
-	level_graph.clear_graph()
-	build_level()
-	solve_num = 1
-	solved = false
-	solved_optimal = false
-
 func _on_Edge_status_changed():
 	var color1 = Color(1,1,1)
 	var color2 = Color(0.5,0.5,0.5)

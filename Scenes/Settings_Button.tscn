@@ -22,4 +22,5 @@ texture_hover = ExtResource( 5 )
 
 [node name="Popup" parent="." instance=ExtResource( 3 )]
 
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button" to="Popup" method="popup"]

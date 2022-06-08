@@ -21,5 +21,6 @@ func _ready():
 		$LevelLink_Graphic.color = Color(0.1, 0.9, 0.2);
 
 
-func _on_TouchBox_pressed():	
+func _on_TouchBox_pressed():
+	Signals.emit_signal("sound_start_requested", "SelectionSound")	
 	Signals.emit_signal("level_requested", level_name)

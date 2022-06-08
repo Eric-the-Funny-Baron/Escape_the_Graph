@@ -43,22 +43,6 @@ nodes = 4
 edges = 4
 minimal_weight = 1.0
 
-[node name="Generate" type="Button" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 442.0
-margin_top = 493.0
-margin_right = 632.0
-margin_bottom = 573.0
-rect_pivot_offset = Vector2( 94, 43 )
-theme = SubResource( 7 )
-custom_fonts/font = SubResource( 11 )
-text = "Generate"
-__meta__ = {
-"_editor_description_": "Protoytype Button to test graph generation"
-}
-
 [node name="Hint" type="Button" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -98,6 +82,5 @@ custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Fertig"
 
-[connection signal="pressed" from="Generate" to="." method="_on_Generate_pressed"]
 [connection signal="pressed" from="Hint" to="." method="_on_Hint_pressed"]
 [connection signal="pressed" from="FinishedBtn" to="." method="_on_FinishedBtn_pressed"]
