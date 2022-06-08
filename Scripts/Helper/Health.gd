@@ -25,9 +25,14 @@ func set_current(change):
 
 func _on_hint_given():
 	set_current(20)
+	Signals.emit_signal("sound_start_requested", "Battery_DOWN")
 
 func _points_taken(points):
 	set_current(points)
+	if points > 0:
+		Signals.emit_signal("sound_start_requested", "Battery_DOWN")
 
 func _points_given(points):
 	set_current(-points)
+	if points > 0:
+		Signals.emit_signal("sound_start_requested", "Battery_UP")

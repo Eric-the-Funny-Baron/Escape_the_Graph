@@ -29,7 +29,7 @@ func get_active_edges():
 
 func set_default():
 	state = Node_States.DEFAULT
-	color = get_state_color()
+	color = get_state_color().linear_interpolate($ColorTable.selected_color, float(is_start_target))
 
 func set_active():
 	state = Node_States.ACTIVE
@@ -37,7 +37,7 @@ func set_active():
 
 func set_visited():
 	state = Node_States.VISITED
-	color = get_state_color()
+	color = get_state_color().linear_interpolate($ColorTable.selected_color, float(is_start_target))
 
 func get_state_color() -> Color:
 	match state:
