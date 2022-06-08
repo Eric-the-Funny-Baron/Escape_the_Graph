@@ -31,3 +31,4 @@ func _points_taken(points):
 
 func _points_given(points):
 	set_current(-points)
+

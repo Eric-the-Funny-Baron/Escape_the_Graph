@@ -45,11 +45,10 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="Battery" parent="Control" instance=ExtResource( 1 )]
-margin_top = 104.0
-margin_right = 200.0
-margin_bottom = 304.0
-rect_min_size = Vector2( 200, 200 )
-rect_rotation = 0.0
+margin_left = 29.0
+margin_top = 282.0
+margin_right = 29.0
+margin_bottom = 282.0
 
 [node name="Settings" parent="Control" instance=ExtResource( 3 )]
 margin_top = 308.0
