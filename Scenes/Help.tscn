@@ -31,4 +31,5 @@ texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 3 )
 script = SubResource( 1 )
 
+[connection signal="popup_hide" from="HelpWindow" to="." method="_on_HelpWindow_popup_hide"]
 [connection signal="pressed" from="Help" to="." method="_on_Button_pressed"]

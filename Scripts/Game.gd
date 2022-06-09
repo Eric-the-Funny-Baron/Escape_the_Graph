@@ -18,7 +18,7 @@ func _ready():
 	Signals.connect("title_screen_requested", self, "_on_title_screen_requested")
 	Signals.connect("game_over_screen_requested", self, "_on_game_over_screen_requested")
 	Signals.connect("change_visibility", self, "_on_change_visibility")
-	Signals.connect("game_pause_toggled", self, "_on_game_pause_toggled")
+	Signals.connect("touch_box_toggled", self, "_on_touch_box_toggled")
 	Signals.connect("level_save_requested", self, "_on_level_save_requested")
 	Signals.connect("level_load_requested", self, "_on_level_load_requested")
 	Signals.connect("level_status_requested", self, "_on_level_status_requested")
@@ -67,9 +67,9 @@ func _on_change_visibility(node_name):
 	else:
 		node.show()
 
-func _on_game_pause_toggled():
-	for n in get_tree().get_nodes_in_group("Dynamic_Scene"):
-		get_tree().paused = !get_tree().paused
+func _on_touch_box_toggled():
+	for t in get_tree().get_nodes_in_group("TouchBox"):
+		t.visible = !t.visible
 
 func _on_level_save_requested(level_name, solved, solve_num, solved_optimal):
 	level_log[level_name] = {

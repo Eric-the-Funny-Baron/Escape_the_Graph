@@ -21,7 +21,7 @@ signal game_over_screen_requested
 signal change_visibility(node_name)
 signal sound_start_requested(sound_name)
 signal sound_stop_requested(sound_name)
-signal game_pause_toggled
+signal touch_box_toggled
 signal level_save_requested(level_name, solved, solve_num, solved_optimal)
 signal level_load_requested(level_name)
 signal level_status_requested(level_name, level_hub_name, level_link)

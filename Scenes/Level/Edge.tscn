@@ -23,7 +23,7 @@ default_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 1 )
 padding = 10.0
 
-[node name="TouchBox" type="TouchScreenButton" parent="."]
+[node name="TouchBox" type="TouchScreenButton" parent="." groups=["TouchBox"]]
 pause_mode = 1
 shape_centered = false
 

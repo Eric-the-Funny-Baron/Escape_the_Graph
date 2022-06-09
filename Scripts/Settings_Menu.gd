@@ -33,8 +33,8 @@ func _on_ContrastSlider_value_changed(value):
 
 
 func _on_Popup_about_to_show():
-	Signals.emit_signal("game_pause_toggled")
+	Signals.emit_signal("touch_box_toggled")
 
 
 func _on_Popup_popup_hide():
-	Signals.emit_signal("game_pause_toggled")
+	Signals.emit_signal("touch_box_toggled")

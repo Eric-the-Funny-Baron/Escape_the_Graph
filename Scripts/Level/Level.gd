@@ -265,9 +265,18 @@ func _on_Hint_pressed():
 	Signals.emit_signal("hint_given")
 
 func _on_FinishedBtn_pressed():
+	$ConfirmationUI.popup_centered()
+	Signals.emit_signal("touch_box_toggled")
+
+func _on_Yes_pressed():
+	$ConfirmationUI.hide()
 	interpolation()
 	solved = true
 	solve_num += 1
 	Signals.emit_signal("level_save_requested", get_name(), solved, solve_num, solved_optimal)
 	Signals.emit_signal("level_hub_requested", "LevelHub_" + String(room_number))
-	
+
+
+func _on_No_pressed():
+	$ConfirmationUI.hide()
+	Signals.emit_signal("touch_box_toggled")
