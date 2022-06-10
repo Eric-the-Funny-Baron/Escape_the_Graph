@@ -11,6 +11,7 @@ extends Node2D
 class_name Level
 
 # Parameters
+export var room_number : int = 1
 export var margin = 200.0 # border margin in the scene
 export var randomness = 0.1 # randomness of placement
 export var nodes : int = 1 # number of nodes in the graph
@@ -45,7 +46,6 @@ var solved: bool = false
 var solve_num = 1
 var solved_optimal = false
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -53,6 +53,7 @@ func _ready():
 	subdivisions = int(ceil(log(nodes) / log(2)))
 
 	Signals.connect("edge_status_changed", self, "_on_Edge_status_changed")
+	Signals.emit_signal("level_load_requested", get_name())
 	
 	build_level()
 
@@ -221,15 +222,6 @@ func get_own_path_weight():
 		active_edges.append(edge)
 	return dijkstra.get_path_weight(active_edges)
 
-
-func _on_Generate_pressed():
-	get_tree().call_group("Graph", "queue_free")
-	level_graph.clear_graph()
-	build_level()
-	solve_num = 1
-	solved = false
-	solved_optimal = false
-
 func _on_Edge_status_changed():
 	var color1 = Color(1,1,1)
 	var color2 = Color(0.5,0.5,0.5)
@@ -266,10 +258,25 @@ func _on_Hint_pressed():
 			e.hint_showing = true
 			break
 	_on_Edge_status_changed()
+	
+	if solution_path[solution_path.size() - 1].hint_showing == true:
+		$Hint.disabled = true # prevents unneccesary hint getting
+	
 	Signals.emit_signal("hint_given")
 
 func _on_FinishedBtn_pressed():
+	$ConfirmationUI.popup_centered()
+	Signals.emit_signal("touch_box_toggled")
+
+func _on_Yes_pressed():
+	$ConfirmationUI.hide()
 	interpolation()
 	solved = true
 	solve_num += 1
-	
+	Signals.emit_signal("level_save_requested", get_name(), solved, solve_num, solved_optimal)
+	Signals.emit_signal("level_hub_requested", "LevelHub_" + String(room_number))
+
+
+func _on_No_pressed():
+	$ConfirmationUI.hide()
+	Signals.emit_signal("touch_box_toggled")

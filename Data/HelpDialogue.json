@@ -2,11 +2,15 @@
 	"Level" : 
 		"Um ein Level abzuschließen, müsst ihr vom Startpunkt aus zum Ziel gelangen.
 		Hierzu müsst ihr vom aktiven Punkt in rot eine Kante auswählen, indem ihr sie antippt.
-		Von dort aus wird das gleiche Vorgehen bis zum Ziel wiederholdt. Um einen Schritt rückgängig
-		zu machen, müsst ihr nochmals auf die gerade aktiverte Kante tippen. Wenn ihr das Ziel erreicht
-		habt. Könnt ihr auf den Fertig-Button klicke, um das Level abzuschließen.",
+		Von dort aus wird das gleiche Vorgehen bis zum Ziel wiederholt. Um einen Schritt rückgängig
+		zu machen, müsst ihr nochmals auf die gerade aktiverte Kante tippen.
+		
+		Wenn ihr das Ziel erreicht habt. Könnt ihr auf den Fertig-Button klicke, um das Level abzuschließen.",
 	
 	"Level_Hub" :
 		"Um das Spiel zu gewinnen, müsst ihr bis zum letzten Raum im Raumschiff gelangen. Um zum nächsten
-		Raum zu gelangen, müsst ihr alle Level im Raum bestehen. Danach öffnet sich die Tür zum nächsten Raum."	
+		Raum zu gelangen, müsst ihr alle Level im Raum bestehen. Danach öffnet sich die Tür zum nächsten Raum.
+		
+		Wenn ihr ein Level zum wiederholten Male spielt, wird das Belohnungs- und Strafmaß verringert. Schafft
+		ihr es, ein Level optimal zu lösen, gibt es beim wiederholten Spielen des Levels keine Belohung bzw. Strafe mehr."	
 }

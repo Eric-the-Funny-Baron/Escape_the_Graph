@@ -19,7 +19,7 @@ script = ExtResource( 1 )
 offset = Vector2( -384, -256 )
 polygon = PoolVector2Array( 320, 192, 320, 320, 448, 320, 448, 192 )
 
-[node name="TouchBox" type="TouchScreenButton" parent="."]
+[node name="TouchBox" type="TouchScreenButton" parent="." groups=["TouchBox"]]
 position = Vector2( -64, -64 )
 scale = Vector2( 1.97498, 2.31753 )
 shape = SubResource( 1 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Battery_DOWN.ogg-51289f4d410791614d9f63d6d0a400ef.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Battery_DOWN.ogg"
+dest_files=[ "res://.import/Battery_DOWN.ogg-51289f4d410791614d9f63d6d0a400ef.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

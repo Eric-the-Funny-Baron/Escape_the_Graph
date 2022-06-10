@@ -31,6 +31,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="Popup" type="Popup"]
+visible = true
 margin_right = 1024.0
 margin_bottom = 600.0
 theme = ExtResource( 1 )

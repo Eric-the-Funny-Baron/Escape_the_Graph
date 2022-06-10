@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Helper/Sounds.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Assets/Sound/UI_Selection.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Sound/TunePocket-Sad-Fail-Trombone-Preview.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Scenes/WorldEnvironment.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Sound/Battery_UP.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sound/Battery_DOWN.ogg" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=2]
 resource_name = "BlackScreen_Fading"
@@ -40,28 +42,6 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Shader" id=9]
-code = "shader_type canvas_item;
-
-void fragment() {
-	vec4 tex00 = texture(SCREEN_TEXTURE, SCREEN_UV);
-	vec4 tex10 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x, 0));
-	vec4 tex1i0 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(-SCREEN_PIXEL_SIZE.x, 0));
-	vec4 tex01 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(0, SCREEN_PIXEL_SIZE.y));
-	vec4 tex01i = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(0, -SCREEN_PIXEL_SIZE.y));
-	
-	vec4 antialias_sum = (tex10 + tex1i0 + tex01 + tex01i) / 4.0;
-	COLOR = (tex00 + antialias_sum) / 2.0;
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 9 )
-
-[sub_resource type="OpenSimplexNoise" id=7]
-
-[sub_resource type="NoiseTexture" id=8]
-noise = SubResource( 7 )
-
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 __meta__ = {
@@ -89,13 +69,6 @@ __meta__ = {
 anims/BlackScreen_Fading = SubResource( 2 )
 anims/BlackScreen_Fading_reverse = SubResource( 3 )
 
-[node name="Antialiasing" type="Sprite" parent="BlendingLayer"]
-visible = false
-material = SubResource( 6 )
-position = Vector2( 512, 299 )
-scale = Vector2( 2, 1.16992 )
-texture = SubResource( 8 )
-
 [node name="Sounds" type="Node" parent="."]
 pause_mode = 2
 script = ExtResource( 1 )
@@ -109,6 +82,14 @@ volume_db = -5.0
 
 [node name="GameOverSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 6 )
+
+[node name="Battery_UP" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 8 )
+volume_db = -10.0
+
+[node name="Battery_DOWN" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 9 )
+volume_db = -10.0
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 7 )]
 pause_mode = 2
