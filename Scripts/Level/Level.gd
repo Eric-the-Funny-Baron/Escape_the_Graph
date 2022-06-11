@@ -53,6 +53,7 @@ func _ready():
 	subdivisions = int(ceil(log(nodes) / log(2)))
 
 	Signals.connect("edge_status_changed", self, "_on_Edge_status_changed")
+	Signals.connect("yes_pressed", self, "_on_Yes_pressed")
 	Signals.emit_signal("level_load_requested", get_name())
 	
 	build_level()
@@ -265,7 +266,7 @@ func _on_Hint_pressed():
 	Signals.emit_signal("hint_given")
 
 func _on_FinishedBtn_pressed():
-	$ConfirmationUI.popup_centered()
+	$ConfirmationDialog.popup_centered()
 	Signals.emit_signal("touch_box_toggled")
 
 func _on_Yes_pressed():

@@ -33,6 +33,6 @@ func _points_taken(points):
 		Signals.emit_signal("sound_start_requested", "Battery_DOWN")
 
 func _points_given(points):
-	set_current(-points)
-	if points > 0:
+	if points > 0 and current < 100:
 		Signals.emit_signal("sound_start_requested", "Battery_UP")
+	set_current(-points)
