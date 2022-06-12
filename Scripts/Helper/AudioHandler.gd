@@ -4,7 +4,7 @@ const BUS_LAYOUT: String = "res://default_bus_layout.tres"
 const MASTER_INDEX: int = 0
 const MASTER_NAME: String = "Master"
 const MUSIC_NAME: String = "Music"
-const EFFECTS_NAME: String = "Effects"
+const EFFECTS_NAME: String = "SFX"
 
 var music_index: int
 var effects_index: int
