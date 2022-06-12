@@ -282,7 +282,8 @@ group = ExtResource( 7 )
 text = "Nein"
 
 [node name="Line2D" type="Line2D" parent="."]
-position = Vector2( 50, 300 )
+position = Vector2( 130.494, 300 )
+scale = Vector2( 0.831169, 1 )
 points = PoolVector2Array( 0, 0, 23, 0, 918, 0 )
 width = 3.0
 default_color = Color( 1, 1, 1, 1 )
@@ -293,4 +294,4 @@ points = PoolVector2Array( 0, 0, 0, 494 )
 width = 3.0
 default_color = Color( 1, 1, 1, 1 )
 
-[connection signal="popup_hide" from="." to="." method="_on_ConfirmationDialog_popup_hide"]
+[connection signal="hide" from="." to="." method="_on_ConfirmationDialog_hide"]

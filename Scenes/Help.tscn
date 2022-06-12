@@ -7,11 +7,11 @@
 [sub_resource type="GDScript" id=1]
 
 [node name="Help" type="Control"]
+margin_top = 15.0
 rect_pivot_offset = Vector2( 40, 38 )
 script = ExtResource( 2 )
 
 [node name="HelpWindow" type="AcceptDialog" parent="."]
-visible = true
 margin_left = 397.0
 margin_top = 199.0
 margin_right = 736.0
@@ -22,7 +22,7 @@ dialog_text = "Help text goes there :)"
 
 [node name="Help" type="TextureButton" parent="."]
 margin_right = 80.0
-margin_bottom = 77.0
+margin_bottom = 80.0
 rect_scale = Vector2( 0.65, 0.65 )
 rect_pivot_offset = Vector2( 40, 38 )
 shortcut_in_tooltip = false

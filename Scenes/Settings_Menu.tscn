@@ -36,23 +36,29 @@ margin_bottom = 600.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Background" type="TextureRect" parent="Node2D"]
 margin_right = 1024.0
 margin_bottom = 600.0
 texture = ExtResource( 4 )
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="Node2D"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 120.0
 margin_top = 80.0
-margin_right = -120.0
-margin_bottom = -80.0
+margin_right = 904.0
+margin_bottom = 504.0
 mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
 custom_constants/vseparation = 30
 columns = 2
 
-[node name="Label" type="Label" parent="GridContainer"]
+[node name="Label" type="Label" parent="Node2D/GridContainer"]
 margin_top = 3.0
 margin_right = 390.0
 margin_bottom = 44.0
@@ -60,7 +66,7 @@ mouse_filter = 0
 size_flags_horizontal = 3
 text = "Brightness"
 
-[node name="BrightnessSlider" type="HSlider" parent="GridContainer"]
+[node name="BrightnessSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
 margin_right = 784.0
 margin_bottom = 48.0
@@ -77,13 +83,13 @@ max_value = 1.7
 step = 0.01
 value = 1.0
 
-[node name="Label5" type="Label" parent="GridContainer"]
+[node name="Label5" type="Label" parent="Node2D/GridContainer"]
 margin_top = 81.0
 margin_right = 390.0
 margin_bottom = 122.0
 text = "Contrast"
 
-[node name="ContrastSlider" type="HSlider" parent="GridContainer"]
+[node name="ContrastSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
 margin_top = 78.0
 margin_right = 784.0
@@ -100,14 +106,14 @@ max_value = 1.5
 step = 0.01
 value = 1.0
 
-[node name="Label2" type="Label" parent="GridContainer"]
+[node name="Label2" type="Label" parent="Node2D/GridContainer"]
 margin_top = 159.0
 margin_right = 390.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 text = "Master Sound"
 
-[node name="MasterSlider" type="HSlider" parent="GridContainer"]
+[node name="MasterSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
 margin_top = 156.0
 margin_right = 784.0
@@ -123,13 +129,13 @@ custom_styles/grabber_area = SubResource( 2 )
 min_value = -50.0
 max_value = 50.0
 
-[node name="Label4" type="Label" parent="GridContainer"]
+[node name="Label4" type="Label" parent="Node2D/GridContainer"]
 margin_top = 237.0
 margin_right = 390.0
 margin_bottom = 278.0
 text = "Background Music"
 
-[node name="MusicSlider" type="HSlider" parent="GridContainer"]
+[node name="MusicSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
 margin_top = 234.0
 margin_right = 784.0
@@ -144,14 +150,14 @@ custom_styles/grabber_area = SubResource( 2 )
 min_value = -50.0
 max_value = 50.0
 
-[node name="Label3" type="Label" parent="GridContainer"]
+[node name="Label3" type="Label" parent="Node2D/GridContainer"]
 margin_top = 315.0
 margin_right = 390.0
 margin_bottom = 356.0
 size_flags_horizontal = 3
 text = "Effect Sound"
 
-[node name="EffectSlider" type="HSlider" parent="GridContainer"]
+[node name="EffectSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
 margin_top = 312.0
 margin_right = 784.0
@@ -167,25 +173,25 @@ custom_styles/grabber_area = SubResource( 2 )
 min_value = -50.0
 max_value = 50.0
 
-[node name="Button" type="TextureButton" parent="."]
+[node name="Button" type="TextureButton" parent="Node2D"]
 margin_left = 19.0
 margin_top = 21.0
-margin_right = 49.0
-margin_bottom = 68.0
+margin_right = 69.0
+margin_bottom = 69.0
 rect_scale = Vector2( 0.85, 0.85 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 6 )
 
 [connection signal="popup_hide" from="." to="." method="_on_Popup_popup_hide"]
-[connection signal="mouse_exited" from="GridContainer/BrightnessSlider" to="." method="release_focus"]
-[connection signal="value_changed" from="GridContainer/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
-[connection signal="mouse_exited" from="GridContainer/ContrastSlider" to="." method="release_focus"]
-[connection signal="value_changed" from="GridContainer/ContrastSlider" to="." method="_on_ContrastSlider_value_changed"]
-[connection signal="mouse_exited" from="GridContainer/MasterSlider" to="." method="release_focus"]
-[connection signal="value_changed" from="GridContainer/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
-[connection signal="mouse_exited" from="GridContainer/MusicSlider" to="." method="release_focus"]
-[connection signal="value_changed" from="GridContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
-[connection signal="mouse_exited" from="GridContainer/EffectSlider" to="." method="release_focus"]
-[connection signal="value_changed" from="GridContainer/EffectSlider" to="." method="_on_EffectSlider_value_changed"]
-[connection signal="pressed" from="Button" to="." method="hide"]
+[connection signal="mouse_exited" from="Node2D/GridContainer/BrightnessSlider" to="." method="release_focus"]
+[connection signal="value_changed" from="Node2D/GridContainer/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
+[connection signal="mouse_exited" from="Node2D/GridContainer/ContrastSlider" to="." method="release_focus"]
+[connection signal="value_changed" from="Node2D/GridContainer/ContrastSlider" to="." method="_on_ContrastSlider_value_changed"]
+[connection signal="mouse_exited" from="Node2D/GridContainer/MasterSlider" to="." method="release_focus"]
+[connection signal="value_changed" from="Node2D/GridContainer/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="mouse_exited" from="Node2D/GridContainer/MusicSlider" to="." method="release_focus"]
+[connection signal="value_changed" from="Node2D/GridContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="mouse_exited" from="Node2D/GridContainer/EffectSlider" to="." method="release_focus"]
+[connection signal="value_changed" from="Node2D/GridContainer/EffectSlider" to="." method="_on_EffectSlider_value_changed"]
+[connection signal="pressed" from="Node2D/Button" to="." method="hide"]

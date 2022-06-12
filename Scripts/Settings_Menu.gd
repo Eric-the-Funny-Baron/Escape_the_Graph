@@ -1,5 +1,11 @@
 extends Popup
 
+func _ready():
+	Signals.connect("show_settings", self, "_on_show_settings")
+	
+func _on_show_settings():
+	self.popup()
+
 func _on_BrightnessSlider_value_changed(value):
 	GlobalSettings.update_brightness(value)
 

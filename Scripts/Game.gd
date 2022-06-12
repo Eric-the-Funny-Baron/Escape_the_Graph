@@ -30,16 +30,16 @@ func _ready():
 func _on_level_requested(level_name):
 	var scene_path = "res://Scenes/Level/Level_Instances/" + level_name + ".tscn"
 	current_help = help_data["Level"]
-	$UI/Control/Help/HelpWindow.set_text(current_help)
-	$UI/Control/Help2/HelpWindow.set_text(current_help)
+	$UI/Node2D/Control/VBoxContainer/Help/HelpWindow.set_text(current_help)
+	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Help/HelpWindow.set_text(current_help)
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
 
 func _on_level_hub_requested(level_hub_name):
 	var scene_path = "res://Scenes/LevelHub/LevelHub_Instances/" + level_hub_name + ".tscn"
 	current_help = help_data["Level_Hub"]
-	$UI/Control/Help/HelpWindow.set_text(current_help)
-	$UI/Control/Help2/HelpWindow.set_text(current_help)
+	$UI/Node2D/Control/VBoxContainer/Help/HelpWindow.set_text(current_help)
+	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Help/HelpWindow.set_text(current_help)
 	switch_scene(scene_path)
 	fade_in()
 

@@ -44,7 +44,8 @@ func _check_all():
 		self.hide()
 		Signals.emit_signal("touch_box_toggled")
 
-func _on_ConfirmationDialog_popup_hide():
+
+func _on_ConfirmationDialog_hide():
 	if (first != ""):
 		group1.get_pressed_button().pressed = false
 	if (second != ""):
