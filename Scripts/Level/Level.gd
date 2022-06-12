@@ -106,7 +106,6 @@ func interpolation():
 		solved_optimal = true
 	
 	print(t)
-	print(a)
 	if t == 1: 
 		Signals.emit_signal("points_given", points[2])
 	elif 0.9 <= t && t< 1 : 
@@ -115,7 +114,7 @@ func interpolation():
 		Signals.emit_signal("points_taken", points[1])
 	elif 0.3 <= t && t< 0.6 : 
 		Signals.emit_signal("points_taken", points[2])
-	elif t <= 0 && t< 0.3 : 
+	elif t >= 0 && t< 0.3 : 
 		Signals.emit_signal("points_taken", points[3])
 	elif t == 0 : 
 		Signals.emit_signal("points_taken", points[4])
