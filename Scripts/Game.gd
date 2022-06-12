@@ -17,6 +17,7 @@ func _ready():
 	Signals.connect("level_hub_requested", self, "_on_level_hub_requested")
 	Signals.connect("title_screen_requested", self, "_on_title_screen_requested")
 	Signals.connect("game_over_screen_requested", self, "_on_game_over_screen_requested")
+	Signals.connect("game_won_screen_requested", self, "_on_game_won_screen_requested")
 	Signals.connect("change_visibility", self, "_on_change_visibility")
 	Signals.connect("touch_box_toggled", self, "_on_touch_box_toggled")
 	Signals.connect("level_save_requested", self, "_on_level_save_requested")
@@ -57,6 +58,10 @@ func _on_game_over_screen_requested():
 	switch_scene(scene_path)
 	fade_in()
 	_on_change_visibility("UI")
+
+func _on_game_won_screen_requested():
+	Signals.emit_signal("sound_stop_requested", "BackgroundMusic")
+	var scene_path = "res://Scenes/" # HERE a concrete adress to the Won Scene is needed
 	
 func _on_change_visibility(node_name):
 	yield(get_node("BlendingLayer/BlendingAnimation"), "animation_finished")

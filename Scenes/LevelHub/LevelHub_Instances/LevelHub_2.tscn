@@ -7,3 +7,17 @@
 [node name="Room" parent="." index="1"]
 self_modulate = Color( 0.639216, 0.423529, 0.835294, 1 )
 region_rect = Rect2( 100, 100, 200, 200 )
+
+[node name="LevelLink" parent="." index="2"]
+difficulty = 2
+
+[node name="LevelLink2" parent="." index="3"]
+difficulty = 2
+
+[node name="LevelLink3" parent="." index="4"]
+difficulty = 2
+
+[node name="Next_Room" parent="." index="5"]
+goal = true
+
+[editable path="Previous_Room"]

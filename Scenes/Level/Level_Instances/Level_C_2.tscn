@@ -3,6 +3,7 @@
 [ext_resource path="res://Scenes/Level/Level.tscn" type="PackedScene" id=1]
 
 [node name="Level_C_2" instance=ExtResource( 1 )]
+room_number = 2
 nodes = 12
 edges = 14
 type = 1
