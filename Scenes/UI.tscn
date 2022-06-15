@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 512, 300 )
 
 [node name="Node2D2" type="Node2D" parent="."]
-z_index = -1
+z_index = 3
 
 [node name="ConfirmationDialog" parent="Node2D2" instance=ExtResource( 5 )]
 mouse_filter = 2
