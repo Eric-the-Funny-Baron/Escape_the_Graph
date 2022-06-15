@@ -22,6 +22,7 @@ mouse_filter = 2
 z_index = 1
 
 [node name="SettingsMenu" parent="Node2D" instance=ExtResource( 4 )]
+visible = false
 
 [node name="Control" type="Control" parent="Node2D"]
 margin_bottom = 600.0
@@ -41,18 +42,27 @@ rect_pivot_offset = Vector2( 50, 200 )
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Help" parent="Node2D/Control/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Control2" type="Control" parent="Node2D/Control/VBoxContainer"]
 margin_right = 100.0
-margin_bottom = 100.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Help" parent="Node2D/Control/VBoxContainer/Control2" instance=ExtResource( 2 )]
+margin_left = -4.00002
+margin_top = 4.0
+margin_right = 96.0
+margin_bottom = 104.0
 rect_min_size = Vector2( 0, 100 )
+rect_rotation = 180.0
 rect_pivot_offset = Vector2( 41, 41 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="Node2D/Control/VBoxContainer"]
-margin_top = 104.0
+margin_top = 100.0
 margin_right = 100.0
-margin_bottom = 304.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 100, 200 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -67,19 +77,20 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Settings" parent="Node2D/Control/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 308.0
+margin_top = 304.0
 margin_right = 100.0
 margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Node2D"]
+margin_left = 904.0
 margin_right = 1024.0
 margin_bottom = 600.0
 alignment = 1
 
 [node name="Control2" type="Control" parent="Node2D/HBoxContainer"]
-margin_right = 1024.0
+margin_right = 120.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 
@@ -95,18 +106,27 @@ rect_pivot_offset = Vector2( 50, 200 )
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Help" parent="Node2D/HBoxContainer/Control2/VBoxContainer2" instance=ExtResource( 2 )]
+[node name="Control2" type="Control" parent="Node2D/HBoxContainer/Control2/VBoxContainer2"]
 margin_right = 100.0
-margin_bottom = 100.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 3
+
+[node name="Help" parent="Node2D/HBoxContainer/Control2/VBoxContainer2/Control2" instance=ExtResource( 2 )]
+margin_left = -4.0
+margin_top = 4.0
+margin_right = 96.0
+margin_bottom = 104.0
 rect_min_size = Vector2( 0, 100 )
+rect_rotation = 180.0
 rect_pivot_offset = Vector2( 41, 41 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="Node2D/HBoxContainer/Control2/VBoxContainer2"]
-margin_top = 104.0
+margin_top = 100.0
 margin_right = 100.0
-margin_bottom = 304.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 100, 200 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -121,7 +141,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Settings" parent="Node2D/HBoxContainer/Control2/VBoxContainer2" instance=ExtResource( 3 )]
-margin_top = 308.0
+margin_top = 304.0
 margin_right = 100.0
 margin_bottom = 400.0
 size_flags_horizontal = 3

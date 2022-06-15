@@ -94,8 +94,8 @@ func _on_level_status_requested(level_name, level_hub_name, level_link):
 
 func _on_help_update_requested(help_name):
 	current_help = help_data[help_name]
-	$UI/Node2D/Control/VBoxContainer/Help/HelpWindow.set_text(current_help)
-	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Help/HelpWindow.set_text(current_help)
+	$UI/Node2D/Control/VBoxContainer/Control2/Help/HelpWindow.set_text(current_help)
+	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Control2/Help/HelpWindow.set_text(current_help)
 
 func switch_scene(scene_path):
 	old_scene = get_tree().get_nodes_in_group("Dynamic_Scene")
