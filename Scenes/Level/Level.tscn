@@ -38,9 +38,9 @@ font_data = ExtResource( 4 )
 
 [node name="Level" type="Node2D" groups=["Dynamic_Scene"]]
 script = ExtResource( 1 )
-margin = 100.0
-nodes = 12
-edges = 15
+margin = 160.0
+nodes = 6
+edges = 12
 minimal_weight = 1.0
 
 [node name="Hint" type="Button" parent="."]
