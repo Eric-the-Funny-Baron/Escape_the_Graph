@@ -48,9 +48,11 @@ func _check_all():
 
 func _on_confirmation_requested():
 	self.show()
+	Signals.emit_signal("help_update_requested", "Level_Confirmation")
 
 
 func _on_ConfirmationDialog_hide():
+	Signals.emit_signal("help_update_requested", "Level")
 	if (first != ""):
 		group1.get_pressed_button().pressed = false
 	if (second != ""):
