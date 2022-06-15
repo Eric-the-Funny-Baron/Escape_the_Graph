@@ -11,7 +11,9 @@ margin_top = 15.0
 rect_pivot_offset = Vector2( 40, 38 )
 script = ExtResource( 2 )
 
-[node name="HelpWindow" type="AcceptDialog" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="HelpWindow" type="AcceptDialog" parent="Node2D"]
 margin_left = 397.0
 margin_top = 199.0
 margin_right = 736.0
@@ -20,9 +22,11 @@ mouse_default_cursor_shape = 2
 window_title = "Help!"
 dialog_text = "Help text goes there :)"
 
-[node name="Help" type="TextureButton" parent="."]
-margin_right = 80.0
-margin_bottom = 80.0
+[node name="Help" type="TextureButton" parent="Node2D"]
+margin_left = 14.0
+margin_top = 13.3
+margin_right = 94.0
+margin_bottom = 93.3
 rect_scale = Vector2( 0.65, 0.65 )
 rect_pivot_offset = Vector2( 40, 38 )
 shortcut_in_tooltip = false
@@ -31,5 +35,5 @@ texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 3 )
 script = SubResource( 1 )
 
-[connection signal="popup_hide" from="HelpWindow" to="." method="_on_HelpWindow_popup_hide"]
-[connection signal="pressed" from="Help" to="." method="_on_Button_pressed"]
+[connection signal="popup_hide" from="Node2D/HelpWindow" to="." method="_on_HelpWindow_popup_hide"]
+[connection signal="pressed" from="Node2D/Help" to="." method="_on_Button_pressed"]

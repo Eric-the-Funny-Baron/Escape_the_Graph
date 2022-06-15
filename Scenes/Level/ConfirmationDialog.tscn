@@ -33,6 +33,7 @@ group4 = ExtResource( 7 )
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="GridContainer" type="GridContainer" parent="."]

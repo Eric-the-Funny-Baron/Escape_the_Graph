@@ -266,11 +266,10 @@ func _on_Hint_pressed():
 	Signals.emit_signal("hint_given")
 
 func _on_FinishedBtn_pressed():
-	$ConfirmationDialog.show()
+	Signals.emit_signal("confirmation_requested")
 	Signals.emit_signal("touch_box_toggled")
 
 func _on_Yes_pressed():
-	$ConfirmationDialog.hide()
 	interpolation()
 	solved = true
 	solve_num += 1

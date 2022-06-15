@@ -1,7 +1,7 @@
 extends Node
 
 func _on_Button_pressed():
-	$HelpWindow.popup()
+	$Node2D/HelpWindow.popup()
 	Signals.emit_signal("touch_box_toggled")
 
 
