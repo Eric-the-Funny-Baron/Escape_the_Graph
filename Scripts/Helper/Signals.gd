@@ -23,6 +23,8 @@ signal change_visibility(node_name)
 signal sound_start_requested(sound_name)
 signal sound_stop_requested(sound_name)
 signal touch_box_toggled
+signal help_update_requested(help_name)
+signal confirmation_requested
 signal yes_pressed
 signal show_settings
 signal level_save_requested(level_name, solved, solve_num, solved_optimal)

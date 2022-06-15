@@ -35,7 +35,9 @@ func _ready():
 	touch_box.set_point_cloud([start_up, start_down, end_down, end_up])
 	$TouchBox.set_shape(touch_box)
 	# ==========================================================================
-	$ContainerLayer.position =  start_point + direction_vector * 0.5
+	$ContainerLayer.position =  start_point + direction_vector * (0.5 + rand_range(-0.15, 0.15))
+	#$ContainerLayer.position += direction_vector.normalized().rotated(0.5*PI) * $ContainerLayer/WeightValue.rect_size.y * 0.5
+	var rotation = Vector2(1.0, 0).angle_to(direction_vector.normalized())
 	if $ContainerLayer.position.y < get_viewport_rect().size.y * 0.5:
 		$ContainerLayer.rotation_degrees = 180
 

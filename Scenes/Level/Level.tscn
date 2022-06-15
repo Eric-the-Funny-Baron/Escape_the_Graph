@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Level/ConfirmationDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Graphics/Shader/TriangleTexture.gdshader" type="Shader" id=5]
 
@@ -39,9 +38,9 @@ font_data = ExtResource( 4 )
 
 [node name="Level" type="Node2D" groups=["Dynamic_Scene"]]
 script = ExtResource( 1 )
-margin = 100.0
-nodes = 4
-edges = 4
+margin = 160.0
+nodes = 6
+edges = 12
 minimal_weight = 1.0
 
 [node name="Hint" type="Button" parent="."]
@@ -82,8 +81,6 @@ theme = SubResource( 10 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Fertig"
-
-[node name="ConfirmationDialog" parent="." instance=ExtResource( 2 )]
 
 [connection signal="pressed" from="Hint" to="." method="_on_Hint_pressed"]
 [connection signal="pressed" from="FinishedBtn" to="." method="_on_FinishedBtn_pressed"]

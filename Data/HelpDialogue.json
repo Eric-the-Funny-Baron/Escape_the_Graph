@@ -12,5 +12,10 @@
 		Raum zu gelangen, müsst ihr alle Level im Raum bestehen. Danach öffnet sich die Tür zum nächsten Raum.
 		
 		Wenn ihr ein Level zum wiederholten Male spielt, wird das Belohnungs- und Strafmaß verringert. Schafft
-		ihr es, ein Level optimal zu lösen, gibt es beim wiederholten Spielen des Levels keine Belohung bzw. Strafe mehr."	
+		ihr es, ein Level optimal zu lösen, gibt es beim wiederholten Spielen des Levels keine Belohung bzw. Strafe mehr.",
+	
+	"Level_Confirmation" :
+		"Um das Level abzuschließen, müsst ihr alle auf Ja tippen. Tippt einer auf Nein, hat diese Person die Lösung wohlmöglich
+		nicht ganz verstanden. In dem Fall solltet ihr die Lösung nochmal gemeinsdam besprechen und zu einem späteren Zeitpunkt
+		die Auswahl dann bestätigen."
 }

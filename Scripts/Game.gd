@@ -20,6 +20,7 @@ func _ready():
 	Signals.connect("game_won_screen_requested", self, "_on_game_won_screen_requested")
 	Signals.connect("change_visibility", self, "_on_change_visibility")
 	Signals.connect("touch_box_toggled", self, "_on_touch_box_toggled")
+	Signals.connect("help_update_requested", self, "_on_help_update_requested")
 	Signals.connect("level_save_requested", self, "_on_level_save_requested")
 	Signals.connect("level_load_requested", self, "_on_level_load_requested")
 	Signals.connect("level_status_requested", self, "_on_level_status_requested")
@@ -30,17 +31,13 @@ func _ready():
 
 func _on_level_requested(level_name):
 	var scene_path = "res://Scenes/Level/Level_Instances/" + level_name + ".tscn"
-	current_help = help_data["Level"]
-	$UI/Node2D/Control/VBoxContainer/Help/HelpWindow.set_text(current_help)
-	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Help/HelpWindow.set_text(current_help)
+	_on_help_update_requested("Level")
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
 
 func _on_level_hub_requested(level_hub_name):
 	var scene_path = "res://Scenes/LevelHub/LevelHub_Instances/" + level_hub_name + ".tscn"
-	current_help = help_data["Level_Hub"]
-	$UI/Node2D/Control/VBoxContainer/Help/HelpWindow.set_text(current_help)
-	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Help/HelpWindow.set_text(current_help)
+	_on_help_update_requested("Level_Hub")
 	switch_scene(scene_path)
 	fade_in()
 
@@ -94,6 +91,11 @@ func _on_level_status_requested(level_name, level_hub_name, level_link):
 	if level_name in level_log:
 		var link = get_node(level_hub_name).get_node(level_link)
 		link.solved = level_log[level_name]["solved"]
+
+func _on_help_update_requested(help_name):
+	current_help = help_data[help_name]
+	$UI/Node2D/Control/VBoxContainer/Help/HelpWindow.set_text(current_help)
+	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Help/HelpWindow.set_text(current_help)
 
 func switch_scene(scene_path):
 	old_scene = get_tree().get_nodes_in_group("Dynamic_Scene")
