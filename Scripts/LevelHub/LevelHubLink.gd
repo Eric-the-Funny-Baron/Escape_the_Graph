@@ -2,12 +2,15 @@ extends Node2D
 
 export var room : int = 1
 export var goal : bool = false
+export var active : bool = true
 
 var level_hub_name = ""
 var open : bool = false
 
 func _ready():
 	level_hub_name = "LevelHub_" + String(room)
+	$Door.frame = 1
+	if active == false: $TouchBox.queue_free()
 	
 
 func _on_TouchBox_pressed():
@@ -17,4 +20,4 @@ func _on_TouchBox_pressed():
 
 func set_as_opened():
 	open = true
-	$LevelHubLinkGraphic.color = Color(1, 1, 1);
+	if active: $Door.frame = 0

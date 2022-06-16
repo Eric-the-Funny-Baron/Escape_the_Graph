@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Graphics/Shader/Stars.tres" type="Shader" id=1]
-[ext_resource path="res://Assets/Graphics/LevelHub_Room.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/LevelHub_Room_Layer.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/LevelHub/LevelLink.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/LevelHub/LevelHub.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/LevelHub/LevelHubLink.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.10625, 0.51875, 1 )
@@ -22,12 +21,6 @@ shader_param/gradient = SubResource( 4 )
 
 [sub_resource type="ProxyTexture" id=2]
 
-[sub_resource type="DynamicFont" id=5]
-size = 23
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 6 )
-
 [node name="LevelHub" type="Node2D" groups=["Dynamic_Scene"]]
 script = ExtResource( 4 )
 
@@ -35,6 +28,7 @@ script = ExtResource( 4 )
 material = SubResource( 1 )
 position = Vector2( 512, 511 )
 scale = Vector2( 1024, 1024 )
+z_index = -2
 texture = SubResource( 2 )
 
 [node name="Room" type="Sprite" parent="."]
@@ -42,14 +36,17 @@ position = Vector2( 512, 300 )
 texture = ExtResource( 2 )
 
 [node name="LevelLink" parent="." instance=ExtResource( 3 )]
-position = Vector2( 314, 218 )
+position = Vector2( 438, 190 )
+z_index = -1
 
 [node name="LevelLink2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 525, 402 )
+position = Vector2( 598, 383 )
+z_index = -1
 type = 1
 
 [node name="LevelLink3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 729, 217 )
+position = Vector2( 418, 477 )
+z_index = -1
 type = 2
 
 [node name="Next_Room" parent="." instance=ExtResource( 5 )]
@@ -58,12 +55,7 @@ room = 2
 
 [node name="Previous_Room" parent="." instance=ExtResource( 5 )]
 position = Vector2( 892, 299 )
-rotation = 3.14159
-
-[node name="Label" parent="Previous_Room" index="1"]
-custom_fonts/font = SubResource( 5 )
-text = "Previous
-Room"
+scale = Vector2( -1, 1 )
 
 [connection signal="ready" from="Next_Room" to="." method="_on_Next_Room_ready"]
 
