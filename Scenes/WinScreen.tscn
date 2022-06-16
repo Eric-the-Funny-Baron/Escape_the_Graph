@@ -28,7 +28,7 @@ texture = ExtResource( 2 )
 
 [node name="StarBackground" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 532, 309 )
+position = Vector2( 511, 304 )
 scale = Vector2( 1024, 1024 )
 z_index = -2
 texture = SubResource( 2 )
