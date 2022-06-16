@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Graphics/Shader/Stars_Corridor.tres" type="Shader" id=1]
+[ext_resource path="res://Assets/Graphics/Cockpit.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/WinScreen.gd" type="Script" id=3]
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.10625, 0.51875, 1 )
+colors = PoolColorArray( 0.0442505, 0, 0.0976563, 1, 0.0982416, 0.00961304, 0.273438, 1, 0.359375, 0, 1, 1, 0.792969, 0.990295, 1, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/SIZE = 75.0
+shader_param/VELOCITY = 5.0
+shader_param/gradient = SubResource( 4 )
+
+[sub_resource type="ProxyTexture" id=2]
+
+[node name="WinScreen" type="CanvasLayer" groups=["Dynamic_Scene"]]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+texture = ExtResource( 2 )
+
+[node name="StarBackground" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 532, 309 )
+scale = Vector2( 1024, 1024 )
+z_index = -2
+texture = SubResource( 2 )

@@ -58,8 +58,11 @@ func _on_game_over_screen_requested():
 
 func _on_game_won_screen_requested():
 	Signals.emit_signal("sound_stop_requested", "BackgroundMusic")
-	Signals.emit_signal("sound_start_requested", "Win_Jingle")
-	var scene_path = "res://Scenes/" # HERE a concrete adress to the Won Scene is needed
+	var scene_path = "res://Scenes/WinScreen.tscn" # HERE a concrete adress to the Won Scene is needed
+	level_log.clear() # all progress is deleted
+	switch_scene(scene_path)
+	fade_in()
+	_on_change_visibility("UI")
 	
 func _on_change_visibility(node_name):
 	yield(get_node("BlendingLayer/BlendingAnimation"), "animation_finished")

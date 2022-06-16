@@ -1,0 +1,79 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float SIZE;
+uniform float VELOCITY;
+uniform sampler2D gradient: hint_black;
+
+const float PI = 3.14159265359;
+
+vec2 random2( vec2 p ) {
+    return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.5453);
+}
+
+
+vec3 voronoi(vec2 uv, float size) {
+    vec2 uvBuffer = uv;
+    vec3 outputColor = vec3(0.0, 0.0, 0.0);
+    float m_dist = 1.0;
+
+    uvBuffer *= size;
+
+    vec2 i_uv = floor(uvBuffer);
+    vec2 f_uv = fract(uvBuffer);
+
+    vec2 point = random2(f_uv);
+
+    vec2 diff = point - f_uv;
+    float dist = length(diff);
+
+    for (int y= -1; y <= 1; y++) {
+        for (int x= -1; x <= 1; x++) {
+            // Neighbor place in the grid
+            vec2 neighbor = vec2(float(x),float(y));
+
+            // Random position from current + neighbor place in the grid
+            point = random2(i_uv + neighbor);
+
+			// Animate the point
+            //point = 0.5 + 0.5*sin(TIME + 2.0*PI*point);
+
+			// Vector between the pixel and the point
+            diff = neighbor + point - f_uv;
+
+            // Distance to the point
+            dist = length(diff);
+
+            // Keep the closer distance
+            m_dist = min(m_dist, dist);
+        }
+    }
+
+    // Draw the min distance (distance field)
+    outputColor += m_dist;
+
+    return outputColor;
+}
+
+void fragment(){
+    vec2 uv = UV;
+    vec3 color = vec3(0.0, 0.0, 0.0);
+    float velocity = VELOCITY;
+    float size = SIZE;
+
+    vec2 uv_normal = uv;
+	
+	uv.x = distance(UV, vec2(0.5, 0.45));
+	uv.y = distance(UV, vec2(0.5));
+
+    uv.x -= (TIME/size) * velocity;
+	uv.y -= (TIME/size) * velocity;
+
+    color = 1.0 - voronoi(uv, size);
+	color *= 1.0 - voronoi(uv, size*0.5) * 0.1;
+	color = smoothstep(0.9, 0.95, color);
+
+    COLOR = texture(gradient, vec2(color.r, 0.0));
+}"
