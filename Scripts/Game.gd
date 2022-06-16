@@ -58,6 +58,7 @@ func _on_game_over_screen_requested():
 
 func _on_game_won_screen_requested():
 	Signals.emit_signal("sound_stop_requested", "BackgroundMusic")
+	Signals.emit_signal("sound_start_requested", "Win_Jingle")
 	var scene_path = "res://Scenes/" # HERE a concrete adress to the Won Scene is needed
 	
 func _on_change_visibility(node_name):
