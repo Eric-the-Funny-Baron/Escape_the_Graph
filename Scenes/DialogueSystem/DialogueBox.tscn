@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://default_theme.tres" type="Theme" id=2]
+[ext_resource path="res://Scripts/DialogueSystem/DialogueBox.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 17
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "DisplayBox"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "DisplayText"
+tracks/0/type = "value"
+tracks/0/path = NodePath("DialogueText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[node name="DialogueBox" type="Control" groups=["DialogueBox"]]
+anchor_top = 0.007
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.2
+margin_right = -496.0
+margin_bottom = -420.0
+rect_pivot_offset = Vector2( 264, 92 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2( 264, 88 )
+scale = Vector2( 1.94118, 1.27778 )
+color = Color( 0.67451, 0.278431, 0.666667, 1 )
+polygon = PoolVector2Array( -136, -72, 136, -72, 136, 72, -136, 72 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="InnerBox" type="Polygon2D" parent="."]
+position = Vector2( 264, 88 )
+scale = Vector2( 2, 1.3125 )
+color = Color( 0.117647, 0.109804, 0.25098, 1 )
+polygon = PoolVector2Array( -128, -64, 128, -64, 128, 64, -128, 64 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DialogueText" type="RichTextLabel" parent="."]
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 512.0
+margin_bottom = 168.0
+rect_pivot_offset = Vector2( 248, 80 )
+theme = ExtResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Hallo, ich bin ein Test-Text. Hier kommen später die ganzen Dialoge der KI rein. Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla B"
+scroll_active = false
+
+[node name="BoxAnimations" type="AnimationPlayer" parent="."]
+anims/DisplayBox = SubResource( 3 )
+
+[node name="TextAnimations" type="AnimationPlayer" parent="."]
+anims/DisplayText = SubResource( 2 )
