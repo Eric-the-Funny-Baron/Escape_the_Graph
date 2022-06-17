@@ -7,15 +7,15 @@
 [ext_resource path="res://Scenes/LevelHub/LevelHubLink.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.10625, 0.51875, 1 )
-colors = PoolColorArray( 0.0442505, 0, 0.0976563, 1, 0.0982416, 0.00961304, 0.273438, 1, 0.359375, 0, 1, 1, 0.792969, 0.990295, 1, 1 )
+offsets = PoolRealArray( 0, 0.200637, 0.621019, 1 )
+colors = PoolColorArray( 0.0520096, 0.0404663, 0.132813, 1, 0.196078, 0.184314, 0.364706, 1, 0.447059, 0.0352941, 0.717647, 1, 0.951661, 0.929688, 1, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
-shader_param/SIZE = 50.0
+shader_param/SIZE = 40.0
 shader_param/VELOCITY = 0.5
 shader_param/gradient = SubResource( 4 )
 
@@ -26,7 +26,7 @@ script = ExtResource( 4 )
 
 [node name="StarBackground" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 512, 511 )
+position = Vector2( 512, 471 )
 scale = Vector2( 1024, 1024 )
 z_index = -2
 texture = SubResource( 2 )
