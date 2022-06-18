@@ -33,5 +33,22 @@
 		{
 			"001": "In einigen Räumen kann es zu Sauerstoffmangel gekommen sein.",
 			"002": "Findet den Weg zur Zentrale, bei dem ihr mit der größten Wahrscheinlichkeit keine Probleme mit Sauerstoffmängel haben werdet."
+		},
+	"Level_help" : 
+		{
+			"001": "Um ein Level abzuschließen, müsst ihr vom Startpunkt aus zum Ziel gelangen. Hierzu müsst ihr vom aktiven Punkt in rot eine Kante auswählen, indem ihr sie antippt. Von dort aus wird das gleiche Vorgehen bis zum Ziel wiederholt.", 
+			"002": "Um einen Schritt rückgängig zu machen, müsst ihr nochmals auf die gerade aktiverte Kante tippen. Wenn ihr das Ziel erreicht habt. Könnt ihr auf den Fertig-Button klicke, um das Level abzuschließen."
+		},
+	
+	"Level_Hub_help" :
+		{
+			"001": "Um das Spiel zu gewinnen, müsst ihr bis zum letzten Raum im Raumschiff gelangen. Um zum nächsten Raum zu gelangen, müsst ihr alle Level im Raum bestehen. Danach öffnet sich die Tür zum nächsten Raum.",
+			"002": "Wenn ihr ein Level zum wiederholten Male spielt, wird das Belohnungs- und Strafmaß verringert. Schafft ihr es, ein Level optimal zu lösen, gibt es beim wiederholten Spielen des Levels keine Belohung bzw. Strafe mehr."
+		},
+	
+	"Level_Confirmation_help" :
+		{
+			"001": "Um das Level abzuschließen, müsst ihr alle auf Ja tippen. Tippt einer auf Nein, hat diese Person die Lösung wohlmöglich nicht ganz verstanden.",
+			"002": "In dem Fall solltet ihr die Lösung nochmal gemeinsam besprechen und zu einem späteren Zeitpunkt die Auswahl dann bestätigen."
 		}
 }

@@ -31,7 +31,7 @@ func _ready():
 
 func _on_level_requested(level_name):
 	var scene_path = "res://Scenes/Level/Level_Instances/" + level_name + ".tscn"
-	_on_help_update_requested("Level")
+	_on_help_update_requested("Level_help")
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
 	yield($BlendingLayer/BlendingAnimation,"animation_finished")
@@ -39,7 +39,7 @@ func _on_level_requested(level_name):
 
 func _on_level_hub_requested(level_hub_name):
 	var scene_path = "res://Scenes/LevelHub/LevelHub_Instances/" + level_hub_name + ".tscn"
-	_on_help_update_requested("Level_Hub")
+	_on_help_update_requested("Level_Hub_help")
 	switch_scene(scene_path)
 	fade_in()
 
@@ -99,9 +99,8 @@ func _on_level_status_requested(level_name, level_hub_name, level_link):
 		link.solved = level_log[level_name]["solved"]
 
 func _on_help_update_requested(help_name):
-	current_help = help_data[help_name]
-	$UI/Node2D/Control/VBoxContainer/Control2/Help/HelpWindow.set_text(current_help)
-	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Control2/Help/HelpWindow.set_text(current_help)
+	$UI/Node2D/Control/VBoxContainer/Control2/Help.help_name = help_name
+	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Control2/Help.help_name = help_name
 
 func switch_scene(scene_path):
 	old_scene = get_tree().get_nodes_in_group("Dynamic_Scene")

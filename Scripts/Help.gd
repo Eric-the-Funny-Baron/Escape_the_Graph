@@ -1,12 +1,11 @@
 extends Node
 
 var active : bool = true
+var help_name = ""
 
 func _on_Button_pressed():
 	if active == false: return
-	$HelpWindow
-	$HelpWindow.popup()
-	Signals.emit_signal("touch_box_toggled")
+	Signals.emit_signal("dialogue_opened", help_name)
 	
 
 func toggle_active():
