@@ -53,6 +53,6 @@
 		},
 	"Level_Evaluation" :
 		{
-			"001": "Optimaler Wert: %s \nEuer Wert: %s"
+			"001": "Optimaler Wert: %s \n\nEuer Wert: %s"
 		}
 }
