@@ -34,6 +34,8 @@ func _on_level_requested(level_name):
 	_on_help_update_requested("Level")
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
+	yield($BlendingLayer/BlendingAnimation,"animation_finished")
+	Signals.emit_signal("dialogue_opened", level_name)
 
 func _on_level_hub_requested(level_hub_name):
 	var scene_path = "res://Scenes/LevelHub/LevelHub_Instances/" + level_hub_name + ".tscn"

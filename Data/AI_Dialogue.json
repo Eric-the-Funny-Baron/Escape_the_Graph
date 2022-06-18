@@ -1,0 +1,37 @@
+{
+	"Intro_Scene" :
+		{
+			"001" : "Hallo, Crew. Es meldet sich die KI des Raumschiffs. Leider gab es aufgrund von technischen Problemen ein Shut-Down.",
+			"002" : "Damit sind nun alle Türen verriegelt und der Antrieb des Raumschiffs ist deaktiviert. Zurzeit sind nur sehr wenige Systeme online. Ich bin eines dieser Systeme.",
+			"003" : "Es folgt nun die Anweisungsbeschreibung: Kümmert euch um die betroffenen Systeme, um die Türen zu öffnen, um zum Cockpit zu gelangen.",
+			"004" : "Dort könnt ihr dann das Schiff wie gewohnt auf Kurs bringen und die Sauerstoff-Generation wieder herstellen.",
+			"005" : "Um die Probleme in den Bereichen zu lösen, könnt ihr die weiß leuchtenen Bedienelemente nutzen.",
+			"006" : "Ihr solltet euch für die Probleme eine effektive Lösung überlegen, damit euch die Energie bzw. der Sauerstoff nicht ausgeht.",
+			"007" : "Viel Glück..."
+		},
+	"Level_S_1" :
+		{
+			"001": "Auf der anderen Seite der Tür befindet sich ein Roboter, der euch helfen kann die Tür zu öffnen. Helft ihm, den kürzesten Weg zur Tür zu finden."
+		},
+	"Level_C_1" :
+		{
+			"001": "Ihr müsst durch eine Reihe von verzweigten, engen Lüftungsschächten des Raumschiffes kriechen. Findet die Route, die euch am meisten Platz verschaft."
+		},
+	"Level_R_1" :
+		{
+			"001": "Es muss ein Schloss mit Kode geknackt werden, findet den Weg durch das Sicherheitssystem, was mit größter Wahrscheinlichkeit geknackt werden kann."
+		},
+	"Level_S_2" :
+		{
+			"001": "Um die Tür zu öffnen, müsst ihr leider Teile der Tür kaputt machen. Erzeugt einen Riss, der so kurz wie möglich ist."
+		},
+	"Level_C_2" :
+		{
+			"001": "Ihr müsst das System mit Notenergie versorgen. Dafür solltet ihr Leitungen mit möglichst großer Leitkapazität wählen. Wie versorgt ihr das System möglichst gut?"
+		},
+	"Level_R_2" :
+		{
+			"001": "In einigen Räumen kann es zu Sauerstoffmangel gekommen sein.",
+			"002": "Findet den Weg zur Zentrale, bei dem ihr mit der größten Wahrscheinlichkeit keine Probleme mit Sauerstoffmängel haben werdet."
+		}
+}

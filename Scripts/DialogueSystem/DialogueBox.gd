@@ -1,8 +1,7 @@
 extends Control
 
 func _ready():
-	display_box()
-	display_text()
+	pass
 
 func set_text(text:String):
 	$DialogueText.text = text

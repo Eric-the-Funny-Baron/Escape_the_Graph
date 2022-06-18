@@ -108,3 +108,5 @@ pause_mode = 2
 [connection signal="animation_finished" from="BlendingLayer/BlendingAnimation" to="." method="_on_BlendingAnimation_animation_finished"]
 
 [editable path="UI"]
+[editable path="UI/Node2D3/DialogueScene"]
+[editable path="UI/Node2D3/DialogueScene/VBoxContainer/MarginContainer2/DialogueBox"]
