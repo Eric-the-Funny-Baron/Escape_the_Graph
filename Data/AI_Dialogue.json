@@ -50,5 +50,9 @@
 		{
 			"001": "Um das Level abzuschließen, müsst ihr alle auf Ja tippen. Tippt einer auf Nein, hat diese Person die Lösung wohlmöglich nicht ganz verstanden.",
 			"002": "In dem Fall solltet ihr die Lösung nochmal gemeinsam besprechen und zu einem späteren Zeitpunkt die Auswahl dann bestätigen."
+		},
+	"Level_Evaluation" :
+		{
+			"001": "Optimaler Wert: %s \nEuer Wert: %s"
 		}
 }

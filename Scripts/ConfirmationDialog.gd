@@ -44,11 +44,11 @@ func _check_all():
 		pass
 	else:
 		self.hide()
-		Signals.emit_signal("touch_box_toggled")
+		Signals.emit_signal("no_pressed")
 
 func _on_confirmation_requested():
 	self.show()
-	Signals.emit_signal("help_update_requested", "Level_Confirmation_help")
+	Signals.emit_signal("help_update_requested", "Level_Confirmation")
 
 
 func _on_ConfirmationDialog_hide():

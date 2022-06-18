@@ -54,6 +54,7 @@ func _ready():
 
 	Signals.connect("edge_status_changed", self, "_on_Edge_status_changed")
 	Signals.connect("yes_pressed", self, "_on_Yes_pressed")
+	Signals.connect("no_pressed", self, "_on_No_pressed")
 	Signals.emit_signal("level_load_requested", get_name())
 	
 	build_level()
@@ -268,15 +269,20 @@ func _on_Hint_pressed():
 func _on_FinishedBtn_pressed():
 	Signals.emit_signal("confirmation_requested")
 	Signals.emit_signal("touch_box_toggled")
+	$Hint.disabled = true
+	$FinishedBtn.disabled = true
 
 func _on_Yes_pressed():
 	interpolation()
 	solved = true
 	solve_num += 1
 	Signals.emit_signal("level_save_requested", get_name(), solved, solve_num, solved_optimal)
+	Signals.emit_signal("evaluation_requested", best_weight, get_own_path_weight())
+	yield(Signals, "dialog_finished")
 	Signals.emit_signal("level_hub_requested", "LevelHub_" + String(room_number))
 
 
 func _on_No_pressed():
-	$ConfirmationDialog.hide()
+	$Hint.disabled = false
+	$FinishedBtn.disabled = false
 	Signals.emit_signal("touch_box_toggled")
