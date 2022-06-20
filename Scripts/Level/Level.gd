@@ -58,6 +58,12 @@ func _ready():
 	Signals.emit_signal("level_load_requested", get_name())
 	
 	build_level()
+	
+	$Hint.disabled = true
+	$FinishedBtn.disabled = true
+	yield(Signals, "dialog_finished")
+	$Hint.disabled = false
+	$FinishedBtn.disabled = false
 
 func build_level():
 	
