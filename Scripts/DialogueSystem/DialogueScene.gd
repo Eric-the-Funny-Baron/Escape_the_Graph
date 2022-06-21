@@ -70,7 +70,6 @@ func set_new_dialog():
 func _on_evaluation_requested(best_value, value):
 	var scene_name = "Level_Evaluation"
 	current_dialogue_scene = dialogue_scenes[scene_name]
-	Signals.emit_signal("touch_box_toggled")
 	for e in get_tree().get_nodes_in_group("UI_Buttons"):
 		e.toggle_active()
 	visible = true

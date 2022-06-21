@@ -48,7 +48,7 @@ func _check_all():
 
 func _on_confirmation_requested():
 	self.show()
-	Signals.emit_signal("help_update_requested", "Level_Confirmation")
+	Signals.emit_signal("help_update_requested", "Level_Confirmation_help")
 
 
 func _on_ConfirmationDialog_hide():
