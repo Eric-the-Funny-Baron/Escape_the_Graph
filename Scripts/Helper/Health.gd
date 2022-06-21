@@ -21,6 +21,7 @@ func set_current(change):
 	
 	if (current == 0):
 		current = max_amount
+		yield(Signals, "game_over_lock_released")
 		Signals.emit_signal("game_over_screen_requested")
 
 func _on_hint_given():

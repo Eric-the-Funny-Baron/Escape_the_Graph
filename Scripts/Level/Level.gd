@@ -271,6 +271,7 @@ func _on_Hint_pressed():
 		$Hint.disabled = true # prevents unneccesary hint getting
 	
 	Signals.emit_signal("hint_given")
+	Signals.emit_signal("game_over_lock_released")
 
 func _on_FinishedBtn_pressed():
 	Signals.emit_signal("confirmation_requested")
@@ -286,6 +287,7 @@ func _on_Yes_pressed():
 	Signals.emit_signal("evaluation_requested", best_weight, get_own_path_weight())
 	yield(Signals, "dialog_finished")
 	Signals.emit_signal("level_hub_requested", "LevelHub_" + String(room_number))
+	Signals.emit_signal("game_over_lock_released")
 
 
 func _on_No_pressed():

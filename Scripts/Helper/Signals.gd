@@ -19,6 +19,7 @@ signal level_hub_requested(level_hub_name)
 signal title_screen_requested(should_fade_out)
 signal game_over_screen_requested
 signal game_won_screen_requested
+signal game_over_lock_released
 signal change_visibility(node_name)
 signal sound_start_requested(sound_name)
 signal sound_stop_requested(sound_name)

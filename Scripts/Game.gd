@@ -49,6 +49,7 @@ func _on_title_screen_requested(should_fade_out:bool):
 	switch_scene(scene_path)
 	if should_fade_out: fade_in()
 	fade_out()
+	$UI.hide()
 
 func _on_game_over_screen_requested():
 	Signals.emit_signal("sound_stop_requested", "BackgroundMusic")
