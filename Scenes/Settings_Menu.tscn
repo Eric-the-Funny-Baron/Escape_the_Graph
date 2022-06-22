@@ -31,7 +31,6 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="Popup" type="Popup"]
-visible = true
 margin_right = 1024.0
 margin_bottom = 600.0
 theme = ExtResource( 1 )
@@ -66,7 +65,7 @@ margin_right = 390.0
 margin_bottom = 44.0
 mouse_filter = 0
 size_flags_horizontal = 3
-text = "Brightness"
+text = "Helligkeit"
 
 [node name="BrightnessSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
@@ -89,7 +88,7 @@ value = 1.0
 margin_top = 81.0
 margin_right = 390.0
 margin_bottom = 122.0
-text = "Contrast"
+text = "Kontrast"
 
 [node name="ContrastSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
@@ -113,7 +112,7 @@ margin_top = 159.0
 margin_right = 390.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
-text = "Master Sound"
+text = "Lautstärke"
 
 [node name="MasterSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
@@ -135,7 +134,7 @@ max_value = 50.0
 margin_top = 237.0
 margin_right = 390.0
 margin_bottom = 278.0
-text = "Background Music"
+text = "Musik"
 
 [node name="MusicSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
@@ -157,7 +156,7 @@ margin_top = 315.0
 margin_right = 390.0
 margin_bottom = 356.0
 size_flags_horizontal = 3
-text = "Effect Sound"
+text = "Effekte"
 
 [node name="EffectSlider" type="HSlider" parent="Node2D/GridContainer"]
 margin_left = 394.0
