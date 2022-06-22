@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/background/background.ogv" type="VideoStream" id=1]
+[ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/StartingScreen.gd" type="Script" id=3]
 [ext_resource path="res://Assets/background/start.png" type="Texture" id=4]
 
@@ -26,6 +27,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 stream = ExtResource( 1 )
 autoplay = true
+script = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5

@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
 [ext_resource path="res://Assets/background/space_backgr.ogv" type="VideoStream" id=3]
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Graphics/Shader/TriangleTexture.gdshader" type="Shader" id=5]
@@ -53,6 +54,7 @@ margin_bottom = 608.0
 mouse_filter = 2
 stream = ExtResource( 3 )
 autoplay = true
+script = ExtResource( 2 )
 
 [node name="Background" type="Sprite" parent="."]
 material = SubResource( 4 )
