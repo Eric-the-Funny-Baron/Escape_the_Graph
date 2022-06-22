@@ -90,6 +90,8 @@ margin_bottom = 168.0
 rect_pivot_offset = Vector2( 248, 80 )
 theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 1 )
+visible_characters = 0
+percent_visible = 0.0
 text = "Hallo, ich bin ein Test-Text. Hier kommen später die ganzen Dialoge der KI rein. Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla B"
 scroll_active = false
 

@@ -59,11 +59,11 @@ func _ready():
 	
 	build_level()
 	
-	$Hint.disabled = true
-	$FinishedBtn.disabled = true
+	$VBoxContainer2/Control/Hint.disabled = true
+	$VBoxContainer/FinishedBtn.disabled = true
 	yield(Signals, "dialog_finished")
-	$Hint.disabled = false
-	$FinishedBtn.disabled = false
+	$VBoxContainer2/Control/Hint.disabled = false
+	$VBoxContainer/FinishedBtn.disabled = false
 
 func build_level():
 	
@@ -237,11 +237,11 @@ func _on_Edge_status_changed():
 	
 	if level_graph.path_built(): 
 		$ReadyLabel.set("custom_colors/font_color", color1)
-		get_node("FinishedBtn").disabled=false
+		get_node("VBoxContainer/FinishedBtn").disabled=false
 	else: 
 		$ReadyLabel.set("custom_colors/font_color", color2)
-		get_node("FinishedBtn").disabled=true
-	
+		get_node("VBoxContainer/FinishedBtn").disabled=true
+	print(get_node("VBoxContainer/FinishedBtn").disabled)
 	
 	# Termination on Target -> no new selectable
 	
@@ -268,7 +268,7 @@ func _on_Hint_pressed():
 	_on_Edge_status_changed()
 	
 	if solution_path[solution_path.size() - 1].hint_showing == true:
-		$Hint.disabled = true # prevents unneccesary hint getting
+		$VBoxContainer2/Control/Hint.disabled = true # prevents unneccesary hint getting
 	
 	Signals.emit_signal("hint_given")
 	Signals.emit_signal("game_over_lock_released")
@@ -276,8 +276,8 @@ func _on_Hint_pressed():
 func _on_FinishedBtn_pressed():
 	Signals.emit_signal("confirmation_requested")
 	Signals.emit_signal("touch_box_toggled")
-	$Hint.disabled = true
-	$FinishedBtn.disabled = true
+	$VBoxContainer2/Control/Hint.disabled = true
+	$VBoxContainer/FinishedBtn.disabled = true
 
 func _on_Yes_pressed():
 	interpolation()
@@ -291,6 +291,6 @@ func _on_Yes_pressed():
 
 
 func _on_No_pressed():
-	$Hint.disabled = false
-	$FinishedBtn.disabled = false
+	$VBoxContainer2/Control/Hint.disabled = false
+	$VBoxContainer/FinishedBtn.disabled = false
 	Signals.emit_signal("touch_box_toggled")

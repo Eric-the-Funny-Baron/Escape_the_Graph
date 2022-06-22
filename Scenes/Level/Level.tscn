@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
@@ -17,17 +17,6 @@ shader_param/color2 = Vector3( 0.2, 0.2, 0.2 )
 
 [sub_resource type="NoiseTexture" id=5]
 
-[sub_resource type="DynamicFont" id=12]
-font_data = ExtResource( 4 )
-
-[sub_resource type="Theme" id=7]
-default_font = SubResource( 12 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 30
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
-
 [sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 4 )
 
@@ -39,6 +28,12 @@ size = 40
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 12 )
 
 [node name="Level" type="Node2D" groups=["Dynamic_Scene"]]
 z_index = -2
@@ -63,45 +58,77 @@ scale = Vector2( 2, 2 )
 z_index = -1
 texture = SubResource( 5 )
 
-[node name="FinishedBtn" type="Button" parent="."]
-margin_left = 568.0
-margin_top = 496.0
-margin_right = 915.0
-margin_bottom = 590.0
-icon = ExtResource( 6 )
-flat = true
-
-[node name="Hint" type="Button" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 122.0
-margin_top = 494.0
-margin_right = 469.0
-margin_bottom = 588.0
-rect_pivot_offset = Vector2( 94, 43 )
-theme = SubResource( 7 )
-custom_fonts/font = SubResource( 11 )
-icon = ExtResource( 7 )
-flat = true
-__meta__ = {
-"_editor_description_": "Protoytype Button to test graph generation"
-}
-
-[node name="FinishedBtn" type="Button" parent="."]
-margin_left = 649.0
-margin_top = 493.0
-margin_right = 839.0
-margin_bottom = 573.0
-
 [node name="ReadyLabel" type="Label" parent="."]
-margin_left = 656.0
-margin_top = 504.0
-margin_right = 816.0
-margin_bottom = 576.0
+margin_right = 160.0
+margin_bottom = 72.0
 theme = SubResource( 10 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 custom_fonts/font = SubResource( 8 )
 
-[connection signal="pressed" from="FinishedBtn" to="." method="_on_FinishedBtn_pressed"]
-[connection signal="pressed" from="Hint" to="." method="_on_Hint_pressed"]
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 504.0
+margin_right = 1024.0
+margin_bottom = 592.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 340.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FinishedBtn" type="TextureButton" parent="VBoxContainer"]
+margin_left = 344.0
+margin_right = 679.0
+margin_bottom = 88.0
+texture_normal = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_left = 683.0
+margin_right = 1024.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="."]
+margin_top = 16.0
+margin_right = 1024.0
+margin_bottom = 104.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2"]
+margin_right = 338.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer2"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Hint" type="TextureButton" parent="VBoxContainer2/Control"]
+margin_left = 4.0
+margin_right = 339.0
+margin_bottom = 88.0
+rect_rotation = 180.0
+rect_pivot_offset = Vector2( 167, 44 )
+theme = SubResource( 7 )
+texture_normal = ExtResource( 7 )
+texture_disabled = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": "Protoytype Button to test graph generation"
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2"]
+margin_left = 685.0
+margin_right = 1024.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="button_up" from="VBoxContainer/FinishedBtn" to="." method="_on_FinishedBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Control/Hint" to="." method="_on_Hint_pressed"]

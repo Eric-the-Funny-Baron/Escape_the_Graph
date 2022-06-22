@@ -39,6 +39,7 @@ margin_left = -496.0
 margin_top = -342.0
 margin_right = 530.0
 margin_bottom = 258.0
+color = Color( 0, 0, 0, 0 )
 
 [node name="VBoxContainer" parent="Node2D3/DialogueScene" index="1"]
 margin_left = -251.0
@@ -79,7 +80,6 @@ margin_bottom = -42.0
 z_index = 1
 
 [node name="SettingsMenu" parent="Node2D" instance=ExtResource( 4 )]
-visible = false
 
 [node name="Control" type="Control" parent="Node2D"]
 margin_bottom = 600.0
