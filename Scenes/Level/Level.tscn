@@ -1,21 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Level/ConfirmationDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/background/space_backgr.ogv" type="VideoStream" id=3]
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Graphics/Shader/TriangleTexture.gdshader" type="Shader" id=5]
 [ext_resource path="res://Assets/background/fertig.png" type="Texture" id=6]
 [ext_resource path="res://Assets/background/hint.png" type="Texture" id=7]
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 5 )
-shader_param/thickness = 0.924
-shader_param/size = 1.0
-shader_param/color1 = Vector3( 0.3, 0.3, 0.3 )
-shader_param/color2 = Vector3( 0.2, 0.2, 0.2 )
-
-[sub_resource type="NoiseTexture" id=5]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 5 )
@@ -57,20 +47,19 @@ nodes = 12
 edges = 12
 minimal_weight = 1.0
 
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 1024.0
+margin_bottom = 608.0
+mouse_filter = 2
+stream = ExtResource( 3 )
+autoplay = true
+
 [node name="Background" type="Sprite" parent="."]
 material = SubResource( 4 )
 position = Vector2( 512, 512 )
 scale = Vector2( 2, 2 )
 z_index = -1
 texture = SubResource( 5 )
-
-[node name="VideoPlayer" type="VideoPlayer" parent="Background"]
-margin_left = -256.0
-margin_top = -256.0
-margin_right = 256.0
-margin_bottom = 44.0
-stream = ExtResource( 3 )
-autoplay = true
 
 [node name="FinishedBtn" type="Button" parent="."]
 margin_left = 568.0
@@ -112,9 +101,5 @@ theme = SubResource( 10 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 custom_fonts/font = SubResource( 8 )
 
-[node name="ConfirmationDialog" parent="." instance=ExtResource( 2 )]
-visible = false
-
-[connection signal="pressed" from="Hint" to="." method="_on_Hint_pressed"]
 [connection signal="pressed" from="FinishedBtn" to="." method="_on_FinishedBtn_pressed"]
 [connection signal="pressed" from="Hint" to="." method="_on_Hint_pressed"]
