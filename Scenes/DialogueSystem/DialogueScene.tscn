@@ -56,7 +56,7 @@ margin_top = 0.0
 margin_right = 528.0
 margin_bottom = 181.0
 
-[node name="DialogueText" parent="VBoxContainer/MarginContainer2/DialogueBox" index="2"]
+[node name="DialogueText" parent="VBoxContainer/MarginContainer2/DialogueBox" index="3"]
 rect_rotation = 180.0
 
 [node name="FillGap" type="MarginContainer" parent="VBoxContainer"]

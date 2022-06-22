@@ -12,6 +12,7 @@ var dialog_lines = []
 func _ready():
 	Signals.connect("dialogue_opened", self, "_open_scene")
 	Signals.connect("evaluation_requested", self, "_on_evaluation_requested")
+	Signals.connect("continue_pressed", self, "_on_continue_pressed")
 	
 	# Loading of all Dialogue Data =================
 	var file = File.new()
@@ -87,8 +88,7 @@ func _on_evaluation_requested(best_value, value):
 	
 	set_new_dialog()
 
-func _input(event):
+func _on_continue_pressed():
 	if active == false: return
-	if event is InputEventMouseButton and event.pressed:
-		set_new_dialog()
+	set_new_dialog()
 		

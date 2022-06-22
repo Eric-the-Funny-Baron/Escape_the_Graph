@@ -14,3 +14,11 @@ func hide_box():
 
 func display_text():
 	$TextAnimations.play("DisplayText")
+
+
+func _on_TouchBox_pressed():
+	$Arrow.color = Color(0.12, 0.11, 0.25)
+	Signals.emit_signal("continue_pressed")
+
+func _on_TouchBox_released():
+	$Arrow.color = Color(0.67, 0.28, 0.67)

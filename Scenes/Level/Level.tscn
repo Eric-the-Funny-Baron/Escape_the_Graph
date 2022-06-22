@@ -45,7 +45,7 @@ z_index = -2
 script = ExtResource( 1 )
 margin = 160.0
 nodes = 12
-edges = 12
+edges = 17
 minimal_weight = 1.0
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]

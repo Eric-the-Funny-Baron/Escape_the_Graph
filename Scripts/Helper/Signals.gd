@@ -33,6 +33,7 @@ signal level_save_requested(level_name, solved, solve_num, solved_optimal)
 signal level_load_requested(level_name)
 signal level_status_requested(level_name, level_hub_name, level_link)
 signal dialogue_opened(scene_name)
+signal continue_pressed
 signal evaluation_requested(best_value, value)
 signal dialog_finished
 
