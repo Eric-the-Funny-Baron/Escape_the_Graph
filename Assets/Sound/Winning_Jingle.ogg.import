@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Winning_Jingle.ogg-ae4a187b68e6619498a3411cf8b53d08.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Winning_Jingle.ogg"
+dest_files=[ "res://.import/Winning_Jingle.ogg-ae4a187b68e6619498a3411cf8b53d08.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -35,7 +35,7 @@ rect_min_size = Vector2( 0, 0.004 )
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 visible = false
-margin_right = 288.0
+margin_right = 621.0
 margin_bottom = 41.0
 theme = ExtResource( 1 )
 text = "Ups, you died..."

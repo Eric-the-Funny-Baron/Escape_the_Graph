@@ -18,6 +18,10 @@ difficulty = 2
 difficulty = 2
 
 [node name="Next_Room" parent="." index="5"]
+modulate = Color( 0.639216, 0.423529, 0.835294, 1 )
 goal = true
+
+[node name="Previous_Room" parent="." index="6"]
+modulate = Color( 0.639216, 0.423529, 0.835294, 1 )
 
 [editable path="Previous_Room"]

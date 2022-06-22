@@ -20,6 +20,7 @@ func _ready():
 	Signals.connect("game_won_screen_requested", self, "_on_game_won_screen_requested")
 	Signals.connect("change_visibility", self, "_on_change_visibility")
 	Signals.connect("touch_box_toggled", self, "_on_touch_box_toggled")
+	Signals.connect("help_update_requested", self, "_on_help_update_requested")
 	Signals.connect("level_save_requested", self, "_on_level_save_requested")
 	Signals.connect("level_load_requested", self, "_on_level_load_requested")
 	Signals.connect("level_status_requested", self, "_on_level_status_requested")
@@ -30,17 +31,15 @@ func _ready():
 
 func _on_level_requested(level_name):
 	var scene_path = "res://Scenes/Level/Level_Instances/" + level_name + ".tscn"
-	current_help = help_data["Level"]
-	$UI/Node2D/Control/VBoxContainer/Help/HelpWindow.set_text(current_help)
-	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Help/HelpWindow.set_text(current_help)
+	_on_help_update_requested("Level_help")
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
+	yield($BlendingLayer/BlendingAnimation,"animation_finished")
+	Signals.emit_signal("dialogue_opened", level_name)
 
 func _on_level_hub_requested(level_hub_name):
 	var scene_path = "res://Scenes/LevelHub/LevelHub_Instances/" + level_hub_name + ".tscn"
-	current_help = help_data["Level_Hub"]
-	$UI/Node2D/Control/VBoxContainer/Help/HelpWindow.set_text(current_help)
-	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Help/HelpWindow.set_text(current_help)
+	_on_help_update_requested("Level_Hub_help")
 	switch_scene(scene_path)
 	fade_in()
 
@@ -50,6 +49,7 @@ func _on_title_screen_requested(should_fade_out:bool):
 	switch_scene(scene_path)
 	if should_fade_out: fade_in()
 	fade_out()
+	$UI.hide()
 
 func _on_game_over_screen_requested():
 	Signals.emit_signal("sound_stop_requested", "BackgroundMusic")
@@ -61,7 +61,11 @@ func _on_game_over_screen_requested():
 
 func _on_game_won_screen_requested():
 	Signals.emit_signal("sound_stop_requested", "BackgroundMusic")
-	var scene_path = "res://Scenes/" # HERE a concrete adress to the Won Scene is needed
+	var scene_path = "res://Scenes/WinScreen.tscn" # HERE a concrete adress to the Won Scene is needed
+	level_log.clear() # all progress is deleted
+	switch_scene(scene_path)
+	fade_in()
+	_on_change_visibility("UI")
 	
 func _on_change_visibility(node_name):
 	yield(get_node("BlendingLayer/BlendingAnimation"), "animation_finished")
@@ -94,6 +98,10 @@ func _on_level_status_requested(level_name, level_hub_name, level_link):
 	if level_name in level_log:
 		var link = get_node(level_hub_name).get_node(level_link)
 		link.solved = level_log[level_name]["solved"]
+
+func _on_help_update_requested(help_name):
+	$UI/Node2D/Control/VBoxContainer/Control2/Help.help_name = help_name
+	$UI/Node2D/HBoxContainer/Control2/VBoxContainer2/Control2/Help.help_name = help_name
 
 func switch_scene(scene_path):
 	old_scene = get_tree().get_nodes_in_group("Dynamic_Scene")

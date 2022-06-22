@@ -17,6 +17,15 @@ shader_param/color2 = Vector3( 0.2, 0.2, 0.2 )
 
 [sub_resource type="NoiseTexture" id=5]
 
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 5 )
+shader_param/thickness = 0.924
+shader_param/size = 1.0
+shader_param/color1 = Vector3( 0.3, 0.3, 0.3 )
+shader_param/color2 = Vector3( 0.2, 0.2, 0.2 )
+
+[sub_resource type="NoiseTexture" id=5]
+
 [sub_resource type="DynamicFont" id=12]
 font_data = ExtResource( 4 )
 
@@ -41,10 +50,11 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Level" type="Node2D" groups=["Dynamic_Scene"]]
+z_index = -2
 script = ExtResource( 1 )
-margin = 100.0
-nodes = 4
-edges = 4
+margin = 160.0
+nodes = 12
+edges = 12
 minimal_weight = 1.0
 
 [node name="Background" type="Sprite" parent="."]
@@ -87,6 +97,12 @@ __meta__ = {
 "_editor_description_": "Protoytype Button to test graph generation"
 }
 
+[node name="FinishedBtn" type="Button" parent="."]
+margin_left = 649.0
+margin_top = 493.0
+margin_right = 839.0
+margin_bottom = 573.0
+
 [node name="ReadyLabel" type="Label" parent="."]
 margin_left = 656.0
 margin_top = 504.0
@@ -99,5 +115,6 @@ custom_fonts/font = SubResource( 8 )
 [node name="ConfirmationDialog" parent="." instance=ExtResource( 2 )]
 visible = false
 
+[connection signal="pressed" from="Hint" to="." method="_on_Hint_pressed"]
 [connection signal="pressed" from="FinishedBtn" to="." method="_on_FinishedBtn_pressed"]
 [connection signal="pressed" from="Hint" to="." method="_on_Hint_pressed"]

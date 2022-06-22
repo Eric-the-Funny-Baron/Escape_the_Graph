@@ -18,7 +18,7 @@ func _ready():
 	level_name = "Level_" + type_letter + "_" + String(difficulty)
 	Signals.emit_signal("level_status_requested", level_name, get_node("..").get_name(), get_name())
 	if solved:
-		$LevelLink_Graphic.color = Color(0.1, 0.9, 0.2)
+		$LevelLink_Graphic.color = Color(0.61, 1, 0.51)
 
 
 func _on_TouchBox_pressed():

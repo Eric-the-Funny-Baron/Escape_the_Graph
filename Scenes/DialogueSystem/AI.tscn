@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/DialogueSystem/AI.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 6.89268, 0, 0, Vector2( 0.501887, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -7.0552, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpeakLine:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -128, -192 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpeakLine:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpeakLine:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 64, 184, 64, 192, 72, 184, 80, 200, 88, 176, 96, 208, 103.968, 192, 112, 184, 120.227, 192, 128, 208, 136.04, 192, 144, 184, 151.631, 192, 160, 200, 167.89, 192, 176, 168, 184.371, 192, 192, 192, 200, 192 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "SpeakLineMotion"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpeakLine:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 56, 192, 64, 192, 72, 192, 80, 200, 88, 176, 96, 208, 103.968, 192, 112, 184, 120.227, 192, 128, 208, 136.04, 192, 144, 184, 151.631, 192, 160, 200, 167.89, 192, 176, 168, 184.371, 192, 192, 192, 200, 192 ), PoolVector2Array( 56, 192, 64, 192, 72, 192, 80, 184, 88, 192, 96, 184, 104, 216, 112, 184, 120, 200, 128, 192, 136.027, 200, 144, 208, 151.631, 192, 160, 200, 167.926, 184, 176, 200, 184.371, 192, 192, 192, 200, 192 ), PoolVector2Array( 56, 192, 64, 192, 72, 192, 80, 184, 88, 192, 96, 180, 104, 212, 112, 192, 120, 200, 128, 192, 136.013, 208, 144, 176, 151.631, 192, 160, 200, 167.963, 176, 176, 200, 184.371, 192, 192, 192, 200, 192 ), PoolVector2Array( 56, 192, 64, 192, 72, 192, 80, 184, 88, 200, 96, 176, 104, 208, 112, 184, 120, 200, 128, 176, 136, 216, 144, 184, 151.631, 192, 160, 208, 168, 168, 176, 216, 184.371, 192, 192, 192, 200, 192 ), PoolVector2Array( 56, 192, 64, 192, 72, 192, 80, 168, 88, 192, 96, 184, 104, 208, 112, 189.333, 120, 200, 128, 178.667, 136, 200, 144, 189.333, 151.631, 192, 160, 202.667, 168, 176, 176, 205.333, 184.371, 192, 192, 192, 200, 192 ), PoolVector2Array( 56, 192, 64, 192, 72, 192, 80, 176, 88, 196, 96, 184, 103.984, 200, 112, 184, 120.113, 196, 128, 181.333, 136.02, 196, 144, 200, 152, 184, 160, 197.333, 168, 188, 176, 194.667, 184.371, 192, 192, 192, 200, 192 ), PoolVector2Array( 56, 192, 64, 192, 72, 192, 80, 184, 88, 200, 96, 176, 103.968, 192, 112, 208, 120, 200, 128, 184, 136.04, 192, 144, 200, 152, 176, 160, 184, 168, 200, 176, 184, 184.371, 192, 192, 192, 200, 192 ), PoolVector2Array( 56, 192, 64, 192, 72, 192, 80, 200, 88, 176, 96, 208, 103.968, 192, 112, 184, 120.227, 192, 128, 208, 136.04, 192, 144, 184, 151.631, 192, 160, 200, 167.89, 192, 176, 168, 184.371, 192, 192, 192, 200, 192 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Display_AI"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, 0 ), Vector2( 1, 0.55 ), Vector2( 1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="AI" type="Control"]
+script = ExtResource( 1 )
+
+[node name="Border" type="Polygon2D" parent="."]
+position = Vector2( -304, -560 )
+scale = Vector2( 3.01783, 3.44895 )
+color = Color( 0.117647, 0.109804, 0.25098, 1 )
+invert_border = 0.1
+polygon = PoolVector2Array( 127.244, 139.173, 74.2255, 139.173, 74.2255, 185.564, 127.244, 185.564 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="Polygon2D" parent="."]
+position = Vector2( -113.778, -171.778 )
+scale = Vector2( 0.888889, 0.898148 )
+color = Color( 0.0196078, 0, 0.101961, 1 )
+polygon = PoolVector2Array( 56, 136, 72, 120, 184, 120, 200, 136, 200, 191.258, 200, 248, 184, 264, 72, 264, 56, 248 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SpeakLine" type="Line2D" parent="."]
+position = Vector2( -128, -192 )
+points = PoolVector2Array( 64, 184, 64, 192, 72, 184, 80, 200, 88, 176, 96, 208, 103.968, 192, 112, 184, 120.227, 192, 128, 208, 136.04, 192, 144, 184, 151.631, 192, 160, 200, 167.89, 192, 176, 168, 184.371, 192, 192, 192, 200, 192 )
+width = 3.0
+width_curve = SubResource( 1 )
+default_color = Color( 0.67451, 0.278431, 0.666667, 1 )
+joint_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Border2" type="Polygon2D" parent="."]
+position = Vector2( -192, -288 )
+scale = Vector2( 1.50892, 1.50892 )
+color = Color( 0.117647, 0.109804, 0.25098, 1 )
+invert_enable = true
+invert_border = 0.1
+polygon = PoolVector2Array( 80.2836, 154.887, 90.8873, 144.284, 128, 149.585, 165.113, 144.284, 175.716, 154.887, 164.356, 190.865, 175.716, 229.113, 165.113, 239.716, 128, 234.415, 90.8873, 239.716, 80.2836, 229.113, 90.1309, 190.865 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineAnimations" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/SpeakLineMotion = SubResource( 3 )
+
+[node name="AI_Animations" type="AnimationPlayer" parent="."]
+anims/Display_AI = SubResource( 4 )
