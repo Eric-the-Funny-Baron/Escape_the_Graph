@@ -32,6 +32,7 @@ func _ready():
 func _on_level_requested(level_name):
 	var scene_path = "res://Scenes/Level/Level_Instances/" + level_name + ".tscn"
 	_on_help_update_requested("Level_help")
+	Signals.emit_signal("touch_box_toggled")
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
 	yield($BlendingLayer/BlendingAnimation,"animation_finished")
