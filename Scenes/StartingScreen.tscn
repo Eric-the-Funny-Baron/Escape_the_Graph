@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Assets/background/background.ogv" type="VideoStream" id=1]
 [ext_resource path="res://Scripts/StartingScreen.gd" type="Script" id=3]
 [ext_resource path="res://Assets/background/start.png" type="Texture" id=4]
 
@@ -15,32 +16,39 @@ load_path = "res://.import/startbuttonActive.png-8051a240cf5a4c45473218cafd1c20d
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 texture = ExtResource( 4 )
 
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+stream = ExtResource( 1 )
+autoplay = true
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_left = 0.477
-anchor_top = 0.651
-anchor_right = 0.477
-anchor_bottom = 0.669
-margin_left = -403.664
-margin_top = -298.0
-margin_right = 404.336
-margin_bottom = 306.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -404.0
+margin_top = -409.7
+margin_right = 404.0
+margin_bottom = 409.7
 custom_constants/separation = 100
 
 [node name="CenterContainer3" type="CenterContainer" parent="HBoxContainer"]
 margin_right = 808.0
-margin_bottom = 614.0
+margin_bottom = 819.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CenterContainer3"]
 margin_left = 236.0
-margin_top = 263.0
+margin_top = 365.0
 margin_right = 571.0
-margin_bottom = 351.0
+margin_bottom = 453.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/CenterContainer3/VBoxContainer"]
 margin_right = 335.0
