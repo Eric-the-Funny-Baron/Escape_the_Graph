@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Graphics/Shader/TriangleTexture.gdshader" type="Shader" id=5]
 [ext_resource path="res://Assets/background/fertig.png" type="Texture" id=6]
 [ext_resource path="res://Assets/background/hint.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Level/LevelBtn.gd" type="Script" id=8]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 5 )
@@ -63,15 +64,16 @@ scale = Vector2( 2, 2 )
 z_index = -1
 texture = SubResource( 5 )
 
-[node name="FinishedBtn" type="Button" parent="."]
+[node name="FinishedBtn" type="Button" parent="." groups=["Level_Button"]]
 margin_left = 568.0
 margin_top = 496.0
 margin_right = 915.0
 margin_bottom = 590.0
 icon = ExtResource( 6 )
 flat = true
+script = ExtResource( 8 )
 
-[node name="Hint" type="Button" parent="."]
+[node name="Hint" type="Button" parent="." groups=["Level_Button"]]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -84,15 +86,10 @@ theme = SubResource( 7 )
 custom_fonts/font = SubResource( 11 )
 icon = ExtResource( 7 )
 flat = true
+script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": "Protoytype Button to test graph generation"
 }
-
-[node name="FinishedBtn" type="Button" parent="."]
-margin_left = 649.0
-margin_top = 493.0
-margin_right = 839.0
-margin_bottom = 573.0
 
 [node name="ReadyLabel" type="Label" parent="."]
 margin_left = 656.0

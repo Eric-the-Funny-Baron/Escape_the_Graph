@@ -14,8 +14,7 @@ func hide_box():
 
 func display_text():
 	$TextAnimations.play("DisplayText")
-	# PLAY ROBOT SOUND
-	#Signals.emit_signal("sound_start_requested", "")
+	Signals.emit_signal("sound_start_requested", "AI_Talk")
 
 
 func _on_TouchBox_pressed():

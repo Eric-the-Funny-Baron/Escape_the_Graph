@@ -124,6 +124,7 @@ func fade_out():
 	old_scene = null
 	new_scene = null
 	$BlendingLayer/BlendingAnimation.play("BlackScreen_Fading_reverse")
+	Signals.emit_signal("scene_switched")
 	
 func _on_BlendingAnimation_animation_finished(anim_name):
 	match anim_name:

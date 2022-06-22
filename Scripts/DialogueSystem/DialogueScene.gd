@@ -29,6 +29,8 @@ func _open_scene(scene_name):
 	Signals.emit_signal("touch_box_toggled")
 	for e in get_tree().get_nodes_in_group("UI_Buttons"):
 		e.toggle_active()
+	for e in get_tree().get_nodes_in_group("Level_Button"):
+		e.set_disabled(true)
 	visible = true
 	active = true
 	current_index = 0
@@ -56,6 +58,8 @@ func close_scene():
 	visible = false
 	for e in get_tree().get_nodes_in_group("UI_Buttons"):
 		e.toggle_active()
+	for e in get_tree().get_nodes_in_group("Level_Button"):
+		e.set_disabled(false)
 	Signals.emit_signal("dialog_finished") # is not always important, should be sent anyway
 
 func set_new_dialog():

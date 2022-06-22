@@ -59,11 +59,11 @@ func _ready():
 	
 	build_level()
 	
-	$Hint.disabled = true
 	$FinishedBtn.disabled = true
+	$Hint.disabled = true
+	$FinishedBtn.locked = true
 	yield(Signals, "dialog_finished")
 	$Hint.disabled = false
-	$FinishedBtn.disabled = false
 
 func build_level():
 	
@@ -238,9 +238,11 @@ func _on_Edge_status_changed():
 	if level_graph.path_built(): 
 		$ReadyLabel.set("custom_colors/font_color", color1)
 		get_node("FinishedBtn").disabled=false
+		$FinishedBtn.locked = false
 	else: 
 		$ReadyLabel.set("custom_colors/font_color", color2)
 		get_node("FinishedBtn").disabled=true
+		$FinishedBtn.locked = true
 	
 	
 	# Termination on Target -> no new selectable
@@ -277,7 +279,9 @@ func _on_FinishedBtn_pressed():
 	Signals.emit_signal("confirmation_requested")
 	Signals.emit_signal("touch_box_toggled")
 	$Hint.disabled = true
+	$Hint.locked = true
 	$FinishedBtn.disabled = true
+	$FinishedBtn.locked = true
 
 func _on_Yes_pressed():
 	interpolation()
@@ -292,5 +296,8 @@ func _on_Yes_pressed():
 
 func _on_No_pressed():
 	$Hint.disabled = false
+	$Hint.locked = false
 	$FinishedBtn.disabled = false
+	$FinishedBtn.locked = false
+	Signals.emit_signal("help_update_requested", "Level_help")
 	Signals.emit_signal("touch_box_toggled")
