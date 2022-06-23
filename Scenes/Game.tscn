@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Helper/Sounds.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Sound/Battery_DOWN.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Sound/Winning_Jingle.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Assets/Sound/AI_Talk.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Sound/Solution_Show.ogg" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=2]
 resource_name = "BlackScreen_Fading"
@@ -105,6 +106,10 @@ bus = "SFX"
 
 [node name="AI_Talk" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 11 )
+bus = "SFX"
+
+[node name="Solution_Show" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 12 )
 bus = "SFX"
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 7 )]

@@ -274,6 +274,16 @@ func _on_Hint_pressed():
 	Signals.emit_signal("hint_given")
 	Signals.emit_signal("game_over_lock_released")
 
+func show_solution():
+	var time_interval = 1
+	for e in solution_path:
+		e.solution_showing = true
+		_on_Edge_status_changed()
+		Signals.emit_signal("sound_start_requested", "Solution_Show")
+		yield(get_tree().create_timer(time_interval), "timeout")
+		time_interval *= 0.8
+	Signals.emit_signal("solution_showed")
+
 func _on_FinishedBtn_pressed():
 	Signals.emit_signal("confirmation_requested")
 	Signals.emit_signal("touch_box_toggled")
@@ -283,6 +293,8 @@ func _on_FinishedBtn_pressed():
 	$VBoxContainer/FinishedBtn.locked = true
 
 func _on_Yes_pressed():
+	show_solution()
+	yield(Signals, "solution_showed")
 	interpolation()
 	solved = true
 	solve_num += 1

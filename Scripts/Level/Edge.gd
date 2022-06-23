@@ -8,6 +8,7 @@ enum Edge_States {UNSELECTED, SELECTABLE, SELECTED}
 
 var state = Edge_States.UNSELECTED
 var hint_showing:bool = false
+var solution_showing:bool = false
 var nodes = []
 
 
@@ -99,6 +100,7 @@ func change_state(_state):
 	$ContainerLayer/WeightValue/OrientationLine.set("custom_colors/font_color", default_color)
 
 func get_state_color() -> Color:
+	if solution_showing: return $ColorTable.solution_color
 	match state:
 		Edge_States.UNSELECTED: return $ColorTable.default_color.linear_interpolate($ColorTable.hint_color, 0.4 * float(hint_showing))
 		Edge_States.SELECTABLE: return $ColorTable.selectable_color.linear_interpolate($ColorTable.hint_color, 0.4 * float(hint_showing))

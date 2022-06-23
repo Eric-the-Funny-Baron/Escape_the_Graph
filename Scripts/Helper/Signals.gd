@@ -36,5 +36,6 @@ signal level_status_requested(level_name, level_hub_name, level_link)
 signal dialogue_opened(scene_name)
 signal continue_pressed
 signal evaluation_requested(best_value, value)
+signal solution_showed
 signal dialog_finished
 
