@@ -276,12 +276,19 @@ func _on_Hint_pressed():
 
 func show_solution():
 	var time_interval = 1
+	for n in level_graph.nodes:
+		n.set_default()
+		for e in n.get_active_edges():
+			e.change_state(Edge.Edge_States.UNSELECTED)
+	_on_Edge_status_changed()
+	
 	for e in solution_path:
 		e.solution_showing = true
 		_on_Edge_status_changed()
 		Signals.emit_signal("sound_start_requested", "Solution_Show")
 		yield(get_tree().create_timer(time_interval), "timeout")
 		time_interval *= 0.8
+	yield(get_tree().create_timer(3),"timeout")
 	Signals.emit_signal("solution_showed")
 
 func _on_FinishedBtn_pressed():
@@ -293,14 +300,14 @@ func _on_FinishedBtn_pressed():
 	$VBoxContainer/FinishedBtn.locked = true
 
 func _on_Yes_pressed():
+	interpolation()
 	show_solution()
 	yield(Signals, "solution_showed")
-	interpolation()
 	solved = true
 	solve_num += 1
 	Signals.emit_signal("level_save_requested", get_name(), solved, solve_num, solved_optimal)
-	Signals.emit_signal("evaluation_requested", best_weight, get_own_path_weight())
-	yield(Signals, "dialog_finished")
+	#Signals.emit_signal("evaluation_requested", best_weight, get_own_path_weight())
+	#yield(Signals, "dialog_finished")
 	Signals.emit_signal("level_hub_requested", "LevelHub_" + String(room_number))
 	Signals.emit_signal("game_over_lock_released")
 
