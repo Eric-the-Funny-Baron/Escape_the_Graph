@@ -62,6 +62,10 @@ func _ready():
 	$VBoxContainer2/Control/Hint.disabled = true
 	$VBoxContainer/FinishedBtn.disabled = true
 	$VBoxContainer/FinishedBtn.locked = true
+	$VBoxContainer/OKBtn.hide()
+	$VBoxContainer2/Control2/OKBtn.hide()
+	$VBoxContainer/VBoxContainer.hide()
+	$VBoxContainer2/Control3/VBoxContainer.hide()
 	yield(Signals, "dialog_finished")
 	$VBoxContainer2/Control/Hint.disabled = false
 
@@ -288,8 +292,6 @@ func show_solution():
 		Signals.emit_signal("sound_start_requested", "Solution_Show")
 		yield(get_tree().create_timer(time_interval), "timeout")
 		time_interval *= 0.8
-	yield(get_tree().create_timer(3),"timeout")
-	Signals.emit_signal("solution_showed")
 
 func _on_FinishedBtn_pressed():
 	Signals.emit_signal("confirmation_requested")
@@ -300,16 +302,20 @@ func _on_FinishedBtn_pressed():
 	$VBoxContainer/FinishedBtn.locked = true
 
 func _on_Yes_pressed():
+	$VBoxContainer2/Control/Hint.hide()
+	$VBoxContainer/FinishedBtn.hide()
+	$VBoxContainer/OKBtn.show()
+	$VBoxContainer2/Control2/OKBtn.show()
+	$VBoxContainer/VBoxContainer.show()
+	$VBoxContainer2/Control3/VBoxContainer.show()
+	var optimal = "Optimaler Wert: " + String(best_weight)
+	var yourV = "Euer Wert: " + String(get_own_path_weight())
+	$VBoxContainer/VBoxContainer/Optimal.text = optimal
+	$VBoxContainer/VBoxContainer/YourV.text = yourV
+	$VBoxContainer2/Control3/VBoxContainer/Optimal.text = optimal
+	$VBoxContainer2/Control3/VBoxContainer/YourV.text = yourV
 	interpolation()
 	show_solution()
-	yield(Signals, "solution_showed")
-	solved = true
-	solve_num += 1
-	Signals.emit_signal("level_save_requested", get_name(), solved, solve_num, solved_optimal)
-	#Signals.emit_signal("evaluation_requested", best_weight, get_own_path_weight())
-	#yield(Signals, "dialog_finished")
-	Signals.emit_signal("level_hub_requested", "LevelHub_" + String(room_number))
-	Signals.emit_signal("game_over_lock_released")
 
 
 func _on_No_pressed():
@@ -319,3 +325,14 @@ func _on_No_pressed():
 	$VBoxContainer/FinishedBtn.locked = false
 	Signals.emit_signal("help_update_requested", "Level_help")
 	Signals.emit_signal("touch_box_toggled")
+
+
+func _on_OKBtn_pressed():
+	solved = true
+	solve_num += 1
+	Signals.emit_signal("level_save_requested", get_name(), solved, solve_num, solved_optimal)
+	#Signals.emit_signal("evaluation_requested", best_weight, get_own_path_weight())
+	#yield(Signals, "dialog_finished")
+	Signals.emit_signal("level_hub_requested", "LevelHub_" + String(room_number))
+	Signals.emit_signal("game_over_lock_released")
+	
