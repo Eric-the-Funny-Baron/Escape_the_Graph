@@ -61,7 +61,7 @@ func _ready():
 	
 	$VBoxContainer2/Control/Hint.disabled = true
 	$VBoxContainer/FinishedBtn.disabled = true
-	$VBoxContainer/FinishedBtn.locked = true
+	#$VBoxContainer/FinishedBtn.locked = true
 	yield(Signals, "dialog_finished")
 	$VBoxContainer2/Control/Hint.disabled = false
 
@@ -238,11 +238,11 @@ func _on_Edge_status_changed():
 	if level_graph.path_built(): 
 		$ReadyLabel.set("custom_colors/font_color", color1)
 		get_node("VBoxContainer/FinishedBtn").disabled=false
-		$VBoxContainer/FinishedBtn.locked = false
+		#$VBoxContainer/FinishedBtn.locked = false
 	else: 
 		$ReadyLabel.set("custom_colors/font_color", color2)
 		get_node("VBoxContainer/FinishedBtn").disabled=true
-		$VBoxContainer/FinishedBtn.locked = true
+		#$VBoxContainer/FinishedBtn.locked = true
 	
 	# Termination on Target -> no new selectable
 	
@@ -279,8 +279,8 @@ func _on_FinishedBtn_pressed():
 	Signals.emit_signal("touch_box_toggled")
 	$VBoxContainer2/Control/Hint.disabled = true
 	$VBoxContainer/FinishedBtn.disabled = true
-	$VBoxContainer2/Control/Hint.locked = true
-	$VBoxContainer/FinishedBtn.locked = true
+	#$VBoxContainer2/Control/Hint.locked = true
+	#$VBoxContainer/FinishedBtn.locked = true
 
 func _on_Yes_pressed():
 	interpolation()
@@ -296,7 +296,7 @@ func _on_Yes_pressed():
 func _on_No_pressed():
 	$VBoxContainer2/Control/Hint.disabled = false
 	$VBoxContainer/FinishedBtn.disabled = false
-	$VBoxContainer2/Control/Hint.locked = false
-	$VBoxContainer/FinishedBtn.locked = false
+	#$VBoxContainer2/Control/Hint.locked = false
+	#$VBoxContainer/FinishedBtn.locked = false
 	Signals.emit_signal("help_update_requested", "Level_help")
 	Signals.emit_signal("touch_box_toggled")

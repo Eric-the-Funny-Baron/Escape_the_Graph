@@ -88,10 +88,13 @@ __meta__ = {
 }
 
 [node name="Arrow" type="Polygon2D" parent="."]
+position = Vector2( 352, 96 )
+scale = Vector2( 0.2, 0.5 )
 color = Color( 0.67451, 0.278431, 0.666667, 1 )
 polygon = PoolVector2Array( 576, 64, 592, 96, 576, 128, 768, 128, 784, 96, 768, 64 )
 
 [node name="ArrowText" type="Label" parent="Arrow"]
+visible = false
 margin_left = 608.0
 margin_top = 72.0
 margin_right = 746.0
