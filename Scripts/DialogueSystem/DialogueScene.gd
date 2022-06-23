@@ -12,6 +12,7 @@ var dialog_lines = []
 func _ready():
 	Signals.connect("dialogue_opened", self, "_open_scene")
 	Signals.connect("evaluation_requested", self, "_on_evaluation_requested")
+	Signals.connect("continue_pressed", self, "_on_continue_pressed")
 	
 	# Loading of all Dialogue Data =================
 	var file = File.new()
@@ -28,6 +29,8 @@ func _open_scene(scene_name):
 	Signals.emit_signal("touch_box_toggled")
 	for e in get_tree().get_nodes_in_group("UI_Buttons"):
 		e.toggle_active()
+	for e in get_tree().get_nodes_in_group("Level_Button"):
+		e.set_disabled(true)
 	visible = true
 	active = true
 	current_index = 0
@@ -55,6 +58,8 @@ func close_scene():
 	visible = false
 	for e in get_tree().get_nodes_in_group("UI_Buttons"):
 		e.toggle_active()
+	for e in get_tree().get_nodes_in_group("Level_Button"):
+		e.set_disabled(false)
 	Signals.emit_signal("dialog_finished") # is not always important, should be sent anyway
 
 func set_new_dialog():
@@ -87,8 +92,7 @@ func _on_evaluation_requested(best_value, value):
 	
 	set_new_dialog()
 
-func _input(event):
+func _on_continue_pressed():
 	if active == false: return
-	if event is InputEventMouseButton and event.pressed:
-		set_new_dialog()
+	set_new_dialog()
 		

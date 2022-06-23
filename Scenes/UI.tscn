@@ -25,7 +25,7 @@ z_index = 3
 mouse_filter = 2
 
 [node name="Node2D3" type="Node2D" parent="."]
-z_index = 1
+z_index = 2
 
 [node name="DialogueScene" parent="Node2D3" instance=ExtResource( 7 )]
 margin_left = 496.0
@@ -53,6 +53,10 @@ margin_bottom = 190.0
 [node name="DialogueBox" parent="Node2D3/DialogueScene/VBoxContainer/MarginContainer2" index="0"]
 margin_bottom = 190.0
 
+[node name="Arrow" parent="Node2D3/DialogueScene/VBoxContainer/MarginContainer2/DialogueBox" index="2"]
+position = Vector2( 565, 125 )
+scale = Vector2( -1, -1 )
+
 [node name="FillGap" parent="Node2D3/DialogueScene/VBoxContainer" index="1"]
 margin_top = 194.0
 margin_bottom = 384.0
@@ -63,6 +67,9 @@ margin_bottom = 579.0
 
 [node name="DialogueBox" parent="Node2D3/DialogueScene/VBoxContainer/MarginContainer" index="0"]
 margin_bottom = 191.0
+
+[node name="Arrow" parent="Node2D3/DialogueScene/VBoxContainer/MarginContainer/DialogueBox" index="2"]
+position = Vector2( -32, 52 )
 
 [node name="SizeContainer" parent="Node2D3/DialogueScene/CenterContainer" index="0"]
 margin_left = 0.0
@@ -217,3 +224,4 @@ margin_top = 300.0
 
 [editable path="Node2D3/DialogueScene"]
 [editable path="Node2D3/DialogueScene/VBoxContainer/MarginContainer2/DialogueBox"]
+[editable path="Node2D3/DialogueScene/VBoxContainer/MarginContainer/DialogueBox"]

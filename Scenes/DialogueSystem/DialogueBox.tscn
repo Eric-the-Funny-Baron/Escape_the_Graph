@@ -1,8 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://default_theme.tres" type="Theme" id=2]
 [ext_resource path="res://Scripts/DialogueSystem/DialogueBox.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 38
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 105, 35 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 17
@@ -60,9 +68,6 @@ margin_right = -496.0
 margin_bottom = -420.0
 rect_pivot_offset = Vector2( 264, 92 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Border" type="Polygon2D" parent="."]
 position = Vector2( 264, 88 )
@@ -82,6 +87,22 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Arrow" type="Polygon2D" parent="."]
+color = Color( 0.67451, 0.278431, 0.666667, 1 )
+polygon = PoolVector2Array( 576, 64, 592, 96, 576, 128, 768, 128, 784, 96, 768, 64 )
+
+[node name="ArrowText" type="Label" parent="Arrow"]
+margin_left = 608.0
+margin_top = 72.0
+margin_right = 746.0
+margin_bottom = 123.0
+custom_fonts/font = SubResource( 4 )
+text = "Weiter"
+
+[node name="TouchBox" type="TouchScreenButton" parent="Arrow"]
+position = Vector2( 576, 64 )
+shape = SubResource( 5 )
+
 [node name="DialogueText" type="RichTextLabel" parent="."]
 margin_left = 16.0
 margin_top = 8.0
@@ -100,3 +121,6 @@ anims/DisplayBox = SubResource( 3 )
 
 [node name="TextAnimations" type="AnimationPlayer" parent="."]
 anims/DisplayText = SubResource( 2 )
+
+[connection signal="pressed" from="Arrow/TouchBox" to="." method="_on_TouchBox_pressed"]
+[connection signal="released" from="Arrow/TouchBox" to="." method="_on_TouchBox_released"]
