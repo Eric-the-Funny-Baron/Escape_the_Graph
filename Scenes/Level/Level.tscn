@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Graphics/Shader/TriangleTexture.gdshader" type="Shader" id=5]
 [ext_resource path="res://Assets/background/fertig.png" type="Texture" id=6]
 [ext_resource path="res://Assets/background/hint.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Level/LevelBtn.gd" type="Script" id=8]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 5 )
@@ -78,12 +79,13 @@ margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="FinishedBtn" type="TextureButton" parent="VBoxContainer"]
+[node name="FinishedBtn" type="TextureButton" parent="VBoxContainer" groups=["Level_Button"]]
 margin_left = 344.0
 margin_right = 679.0
 margin_bottom = 88.0
 texture_normal = ExtResource( 6 )
 texture_disabled = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_left = 683.0
@@ -110,7 +112,7 @@ margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Hint" type="TextureButton" parent="VBoxContainer2/Control"]
+[node name="Hint" type="TextureButton" parent="VBoxContainer2/Control" groups=["Level_Button"]]
 margin_left = 4.0
 margin_right = 339.0
 margin_bottom = 88.0
@@ -119,6 +121,7 @@ rect_pivot_offset = Vector2( 167, 44 )
 theme = SubResource( 7 )
 texture_normal = ExtResource( 7 )
 texture_disabled = ExtResource( 7 )
+script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": "Protoytype Button to test graph generation"
 }

@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 var locked = false
 
