@@ -62,10 +62,8 @@ func _ready():
 	$VBoxContainer2/Control/Hint.disabled = true
 	$VBoxContainer/FinishedBtn.disabled = true
 	$VBoxContainer/FinishedBtn.locked = true
-	$VBoxContainer/OKBtn.hide()
-	$VBoxContainer2/Control2/OKBtn.hide()
-	$VBoxContainer/VBoxContainer.hide()
-	$VBoxContainer2/Control3/VBoxContainer.hide()
+	$Solution1.hide()
+	$Solution2.hide()
 	yield(Signals, "dialog_finished")
 	$VBoxContainer2/Control/Hint.disabled = false
 
@@ -279,6 +277,10 @@ func _on_Hint_pressed():
 	Signals.emit_signal("game_over_lock_released")
 
 func show_solution():
+	$Solution1/Control3/HBoxContainer/OkBtn.show()
+	$Solution2/HBoxContainer/Control3/Label/OkBtn.show()
+	$Solution1/Control3/HBoxContainer/SolutionBtn.hide()
+	$Solution2/HBoxContainer/Control3/Label/SolutionBtn.hide()
 	var time_interval = 1
 	for n in level_graph.nodes:
 		n.set_default()
@@ -302,20 +304,19 @@ func _on_FinishedBtn_pressed():
 	$VBoxContainer/FinishedBtn.locked = true
 
 func _on_Yes_pressed():
-	$VBoxContainer2/Control/Hint.hide()
-	$VBoxContainer/FinishedBtn.hide()
-	$VBoxContainer/OKBtn.show()
-	$VBoxContainer2/Control2/OKBtn.show()
-	$VBoxContainer/VBoxContainer.show()
-	$VBoxContainer2/Control3/VBoxContainer.show()
+	$VBoxContainer2.hide()
+	$VBoxContainer.hide()
+	$Solution1.show()
+	$Solution2.show()
+	$Solution1/Control3/HBoxContainer/OkBtn.hide()
+	$Solution2/HBoxContainer/Control3/Label/OkBtn.hide()
 	var optimal = "Optimaler Wert: " + String(best_weight)
 	var yourV = "Euer Wert: " + String(get_own_path_weight())
-	$VBoxContainer/VBoxContainer/Optimal.text = optimal
-	$VBoxContainer/VBoxContainer/YourV.text = yourV
-	$VBoxContainer2/Control3/VBoxContainer/Optimal.text = optimal
-	$VBoxContainer2/Control3/VBoxContainer/YourV.text = yourV
+	$Solution1/Control3/HBoxContainer/VBoxContainer/Optimal.text = optimal
+	$Solution1/Control3/HBoxContainer/VBoxContainer/YourV.text = yourV
+	$Solution2/HBoxContainer/Control3/Label/Optimal.text = optimal
+	$Solution2/HBoxContainer/Control3/Label/YourV.text = yourV
 	interpolation()
-	show_solution()
 
 
 func _on_No_pressed():
@@ -327,7 +328,7 @@ func _on_No_pressed():
 	Signals.emit_signal("touch_box_toggled")
 
 
-func _on_OKBtn_pressed():
+func _on_OkBtn_pressed():
 	solved = true
 	solve_num += 1
 	Signals.emit_signal("level_save_requested", get_name(), solved, solve_num, solved_optimal)
@@ -336,3 +337,4 @@ func _on_OKBtn_pressed():
 	Signals.emit_signal("level_hub_requested", "LevelHub_" + String(room_number))
 	Signals.emit_signal("game_over_lock_released")
 	
+

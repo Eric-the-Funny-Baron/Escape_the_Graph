@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/background/fertig.png" type="Texture" id=6]
 [ext_resource path="res://Assets/background/hint.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Level/LevelBtn.gd" type="Script" id=8]
+[ext_resource path="res://default_theme.tres" type="Theme" id=9]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 5 )
@@ -30,17 +31,17 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=13]
-size = 24
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
-
 [sub_resource type="DynamicFont" id=12]
 font_data = ExtResource( 4 )
 
 [sub_resource type="Theme" id=7]
 default_font = SubResource( 12 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 24
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="Level" type="Node2D" groups=["Dynamic_Scene"]]
 z_index = -2
@@ -83,50 +84,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 180.0
+margin_right = 340.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_left = 184.0
-margin_right = 436.0
-margin_bottom = 88.0
-size_flags_horizontal = 3
-
-[node name="Optimal" type="Label" parent="VBoxContainer/VBoxContainer"]
-margin_top = 4.0
-margin_right = 252.0
-margin_bottom = 37.0
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 13 )
-text = "Optimaler Wert: 24"
-
-[node name="YourV" type="Label" parent="VBoxContainer/VBoxContainer"]
-margin_top = 50.0
-margin_right = 252.0
-margin_bottom = 83.0
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 13 )
-text = "Euer Wert: 36"
-
-[node name="OKBtn" type="Button" parent="VBoxContainer"]
-margin_left = 440.0
-margin_right = 500.0
-margin_bottom = 88.0
-custom_fonts/font = SubResource( 8 )
-text = "OK"
-
 [node name="FinishedBtn" type="TextureButton" parent="VBoxContainer" groups=["Level_Button"]]
-margin_left = 504.0
-margin_right = 839.0
+margin_left = 344.0
+margin_right = 679.0
 margin_bottom = 88.0
 texture_normal = ExtResource( 6 )
 texture_disabled = ExtResource( 6 )
 script = ExtResource( 8 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_left = 843.0
+margin_left = 683.0
 margin_right = 1024.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
@@ -138,14 +110,14 @@ margin_right = 1024.0
 margin_bottom = 104.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2"]
-margin_right = 336.0
+margin_right = 338.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="VBoxContainer2"]
-margin_left = 340.0
-margin_right = 676.0
+margin_left = 342.0
+margin_right = 681.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -164,52 +136,8 @@ __meta__ = {
 "_editor_description_": "Protoytype Button to test graph generation"
 }
 
-[node name="Control3" type="Control" parent="VBoxContainer2"]
-margin_left = 680.0
-margin_right = 680.0
-margin_bottom = 88.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/Control3"]
-margin_left = 63.0
-margin_top = 88.0
-margin_right = 315.0
-margin_bottom = 176.0
-rect_rotation = 180.0
-size_flags_horizontal = 3
-
-[node name="Optimal" type="Label" parent="VBoxContainer2/Control3/VBoxContainer"]
-margin_top = 4.0
-margin_right = 252.0
-margin_bottom = 37.0
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 13 )
-text = "Optimaler Wert: 24"
-
-[node name="YourV" type="Label" parent="VBoxContainer2/Control3/VBoxContainer"]
-margin_top = 50.0
-margin_right = 252.0
-margin_bottom = 83.0
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 13 )
-text = "Euer Wert: 36"
-
-[node name="Control2" type="Control" parent="VBoxContainer2"]
-margin_left = 684.0
-margin_right = 684.0
-margin_bottom = 88.0
-
-[node name="OKBtn" type="Button" parent="VBoxContainer2/Control2"]
-anchor_bottom = 0.551
-margin_left = -211.0
-margin_top = 76.0
-margin_right = -151.0
-margin_bottom = 86.512
-rect_rotation = 180.0
-custom_fonts/font = SubResource( 8 )
-text = "OK"
-
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2"]
-margin_left = 688.0
+margin_left = 685.0
 margin_right = 1024.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
@@ -227,7 +155,172 @@ theme = SubResource( 10 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 custom_fonts/font = SubResource( 8 )
 
-[connection signal="pressed" from="VBoxContainer/OKBtn" to="." method="_on_OKBtn_pressed"]
+[node name="Solution1" type="HBoxContainer" parent="."]
+margin_top = 504.0
+margin_right = 1024.0
+margin_bottom = 592.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="Solution1"]
+margin_right = 338.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control3" type="Control" parent="Solution1"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Solution1/Control3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -229.0
+margin_right = 229.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Solution1/Control3/HBoxContainer"]
+margin_right = 252.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Optimal" type="Label" parent="Solution1/Control3/HBoxContainer/VBoxContainer"]
+margin_right = 252.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 13 )
+text = "Optimaler Wert: 24"
+align = 1
+
+[node name="YourV" type="Label" parent="Solution1/Control3/HBoxContainer/VBoxContainer"]
+margin_top = 37.0
+margin_right = 252.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 13 )
+text = "Euer Wert: 36"
+align = 1
+
+[node name="SolutionBtn" type="Button" parent="Solution1/Control3/HBoxContainer"]
+margin_left = 302.0
+margin_right = 458.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+text = "Lösung"
+
+[node name="OkBtn" type="Button" parent="Solution1/Control3/HBoxContainer"]
+margin_left = 508.0
+margin_right = 568.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+text = "Ok"
+
+[node name="MarginContainer" type="MarginContainer" parent="Solution1"]
+margin_left = 685.0
+margin_right = 1024.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Solution2" type="HBoxContainer" parent="."]
+margin_top = 16.0
+margin_right = 1024.0
+margin_bottom = 104.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="Solution2"]
+margin_right = 338.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Solution2"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+
+[node name="Control3" type="Control" parent="Solution2/HBoxContainer"]
+margin_right = 339.0
+margin_bottom = 88.0
+rect_pivot_offset = Vector2( 185, 44 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Solution2/HBoxContainer/Control3"]
+margin_right = 362.0
+margin_bottom = 88.0
+rect_rotation = 180.0
+rect_pivot_offset = Vector2( 181, 44 )
+theme = ExtResource( 9 )
+
+[node name="Optimal" type="Label" parent="Solution2/HBoxContainer/Control3/Label"]
+margin_right = 252.0
+margin_bottom = 33.0
+rect_pivot_offset = Vector2( 126, 16 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 13 )
+text = "Optimaler Wert: 24"
+align = 1
+
+[node name="YourV" type="Label" parent="Solution2/HBoxContainer/Control3/Label"]
+margin_top = 37.0
+margin_right = 252.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 13 )
+text = "Euer Wert: 36"
+align = 1
+
+[node name="SolutionBtn" type="Button" parent="Solution2/HBoxContainer/Control3/Label"]
+margin_left = 302.0
+margin_right = 362.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+text = "Lösung"
+
+[node name="OkBtn" type="Button" parent="Solution2/HBoxContainer/Control3/Label"]
+margin_left = 302.0
+margin_right = 362.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+text = "Ok"
+
+[node name="MarginContainer" type="MarginContainer" parent="Solution2"]
+margin_left = 685.0
+margin_right = 1024.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+
 [connection signal="button_up" from="VBoxContainer/FinishedBtn" to="." method="_on_FinishedBtn_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Control/Hint" to="." method="_on_Hint_pressed"]
-[connection signal="pressed" from="VBoxContainer2/Control2/OKBtn" to="." method="_on_OKBtn_pressed"]
+[connection signal="pressed" from="Solution1/Control3/HBoxContainer/SolutionBtn" to="." method="show_solution"]
+[connection signal="pressed" from="Solution1/Control3/HBoxContainer/OkBtn" to="." method="_on_OkBtn_pressed"]
+[connection signal="pressed" from="Solution2/HBoxContainer/Control3/Label/SolutionBtn" to="." method="show_solution"]
+[connection signal="pressed" from="Solution2/HBoxContainer/Control3/Label/OkBtn" to="." method="_on_OkBtn_pressed"]
