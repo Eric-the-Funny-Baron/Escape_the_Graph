@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
@@ -40,6 +40,11 @@ default_font = SubResource( 12 )
 [sub_resource type="DynamicFont" id=13]
 size = 24
 outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 40
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
@@ -218,7 +223,7 @@ margin_bottom = 70.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 14 )
 text = "Lösung"
 
 [node name="OkBtn" type="Button" parent="Solution1/Control3/HBoxContainer"]
