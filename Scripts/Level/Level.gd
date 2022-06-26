@@ -64,6 +64,8 @@ func _ready():
 	$VBoxContainer/FinishedBtn.locked = true
 	$Solution1.hide()
 	$Solution2.hide()
+	$VBoxContainer3/Control/ProblemType.hide()
+	$VBoxContainer4/Control/ProblemType.hide()
 	yield(Signals, "dialog_finished")
 	$VBoxContainer2/Control/Hint.disabled = false
 
@@ -304,16 +306,34 @@ func _on_FinishedBtn_pressed():
 	$VBoxContainer/FinishedBtn.locked = true
 
 func _on_Yes_pressed():
+	Signals.emit_signal("help_update_requested", "Solution_help")
 	$VBoxContainer2.hide()
 	$VBoxContainer.hide()
 	$Solution1.show()
 	$Solution2.show()
-	$Solution1/Control3/HBoxContainer/OkBtn.hide()
-	$Solution2/HBoxContainer/Control3/Label/OkBtn.hide()
+	if (best_weight == get_own_path_weight()):
+		Signals.emit_signal("dialogue_opened", "Good_result")
+		$Solution1/Control3/HBoxContainer/SolutionBtn.hide()
+		$Solution2/HBoxContainer/Control3/Label/SolutionBtn.hide()
+	else:
+		Signals.emit_signal("dialogue_opened", "Bad_result")
+		$Solution1/Control3/HBoxContainer/OkBtn.hide()
+		$Solution2/HBoxContainer/Control3/Label/OkBtn.hide()
+	$VBoxContainer3/Control/ProblemType.show()
+	$VBoxContainer4/Control/ProblemType.show()
 	var optimal = "Optimaler Wert: " + String(best_weight)
 	var yourV = "Euer Wert: " + String(get_own_path_weight())
+	var problemType
+	if (type == 0):
+		problemType = "Kürzestes Wege Problem"
+	elif (type == 1):
+		problemType = "Kapazitätsproblem"
+	else:
+		problemType = "Zuverlässigkeitsproblem"
 	$Solution1/Control3/HBoxContainer/VBoxContainer/Optimal.text = optimal
 	$Solution1/Control3/HBoxContainer/VBoxContainer/YourV.text = yourV
+	$VBoxContainer3/Control/ProblemType.text = problemType
+	$VBoxContainer4/Control/ProblemType.text = problemType
 	$Solution2/HBoxContainer/Control3/Label/Optimal.text = optimal
 	$Solution2/HBoxContainer/Control3/Label/YourV.text = yourV
 	interpolation()

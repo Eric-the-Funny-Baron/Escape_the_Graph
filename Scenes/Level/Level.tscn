@@ -39,7 +39,6 @@ default_font = SubResource( 12 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 24
-outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
@@ -161,9 +160,9 @@ custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 custom_fonts/font = SubResource( 8 )
 
 [node name="Solution1" type="HBoxContainer" parent="."]
-margin_top = 504.0
+margin_top = 512.0
 margin_right = 1024.0
-margin_bottom = 592.0
+margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -244,9 +243,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Solution2" type="HBoxContainer" parent="."]
-margin_top = 16.0
+margin_top = 8.0
 margin_right = 1024.0
-margin_bottom = 104.0
+margin_bottom = 96.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="Solution2"]
 margin_right = 338.0
@@ -322,6 +321,56 @@ margin_left = 685.0
 margin_right = 1024.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+margin_left = 24.0
+margin_right = 206.0
+margin_bottom = 608.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer3"]
+margin_top = 304.0
+margin_right = 182.0
+margin_bottom = 304.0
+rect_pivot_offset = Vector2( 0, 16 )
+
+[node name="ProblemType" type="Label" parent="VBoxContainer3/Control"]
+margin_top = 198.0
+margin_right = 608.0
+margin_bottom = 231.0
+rect_rotation = 270.0
+rect_pivot_offset = Vector2( 91, 16 )
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 13 )
+text = "kürzester weg"
+align = 1
+valign = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="."]
+margin_left = 816.0
+margin_right = 998.0
+margin_bottom = 608.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer4"]
+margin_top = 304.0
+margin_right = 182.0
+margin_bottom = 304.0
+rect_pivot_offset = Vector2( 0, 16 )
+
+[node name="ProblemType" type="Label" parent="VBoxContainer4/Control"]
+margin_top = -228.0
+margin_right = 608.0
+margin_bottom = -195.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 91, 16 )
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 13 )
+text = "kürzester weg"
+align = 1
+valign = 1
 
 [connection signal="button_up" from="VBoxContainer/FinishedBtn" to="." method="_on_FinishedBtn_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Control/Hint" to="." method="_on_Hint_pressed"]

@@ -23,7 +23,6 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [node name="ConfirmationDialog" type="Popup"]
-visible = true
 margin_right = 1026.0
 margin_bottom = 608.0
 theme = ExtResource( 2 )
@@ -71,7 +70,6 @@ text = "Hast du alles verstanden?"
 align = 1
 valign = 1
 autowrap = true
-percent_visible = -0.0454545
 script = SubResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/Control/VBoxContainer"]

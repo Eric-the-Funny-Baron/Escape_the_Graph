@@ -17,5 +17,12 @@
 	"Level_Confirmation" :
 		"Um das Level abzuschließen, müsst ihr alle auf Ja tippen. Tippt einer auf Nein, hat diese Person die Lösung wohlmöglich
 		nicht ganz verstanden. In dem Fall solltet ihr die Lösung nochmal gemeinsdam besprechen und zu einem späteren Zeitpunkt
-		die Auswahl dann bestätigen."
+		die Auswahl dann bestätigen.",
+	
+	"Solution" :
+		"Ihr habt nun euer Level abgegeben. Vor euch sehr ihr welcher Wert die optimale Lösung gewesen wäre.
+		Darunter sehr ihr den Wert, der bei dem Pfad den ihr gewählt habt herausgekommen ist. Je nachdem wie gut ihr abgeschnitten habt,
+		ist die Energie von eurer Batterie gesunken oder gestiegen. Neben euer
+		Batterie sehr ihr um welches Pfadproblem es sich bei der Aufgabe gehandelt hat. 
+		Wenn es nicht so gut lief, probiert es doch gleich nochmal!"
 }
