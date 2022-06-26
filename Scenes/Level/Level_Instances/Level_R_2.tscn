@@ -4,8 +4,13 @@
 
 [node name="Level_R_2" instance=ExtResource( 1 )]
 room_number = 2
-nodes = 12
 edges = 14
 type = 2
 minimal_weight = 0.1
 maximum_weight = 0.9
+
+[node name="ReadyLabel" parent="." index="2"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 160.0
+margin_bottom = 72.0

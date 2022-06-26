@@ -53,9 +53,6 @@ margin_bottom = 190.0
 [node name="DialogueBox" parent="Node2D3/DialogueScene/VBoxContainer/MarginContainer2" index="0"]
 margin_bottom = 190.0
 
-[node name="Border" parent="Node2D3/DialogueScene/VBoxContainer/MarginContainer2/DialogueBox" index="0"]
-color = Color( 0.67451, 0.278431, 0.666667, 1 )
-
 [node name="Arrow" parent="Node2D3/DialogueScene/VBoxContainer/MarginContainer2/DialogueBox" index="2"]
 position = Vector2( 171, 75 )
 rotation = 3.14159

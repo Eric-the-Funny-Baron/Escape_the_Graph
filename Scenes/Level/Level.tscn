@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Assets/background/hint.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Level/LevelBtn.gd" type="Script" id=8]
 [ext_resource path="res://default_theme.tres" type="Theme" id=9]
+[ext_resource path="res://Assets/background/solu.png" type="Texture" id=10]
+[ext_resource path="res://Assets/background/ok.png" type="Texture" id=11]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 5 )
@@ -217,23 +219,27 @@ align = 1
 
 [node name="SolutionBtn" type="Button" parent="Solution1/Control3/HBoxContainer"]
 margin_left = 302.0
-margin_right = 458.0
+margin_right = 362.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 14 )
-text = "Lösung"
+icon = ExtResource( 10 )
+flat = true
+expand_icon = true
 
 [node name="OkBtn" type="Button" parent="Solution1/Control3/HBoxContainer"]
-margin_left = 508.0
-margin_right = 568.0
+margin_left = 412.0
+margin_right = 472.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 8 )
-text = "Ok"
+icon = ExtResource( 11 )
+flat = true
+expand_icon = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Solution1"]
 margin_left = 685.0
@@ -297,24 +303,30 @@ text = "Euer Wert: 36"
 align = 1
 
 [node name="SolutionBtn" type="Button" parent="Solution2/HBoxContainer/Control3/Label"]
-margin_left = 302.0
-margin_right = 362.0
-margin_bottom = 70.0
+margin_left = 282.0
+margin_top = 8.99999
+margin_right = 433.0
+margin_bottom = 85.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 8 )
-text = "Lösung"
+icon = ExtResource( 10 )
+flat = true
+expand_icon = true
 
 [node name="OkBtn" type="Button" parent="Solution2/HBoxContainer/Control3/Label"]
-margin_left = 302.0
-margin_right = 362.0
-margin_bottom = 70.0
+margin_left = 295.0
+margin_top = -15.0
+margin_right = 389.0
+margin_bottom = 74.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 8 )
-text = "Ok"
+icon = ExtResource( 11 )
+flat = true
+expand_icon = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Solution2"]
 margin_left = 685.0
