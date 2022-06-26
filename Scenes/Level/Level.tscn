@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
@@ -41,11 +41,6 @@ default_font = SubResource( 12 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 24
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=14]
-size = 40
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
@@ -111,6 +106,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer2" type="HBoxContainer" parent="."]
+visible = false
 margin_top = 16.0
 margin_right = 1024.0
 margin_bottom = 104.0
@@ -185,11 +181,12 @@ size_flags_vertical = 3
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -229.0
-margin_right = 229.0
+margin_right = 265.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 50
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Solution1/Control3/HBoxContainer"]
 margin_right = 252.0
@@ -217,29 +214,22 @@ custom_fonts/font = SubResource( 13 )
 text = "Euer Wert: 36"
 align = 1
 
-[node name="SolutionBtn" type="Button" parent="Solution1/Control3/HBoxContainer"]
+[node name="SolutionBtn" type="TextureButton" parent="Solution1/Control3/HBoxContainer"]
 margin_left = 302.0
-margin_right = 362.0
+margin_right = 494.0
 margin_bottom = 70.0
-rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 14 )
-icon = ExtResource( 10 )
-flat = true
-expand_icon = true
+texture_normal = ExtResource( 10 )
 
-[node name="OkBtn" type="Button" parent="Solution1/Control3/HBoxContainer"]
-margin_left = 412.0
-margin_right = 472.0
+[node name="OkBtn" type="TextureButton" parent="Solution1/Control3/HBoxContainer"]
+margin_left = 544.0
+margin_right = 736.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 8 )
-icon = ExtResource( 11 )
-flat = true
-expand_icon = true
+texture_normal = ExtResource( 11 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Solution1"]
 margin_left = 685.0
@@ -279,6 +269,8 @@ margin_bottom = 88.0
 rect_rotation = 180.0
 rect_pivot_offset = Vector2( 181, 44 )
 theme = ExtResource( 9 )
+align = 1
+valign = 1
 
 [node name="Optimal" type="Label" parent="Solution2/HBoxContainer/Control3/Label"]
 margin_right = 252.0
@@ -302,31 +294,23 @@ custom_fonts/font = SubResource( 13 )
 text = "Euer Wert: 36"
 align = 1
 
-[node name="SolutionBtn" type="Button" parent="Solution2/HBoxContainer/Control3/Label"]
+[node name="SolutionBtn" type="TextureButton" parent="Solution2/HBoxContainer/Control3/Label"]
 margin_left = 282.0
-margin_top = 8.99999
-margin_right = 433.0
-margin_bottom = 85.0
+margin_right = 474.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 8 )
-icon = ExtResource( 10 )
-flat = true
-expand_icon = true
+texture_normal = ExtResource( 10 )
 
-[node name="OkBtn" type="Button" parent="Solution2/HBoxContainer/Control3/Label"]
+[node name="OkBtn" type="TextureButton" parent="Solution2/HBoxContainer/Control3/Label"]
 margin_left = 295.0
-margin_top = -15.0
 margin_right = 389.0
-margin_bottom = 74.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 8 )
-icon = ExtResource( 11 )
-flat = true
-expand_icon = true
+texture_normal = ExtResource( 11 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Solution2"]
 margin_left = 685.0

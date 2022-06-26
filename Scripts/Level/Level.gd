@@ -316,7 +316,11 @@ func _on_Yes_pressed():
 		$Solution1/Control3/HBoxContainer/SolutionBtn.hide()
 		$Solution2/HBoxContainer/Control3/Label/SolutionBtn.hide()
 	else:
-		Signals.emit_signal("dialogue_opened", "Bad_result")
+		var howGood = abs(1.0 - get_own_path_weight()/best_weight)
+		if (howGood <= 0.4):
+			Signals.emit_signal("dialogue_opened", "Ok_result")
+		else:
+			Signals.emit_signal("dialogue_opened", "Bad_result")
 		$Solution1/Control3/HBoxContainer/OkBtn.hide()
 		$Solution2/HBoxContainer/Control3/Label/OkBtn.hide()
 	$VBoxContainer3/Control/ProblemType.show()
