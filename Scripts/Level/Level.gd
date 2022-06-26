@@ -280,9 +280,9 @@ func _on_Hint_pressed():
 
 func show_solution():
 	$Solution1/Control3/HBoxContainer/OkBtn.show()
-	$Solution2/HBoxContainer/Control3/Label/OkBtn.show()
+	$Solution2/Control3/HBoxContainer/OkBtn.show()
 	$Solution1/Control3/HBoxContainer/SolutionBtn.hide()
-	$Solution2/HBoxContainer/Control3/Label/SolutionBtn.hide()
+	$Solution2/Control3/HBoxContainer/SolutionBtn.hide()
 	var time_interval = 1
 	for n in level_graph.nodes:
 		n.set_default()
@@ -314,7 +314,7 @@ func _on_Yes_pressed():
 	if (best_weight == get_own_path_weight()):
 		Signals.emit_signal("dialogue_opened", "Good_result")
 		$Solution1/Control3/HBoxContainer/SolutionBtn.hide()
-		$Solution2/HBoxContainer/Control3/Label/SolutionBtn.hide()
+		$Solution2/Control3/HBoxContainer/SolutionBtn.hide()
 	else:
 		var howGood = abs(1.0 - get_own_path_weight()/best_weight)
 		if (howGood <= 0.4):
@@ -322,7 +322,7 @@ func _on_Yes_pressed():
 		else:
 			Signals.emit_signal("dialogue_opened", "Bad_result")
 		$Solution1/Control3/HBoxContainer/OkBtn.hide()
-		$Solution2/HBoxContainer/Control3/Label/OkBtn.hide()
+		$Solution2/Control3/HBoxContainer/OkBtn.hide()
 	$VBoxContainer3/Control/ProblemType.show()
 	$VBoxContainer4/Control/ProblemType.show()
 	var optimal = "Optimaler Wert: " + String(best_weight)
@@ -338,8 +338,8 @@ func _on_Yes_pressed():
 	$Solution1/Control3/HBoxContainer/VBoxContainer/YourV.text = yourV
 	$VBoxContainer3/Control/ProblemType.text = problemType
 	$VBoxContainer4/Control/ProblemType.text = problemType
-	$Solution2/HBoxContainer/Control3/Label/Optimal.text = optimal
-	$Solution2/HBoxContainer/Control3/Label/YourV.text = yourV
+	$Solution2/Control3/HBoxContainer/VBoxContainer/Optimal.text = optimal
+	$Solution2/Control3/HBoxContainer/VBoxContainer/YourV.text = yourV
 	interpolation()
 
 

@@ -106,7 +106,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer2" type="HBoxContainer" parent="."]
-visible = false
 margin_top = 16.0
 margin_right = 1024.0
 margin_bottom = 104.0
@@ -224,7 +223,7 @@ texture_normal = ExtResource( 10 )
 
 [node name="OkBtn" type="TextureButton" parent="Solution1/Control3/HBoxContainer"]
 margin_left = 544.0
-margin_right = 736.0
+margin_right = 751.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
@@ -242,40 +241,44 @@ size_flags_vertical = 3
 margin_top = 8.0
 margin_right = 1024.0
 margin_bottom = 96.0
+rect_rotation = 180.0
+rect_pivot_offset = Vector2( 512, 44 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="Solution2"]
 margin_right = 338.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Solution2"]
+[node name="Control3" type="Control" parent="Solution2"]
 margin_left = 342.0
 margin_right = 681.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 50
 
-[node name="Control3" type="Control" parent="Solution2/HBoxContainer"]
-margin_right = 339.0
-margin_bottom = 88.0
-rect_pivot_offset = Vector2( 185, 44 )
+[node name="HBoxContainer" type="HBoxContainer" parent="Solution2/Control3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -229.0
+margin_right = 265.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Solution2/Control3/HBoxContainer"]
+margin_right = 252.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Solution2/HBoxContainer/Control3"]
-margin_right = 362.0
-margin_bottom = 88.0
-rect_rotation = 180.0
-rect_pivot_offset = Vector2( 181, 44 )
-theme = ExtResource( 9 )
-align = 1
-valign = 1
-
-[node name="Optimal" type="Label" parent="Solution2/HBoxContainer/Control3/Label"]
+[node name="Optimal" type="Label" parent="Solution2/Control3/HBoxContainer/VBoxContainer"]
 margin_right = 252.0
 margin_bottom = 33.0
-rect_pivot_offset = Vector2( 126, 16 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 9 )
@@ -283,30 +286,28 @@ custom_fonts/font = SubResource( 13 )
 text = "Optimaler Wert: 24"
 align = 1
 
-[node name="YourV" type="Label" parent="Solution2/HBoxContainer/Control3/Label"]
+[node name="YourV" type="Label" parent="Solution2/Control3/HBoxContainer/VBoxContainer"]
 margin_top = 37.0
 margin_right = 252.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 9 )
 custom_fonts/font = SubResource( 13 )
 text = "Euer Wert: 36"
 align = 1
 
-[node name="SolutionBtn" type="TextureButton" parent="Solution2/HBoxContainer/Control3/Label"]
-margin_left = 282.0
-margin_right = 474.0
-margin_bottom = 76.0
-rect_min_size = Vector2( 60, 0 )
+[node name="SolutionBtn" type="TextureButton" parent="Solution2/Control3/HBoxContainer"]
+margin_left = 302.0
+margin_right = 494.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource( 10 )
 
-[node name="OkBtn" type="TextureButton" parent="Solution2/HBoxContainer/Control3/Label"]
-margin_left = 295.0
-margin_right = 389.0
-margin_bottom = 89.0
+[node name="OkBtn" type="TextureButton" parent="Solution2/Control3/HBoxContainer"]
+margin_left = 544.0
+margin_right = 742.0
+margin_bottom = 70.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -317,6 +318,7 @@ margin_left = 685.0
 margin_right = 1024.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
 margin_left = 24.0
@@ -372,5 +374,5 @@ valign = 1
 [connection signal="pressed" from="VBoxContainer2/Control/Hint" to="." method="_on_Hint_pressed"]
 [connection signal="pressed" from="Solution1/Control3/HBoxContainer/SolutionBtn" to="." method="show_solution"]
 [connection signal="pressed" from="Solution1/Control3/HBoxContainer/OkBtn" to="." method="_on_OkBtn_pressed"]
-[connection signal="pressed" from="Solution2/HBoxContainer/Control3/Label/SolutionBtn" to="." method="show_solution"]
-[connection signal="pressed" from="Solution2/HBoxContainer/Control3/Label/OkBtn" to="." method="_on_OkBtn_pressed"]
+[connection signal="pressed" from="Solution2/Control3/HBoxContainer/SolutionBtn" to="." method="show_solution"]
+[connection signal="pressed" from="Solution2/Control3/HBoxContainer/OkBtn" to="." method="_on_OkBtn_pressed"]
