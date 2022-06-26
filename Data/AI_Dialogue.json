@@ -53,8 +53,8 @@
 		},
 	"Solution_help" :
 		{
-			"001": "Ihr habt nun euer Level abgegeben. Vor euch sehr ihr welcher Wert die optimale Lösung gewesen wäre und welches der Wert war, den ihr gefunden habt. Je nachdem wie gut ihr abgeschnitten habt, ist die Energie von eurer Batterie gesunken oder gestiegen.",
-			"002": "Neben euer Batterie sehr ihr um welches Pfadproblem es sich bei der Aufgabe gehandelt hat. Wenn es nicht so gut lief, probiert es doch gleich nochmal!"
+			"001": "Ihr habt nun euer Level abgegeben. Vor euch seht ihr, welcher Wert die optimale Lösung gewesen wäre und welches der Wert war, den ihr gefunden habt. Je nachdem wie gut ihr abgeschnitten habt, ist die Energie von eurer Batterie gesunken oder gestiegen.",
+			"002": "Neben euer Batterie seht ihr, um welches Pfadproblem es sich bei der Aufgabe gehandelt hat. Wenn es nicht so gut lief, probiert es doch gleich nochmal!"
 		},
 	"Bad_result" :
 		{
