@@ -317,8 +317,8 @@ expand_icon = true
 
 [node name="OkBtn" type="Button" parent="Solution2/HBoxContainer/Control3/Label"]
 margin_left = 295.0
-margin_top = -15.0
-margin_right = 389.0
+margin_top = -24.0
+margin_right = 438.0
 margin_bottom = 74.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
