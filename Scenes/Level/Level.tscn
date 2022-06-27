@@ -216,7 +216,7 @@ custom_fonts/font = SubResource( 13 )
 text = "Euer Wert: 36"
 align = 1
 
-[node name="SolutionBtn" type="TextureButton" parent="Solution1/Control3/HBoxContainer"]
+[node name="SolutionBtn" type="TextureButton" parent="Solution1/Control3/HBoxContainer" groups=["Level_Button"]]
 margin_left = 302.0
 margin_right = 494.0
 margin_bottom = 70.0
@@ -225,8 +225,9 @@ size_flags_vertical = 3
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 12 )
+script = ExtResource( 8 )
 
-[node name="OkBtn" type="TextureButton" parent="Solution1/Control3/HBoxContainer"]
+[node name="OkBtn" type="TextureButton" parent="Solution1/Control3/HBoxContainer" groups=["Level_Button"]]
 margin_left = 544.0
 margin_right = 742.0
 margin_bottom = 70.0
@@ -236,6 +237,7 @@ size_flags_vertical = 3
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 13 )
+script = ExtResource( 8 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Solution1"]
 margin_left = 685.0
@@ -304,7 +306,7 @@ custom_fonts/font = SubResource( 13 )
 text = "Euer Wert: 36"
 align = 1
 
-[node name="SolutionBtn" type="TextureButton" parent="Solution2/Control3/HBoxContainer"]
+[node name="SolutionBtn" type="TextureButton" parent="Solution2/Control3/HBoxContainer" groups=["Level_Button"]]
 margin_left = 302.0
 margin_right = 494.0
 margin_bottom = 70.0
@@ -313,8 +315,9 @@ size_flags_vertical = 3
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 12 )
+script = ExtResource( 8 )
 
-[node name="OkBtn" type="TextureButton" parent="Solution2/Control3/HBoxContainer"]
+[node name="OkBtn" type="TextureButton" parent="Solution2/Control3/HBoxContainer" groups=["Level_Button"]]
 margin_left = 544.0
 margin_right = 742.0
 margin_bottom = 70.0
@@ -324,6 +327,7 @@ size_flags_vertical = 3
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 13 )
+script = ExtResource( 8 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Solution2"]
 margin_left = 685.0
