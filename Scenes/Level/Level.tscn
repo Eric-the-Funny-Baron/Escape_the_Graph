@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://default_theme.tres" type="Theme" id=9]
 [ext_resource path="res://Assets/background/solu.png" type="Texture" id=10]
 [ext_resource path="res://Assets/background/ok.png" type="Texture" id=11]
+[ext_resource path="res://Assets/background/soluactive.png" type="Texture" id=12]
+[ext_resource path="res://Assets/background/okactive.png" type="Texture" id=13]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 5 )
@@ -113,6 +115,7 @@ margin_bottom = 104.0
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2"]
 margin_right = 338.0
 margin_bottom = 88.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -220,20 +223,25 @@ margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 12 )
 
 [node name="OkBtn" type="TextureButton" parent="Solution1/Control3/HBoxContainer"]
 margin_left = 544.0
-margin_right = 751.0
+margin_right = 742.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 13 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Solution1"]
 margin_left = 685.0
 margin_right = 1024.0
 margin_bottom = 88.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -303,6 +311,8 @@ margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 12 )
 
 [node name="OkBtn" type="TextureButton" parent="Solution2/Control3/HBoxContainer"]
 margin_left = 544.0
@@ -312,6 +322,8 @@ rect_min_size = Vector2( 60, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 13 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Solution2"]
 margin_left = 685.0
