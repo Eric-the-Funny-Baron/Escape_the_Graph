@@ -74,17 +74,17 @@
 		},
 	"Shortest_Path" :
 		{
-			"001": "Beim Kürzesten-Weg-Problem ist es das Ziel, den kürzesten Weg zu einem Zielknoten zu finden.",
+			"001": "Hier ging es um das Kürzesten-Weg-Problem. Dabei ist es das Ziel, den kürzesten Weg zu einem Zielknoten zu finden.",
 			"002": "Kantengewichte werden entlang des Pfades zusammenaddiert. Die kleinste Summe stellt hierbei den kürzesten Weg dar."
 		},
 	"Capacity" :
 		{
-			"001": "Beim Kapazitätsproblem ist es das Ziel, einen Weg zu einem Ziel mit maximaler Kapazität zu finden.",
+			"001": "Eure Aufgabe war es Kapazitätsproblem lösen. Dabei sollt ihr einen Weg zum Ziel mit maximaler Kapazität finden.",
 			"002": "Aus allen Kanten des Pfades stellt der kleinste Wert die Pfadkapazität dar. Ein möglichst großer Wert stellt die höchste Kapazität dar."
 		},
 	"Reliability" :
 		{
-			"001": "Beim Zuverlässigkeitsproblem ist es das Ziel, den zuverlässigsten Weg zu einem Ziel zu finden.",
+			"001": "Da es sich hier um das Zuverlässigkeitsproblem handelt, solltet ihr den zuverlässigsten Weg zum Ziel finden.",
 			"002": "Kantengewichte werden entlang des Pfades zusammenmultipliziert. Das größte Produkt stellt den zuverlässigsten Weg dar."
 		}
 }
