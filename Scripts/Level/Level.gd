@@ -311,6 +311,7 @@ func _on_Yes_pressed():
 	$VBoxContainer.hide()
 	$Solution1.show()
 	$Solution2.show()
+	var problem_concat = ["Shortest_Path", "Capacity", "Reliability"]
 	if (best_weight == get_own_path_weight()):
 		Signals.emit_signal("dialogue_opened", "Good_result")
 		$Solution1/Control3/HBoxContainer/SolutionBtn.hide()
@@ -318,9 +319,9 @@ func _on_Yes_pressed():
 	else:
 		var howGood = abs(1.0 - get_own_path_weight()/best_weight)
 		if (howGood <= 0.4):
-			Signals.emit_signal("dialogue_opened", "Ok_result")
+			Signals.emit_signal("fused_dialogue_opened", "Ok_result", problem_concat[type])
 		else:
-			Signals.emit_signal("dialogue_opened", "Bad_result")
+			Signals.emit_signal("fused_dialogue_opened", "Bad_result", problem_concat[type])
 		$Solution1/Control3/HBoxContainer/OkBtn.hide()
 		$Solution2/Control3/HBoxContainer/OkBtn.hide()
 	$VBoxContainer3/Control/ProblemType.show()

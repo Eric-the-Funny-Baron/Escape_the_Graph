@@ -13,6 +13,7 @@ func _ready():
 	Signals.connect("dialogue_opened", self, "_open_scene")
 	Signals.connect("evaluation_requested", self, "_on_evaluation_requested")
 	Signals.connect("continue_pressed", self, "_on_continue_pressed")
+	Signals.connect("fused_dialogue_opened", self, "open_fused_dialog")
 	
 	# Loading of all Dialogue Data =================
 	var file = File.new()
@@ -70,7 +71,31 @@ func set_new_dialog():
 		d.set_text(dialog_lines[current_index])
 		d.display_text()
 	
-	current_index += 1	
+	current_index += 1
+
+func open_fused_dialog(dialog_1, dialog_2):
+	current_dialogue_scene = dialogue_scenes[dialog_1]
+	var i = 0 # index
+	for d in dialogue_scenes[dialog_2].keys():
+		current_dialogue_scene["concat_" + String(i)] = dialogue_scenes[dialog_2][d]
+		i += 1
+	for e in get_tree().get_nodes_in_group("UI_Buttons"):
+		e.toggle_active()
+	for e in get_tree().get_nodes_in_group("Level_Button"):
+		e.set_disabled(true)
+	visible = true
+	active = true
+	current_index = 0
+	maximum_index = current_dialogue_scene.size()
+	
+	dialog_lines = current_dialogue_scene.values()
+	
+	$DialogSceneAnimations.play("BackgroundFade")
+	$CenterContainer/SizeContainer/AI.display_ai()
+	for d in dialog_boxes:
+		d.display_box()
+	
+	set_new_dialog()		
 
 func _on_evaluation_requested(best_value, value):
 	var scene_name = "Level_Evaluation"
