@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scripts/Level/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Level/VideoPlayer.gd" type="Script" id=2]
@@ -6,13 +6,17 @@
 [ext_resource path="res://Assets/Fonts/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Graphics/Shader/TriangleTexture.gdshader" type="Shader" id=5]
 [ext_resource path="res://Assets/background/fertig.png" type="Texture" id=6]
-[ext_resource path="res://Assets/background/hint.png" type="Texture" id=7]
+[ext_resource path="res://Assets/background/tipp.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Level/LevelBtn.gd" type="Script" id=8]
 [ext_resource path="res://default_theme.tres" type="Theme" id=9]
 [ext_resource path="res://Assets/background/solu.png" type="Texture" id=10]
 [ext_resource path="res://Assets/background/ok.png" type="Texture" id=11]
 [ext_resource path="res://Assets/background/soluactive.png" type="Texture" id=12]
 [ext_resource path="res://Assets/background/okactive.png" type="Texture" id=13]
+[ext_resource path="res://Assets/background/fertigDisabled.png" type="Texture" id=14]
+[ext_resource path="res://Assets/background/fertigActive.png" type="Texture" id=15]
+[ext_resource path="res://Assets/background/tippDisabled.png" type="Texture" id=16]
+[ext_resource path="res://Assets/background/tippActive.png" type="Texture" id=17]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 5 )
@@ -80,37 +84,38 @@ custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 custom_fonts/font = SubResource( 8 )
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 504.0
+margin_top = 520.0
 margin_right = 1024.0
-margin_bottom = 592.0
+margin_bottom = 608.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 340.0
+margin_right = 409.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="FinishedBtn" type="TextureButton" parent="VBoxContainer" groups=["Level_Button"]]
-margin_left = 344.0
-margin_right = 679.0
+margin_left = 413.0
+margin_right = 611.0
 margin_bottom = 88.0
 texture_normal = ExtResource( 6 )
-texture_disabled = ExtResource( 6 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
 script = ExtResource( 8 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_left = 683.0
+margin_left = 615.0
 margin_right = 1024.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer2" type="HBoxContainer" parent="."]
-margin_top = 16.0
 margin_right = 1024.0
-margin_bottom = 104.0
+margin_bottom = 88.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2"]
 margin_right = 338.0
@@ -123,18 +128,23 @@ size_flags_vertical = 3
 margin_left = 342.0
 margin_right = 681.0
 margin_bottom = 88.0
+rect_pivot_offset = Vector2( 99, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Hint" type="TextureButton" parent="VBoxContainer2/Control" groups=["Level_Button"]]
-anchor_right = 0.994
-anchor_bottom = 1.0
-margin_right = 0.0220032
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -99.0
+margin_right = 99.0
+margin_bottom = 67.0
 rect_rotation = -180.0
-rect_pivot_offset = Vector2( 167, 44 )
+rect_pivot_offset = Vector2( 99, 44 )
 theme = SubResource( 7 )
 texture_normal = ExtResource( 7 )
-texture_disabled = ExtResource( 7 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 17 )
+texture_disabled = ExtResource( 16 )
 script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": "Protoytype Button to test graph generation"
@@ -160,6 +170,7 @@ custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 custom_fonts/font = SubResource( 8 )
 
 [node name="Solution1" type="HBoxContainer" parent="."]
+visible = false
 margin_top = 512.0
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -248,6 +259,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Solution2" type="HBoxContainer" parent="."]
+visible = false
 margin_top = 8.0
 margin_right = 1024.0
 margin_bottom = 96.0
