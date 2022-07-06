@@ -37,6 +37,7 @@ signal dialogue_opened(scene_name)
 signal continue_pressed
 signal evaluation_requested(best_value, value)
 signal fused_dialogue_opened(dialog_1, dialog_2)
+signal dialog_fuse_requested(dialog_1, dialog_2)
 signal solution_showed
 signal dialog_finished
 

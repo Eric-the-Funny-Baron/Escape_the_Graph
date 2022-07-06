@@ -14,6 +14,7 @@ func _ready():
 	Signals.connect("evaluation_requested", self, "_on_evaluation_requested")
 	Signals.connect("continue_pressed", self, "_on_continue_pressed")
 	Signals.connect("fused_dialogue_opened", self, "open_fused_dialog")
+	Signals.connect("dialog_fuse_requested", self, "fuse_dialog")
 	
 	# Loading of all Dialogue Data =================
 	var file = File.new()
@@ -96,6 +97,17 @@ func open_fused_dialog(dialog_1, dialog_2):
 		d.display_box()
 	
 	set_new_dialog()		
+
+func fuse_dialog(dialog_1, dialog_2):
+	var new_key = dialog_1 + dialog_2
+	var new_content = {}
+	for d in dialogue_scenes[dialog_1].keys():
+		new_content[dialog_1 + d] = dialogue_scenes[dialog_1][d]
+	for d in dialogue_scenes[dialog_2].keys():
+		new_content[dialog_2 + d] = dialogue_scenes[dialog_2][d]
+	
+	dialogue_scenes[new_key] = new_content
+	
 
 func _on_evaluation_requested(best_value, value):
 	var scene_name = "Level_Evaluation"

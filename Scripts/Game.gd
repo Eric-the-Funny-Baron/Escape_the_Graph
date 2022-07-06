@@ -31,7 +31,9 @@ func _ready():
 
 func _on_level_requested(level_name):
 	var scene_path = "res://Scenes/Level/Level_Instances/" + level_name + ".tscn"
-	_on_help_update_requested("Level_help")
+	Signals.emit_signal("dialog_fuse_requested", "Level_help", "Reintroduction")
+	Signals.emit_signal("dialog_fuse_requested", "Level_help"+"Reintroduction", level_name)
+	_on_help_update_requested("Level_help" + "Reintroduction" + level_name)
 	Signals.emit_signal("touch_box_toggled")
 	switch_scene(scene_path)
 	fade_in() # fade in calls fade out automatically
@@ -108,7 +110,9 @@ func switch_scene(scene_path):
 	old_scene = get_tree().get_nodes_in_group("Dynamic_Scene")
 	new_scene = load(scene_path).instance()
 	if "visible" in new_scene: new_scene.hide()
-	else: new_scene.get_child(0).hide()
+	else: 
+		for child in new_scene.get_children():
+			child.hide()
 	add_child(new_scene)
 	
 func delete_old_dynamic_scenes():
@@ -121,7 +125,9 @@ func fade_in():
 func fade_out():
 	delete_old_dynamic_scenes()
 	if "visible" in new_scene: new_scene.show()
-	else: new_scene.get_child(0).show()
+	else:
+		for child in new_scene.get_children():
+			child.show()
 	old_scene = null
 	new_scene = null
 	$BlendingLayer/BlendingAnimation.play("BlackScreen_Fading_reverse")
