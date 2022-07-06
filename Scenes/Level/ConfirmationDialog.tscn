@@ -23,6 +23,7 @@ font_data = ExtResource( 1 )
 default_font = SubResource( 1 )
 
 [node name="ConfirmationDialog" type="Popup"]
+visible = true
 margin_right = 1026.0
 margin_bottom = 608.0
 theme = ExtResource( 2 )
@@ -88,7 +89,7 @@ margin_bottom = 62.0
 [node name="Yes" type="TextureButton" parent="GridContainer/Control/VBoxContainer/HBoxContainer/Margin"]
 margin_right = 113.0
 margin_bottom = 62.0
-focus_mode = 0
+focus_mode = 1
 theme = SubResource( 2 )
 toggle_mode = true
 group = ExtResource( 4 )
@@ -104,9 +105,10 @@ margin_bottom = 62.0
 [node name="No" type="TextureButton" parent="GridContainer/Control/VBoxContainer/HBoxContainer/Margin2"]
 margin_right = 113.0
 margin_bottom = 62.0
-focus_mode = 0
+focus_mode = 1
 theme = SubResource( 2 )
 toggle_mode = true
+enabled_focus_mode = 1
 group = ExtResource( 4 )
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 11 )
@@ -152,7 +154,7 @@ margin_bottom = 62.0
 [node name="Yes" type="TextureButton" parent="GridContainer/Control2/VBoxContainer2/HBoxContainer/Margin"]
 margin_right = 113.0
 margin_bottom = 62.0
-focus_mode = 0
+focus_mode = 1
 theme = SubResource( 2 )
 toggle_mode = true
 group = ExtResource( 6 )
@@ -168,6 +170,7 @@ margin_bottom = 62.0
 [node name="No" type="TextureButton" parent="GridContainer/Control2/VBoxContainer2/HBoxContainer/Margin2"]
 margin_right = 113.0
 margin_bottom = 62.0
+focus_mode = 1
 theme = SubResource( 2 )
 toggle_mode = true
 group = ExtResource( 4 )
@@ -207,7 +210,7 @@ margin_bottom = 62.0
 [node name="Yes" type="TextureButton" parent="GridContainer/VBoxContainer3/HBoxContainer/Margin"]
 margin_right = 113.0
 margin_bottom = 62.0
-focus_mode = 0
+focus_mode = 1
 theme = SubResource( 2 )
 toggle_mode = true
 group = ExtResource( 5 )
@@ -223,7 +226,7 @@ margin_bottom = 62.0
 [node name="No" type="TextureButton" parent="GridContainer/VBoxContainer3/HBoxContainer/Margin2"]
 margin_right = 113.0
 margin_bottom = 62.0
-focus_mode = 0
+focus_mode = 1
 theme = SubResource( 2 )
 toggle_mode = true
 group = ExtResource( 5 )
@@ -264,7 +267,7 @@ margin_bottom = 62.0
 [node name="Yes" type="TextureButton" parent="GridContainer/VBoxContainer4/HBoxContainer/Margin"]
 margin_right = 113.0
 margin_bottom = 62.0
-focus_mode = 0
+focus_mode = 1
 theme = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
@@ -281,7 +284,7 @@ margin_bottom = 62.0
 [node name="No" type="TextureButton" parent="GridContainer/VBoxContainer4/HBoxContainer/Margin2"]
 margin_right = 113.0
 margin_bottom = 62.0
-focus_mode = 0
+focus_mode = 1
 theme = SubResource( 2 )
 toggle_mode = true
 enabled_focus_mode = 0
