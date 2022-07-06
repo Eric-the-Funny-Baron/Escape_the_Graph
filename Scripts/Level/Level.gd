@@ -350,8 +350,8 @@ func _on_No_pressed():
 	$VBoxContainer2/Control/Hint.locked = false
 	$VBoxContainer/FinishedBtn.locked = false
 	Signals.emit_signal("dialog_fuse_requested", "Level_help", "Reintroduction")
-	Signals.emit_signal("dialog_fuse_requested", "Level_help"+"Reintroduction", level_name)
-	_on_help_update_requested("Level_help" + "Reintroduction" + level_name)
+	Signals.emit_signal("dialog_fuse_requested", "Level_help"+"Reintroduction", get_name())
+	Signals.emit_signal("help_update_requested", "Level_help" + "Reintroduction" + get_name())
 	Signals.emit_signal("touch_box_toggled")
 
 
