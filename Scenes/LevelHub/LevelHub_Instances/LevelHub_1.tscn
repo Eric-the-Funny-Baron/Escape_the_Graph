@@ -7,4 +7,11 @@
 [node name="Previous_Room" parent="." index="6"]
 active = false
 
+[node name="Arrow" type="Polygon2D" parent="." index="7"]
+position = Vector2( 384, 349 )
+rotation = 3.14159
+scale = Vector2( 0.2, 0.5 )
+antialiased = true
+polygon = PoolVector2Array( 576, 64, 592, 96, 576, 128, 768, 128, 845, 95.9999, 768, 64 )
+
 [editable path="Previous_Room"]

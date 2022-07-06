@@ -23,7 +23,6 @@ font_data = ExtResource( 1 )
 default_font = SubResource( 1 )
 
 [node name="ConfirmationDialog" type="Popup"]
-visible = true
 margin_right = 1026.0
 margin_bottom = 608.0
 theme = ExtResource( 2 )

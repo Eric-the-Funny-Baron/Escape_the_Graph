@@ -24,4 +24,12 @@ goal = true
 [node name="Previous_Room" parent="." index="6"]
 modulate = Color( 0.639216, 0.423529, 0.835294, 1 )
 
+[node name="Arrow" type="Polygon2D" parent="." index="7"]
+position = Vector2( 388, 349 )
+rotation = 3.14159
+scale = Vector2( 0.2, 0.5 )
+color = Color( 0.639216, 0.423529, 0.835294, 1 )
+antialiased = true
+polygon = PoolVector2Array( 576, 64, 592, 96, 576, 128, 768, 128, 845, 95.9999, 768, 64 )
+
 [editable path="Previous_Room"]
