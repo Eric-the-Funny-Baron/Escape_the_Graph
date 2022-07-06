@@ -86,5 +86,9 @@
 		{
 			"001": "Da es sich hier um das Zuverlässigkeitsproblem handelt, solltet ihr den zuverlässigsten Weg zum Ziel finden.",
 			"002": "Kantengewichte werden entlang des Pfades zusammenmultipliziert. Das größte Produkt stellt den zuverlässigsten Weg dar."
+		},
+	"c":
+		{
+			"001": "Eure Aufgabe war: "
 		}
 }
