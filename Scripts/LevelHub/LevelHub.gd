@@ -1,8 +1,8 @@
 extends Node2D
 
 var time = 0
-var timeDirection = 1
-var moveDuration = 0.5
+var forward = true
+var move = 0.5
 
 func _ready():
 	var room_complete = get_node("..").level_log.size() > 0
@@ -23,11 +23,14 @@ func _ready():
 	
 func _process(delta):
 
-	if (time > moveDuration or time < 0):
-		timeDirection *= -1
+	if (time > move or time < 0):
+		forward = !forward
 
-	time += delta * timeDirection
-	var t = time / moveDuration
+	if forward:
+		time += delta
+	else:
+		time -= delta
+	var t = time / move
 
 	$Arrow.position = lerp(Vector2(384.0,349.0),Vector2(395.0,349.0), t)
 	
